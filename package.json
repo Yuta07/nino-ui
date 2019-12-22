@@ -1,18 +1,31 @@
 {
   "name": "nino-ui",
   "version": "0.1.0",
+  "description": "nino ui by Yutazon",
+  "author": "Yutazon <yutazon.me@gmail.com>",
   "private": true,
+  "license": "MIT",
+  "bugs": "https://github.com/Yuta07/nino-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yuta07/nino-ui"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "react-scripts": "3.3.0"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-icons": "^3.8.0",
+    "react-scripts": "3.3.0",
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint:style": "stylelint 'src/**/*.ts{,x}'",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -32,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^5.2.8",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-info": "^5.2.8",
@@ -42,17 +56,42 @@
     "@storybook/addons": "^5.2.8",
     "@storybook/cli": "^5.2.8",
     "@storybook/react": "^5.2.8",
+    "@storybook/theming": "^5.2.8",
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.20",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.1",
     "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react-app": "^6.1.0",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
-    "react-docgen-typescript-loader": "^3.6.0",
     "react-dom": "^16.12.0",
+    "storybook-readme": "^5.0.8",
+    "stylelint": "^12.0.0",
+    "stylelint-config-prettier": "^8.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-processor-styled-components": "^1.9.0",
     "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts, tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
