@@ -1,6 +1,7 @@
 import React from 'react';
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { create } from '@storybook/theming';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withA11y } from '@storybook/addon-a11y';
 import { addReadme } from 'storybook-readme';
 import { GlobalStyle } from '../src/shared/global';
@@ -31,10 +32,10 @@ addDecorator(withA11y);
 addDecorator(addReadme);
 
 // Add global style
-addDecorator(story => (
+addDecorator(Story => (
   <>
     <GlobalStyle />
-    {story()}
+    {Story()}
   </>
 ));
 

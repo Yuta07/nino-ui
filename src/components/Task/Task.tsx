@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export const Task = ({ task: { id, title, state }, onArchiveTask, onPinTask }) => {
   return (
