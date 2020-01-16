@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 type Props = {
   color?: string;
+  size?: 'small' | 'medium' | 'large';
 };
 
 export const Spinner = ({ color = '#f39c12' }: Props) => (
@@ -12,7 +13,7 @@ export const Spinner = ({ color = '#f39c12' }: Props) => (
 );
 
 // spinner style
-//ref: [https://projects.lukehaas.me/css-loaders/]
+// ref: [https://projects.lukehaas.me/css-loaders/]
 const LoaderSpin = keyframes`
   0% {
     -webkit-transform: rotate(0deg);
@@ -40,10 +41,4 @@ const Loader = styled.div<{ color: string }>`
   transform: translateZ(0);
   -webkit-animation: ${LoaderSpin} 1.2s infinite linear;
   animation: ${LoaderSpin} 1.2s infinite linear;
-
-  &:after {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-  }
 `;

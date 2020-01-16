@@ -5,14 +5,13 @@ import styled from 'styled-components';
 import { Spinner } from './Spinner';
 
 storiesOf('Spinner', module).add('all', () => (
-  <React.Fragment>
-    <Wrapper>
-      <Spinner color="#c0392b" />
-      <Spinner color="#f1c40f" />
-      <Spinner color="#16a085" />
-      <Spinner color="#2980b9" />
-    </Wrapper>
-  </React.Fragment>
+  <Wrapper>
+    <Spinner color="#c0392b" />
+    <Spinner color="#f39c12" />
+    <Spinner color="#f1c40f" />
+    <Spinner color="#16a085" />
+    <Spinner color="#3498db" />
+  </Wrapper>
 ));
 
 const Wrapper = styled.div`
