@@ -30,7 +30,7 @@ const Container = styled.div`
 `;
 
 const IconName = styled.p<{ color: string }>`
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 0;
   color: ${props => props.color};
   font-size: 1rem;
 `;

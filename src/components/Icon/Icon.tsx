@@ -565,13 +565,13 @@ export const IconType: { [key: string]: React.ElementType } = {
 };
 
 export interface IconProps {
-  name: string | keyof typeof IconType;
+  name: string;
   color?: string;
   size?: number;
   className?: string;
 }
 
-export const Icon = ({ name, color = '363636', size = 16, className = '' }: IconProps) => {
+export const Icon = ({ name, color = '#363636', size = 16, className = '' }: IconProps) => {
   const NinoIcon = IconType[name];
   return (
     <IconContext.Provider value={{ color: color, size: `${size}px`, className: className }}>
