@@ -32,36 +32,39 @@ const Wrapper = () => {
       <Dialog
         isOpen={isAlertDialogOpen}
         title="AlertDialog"
-        type="danger"
+        type="info"
+        position={{ top: 2, right: 20, left: 20 }}
         content={
           <p>
-            この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。
+            この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。
             <br />
-            この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。
+            この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。この文章はダミーテキストです。
             <br />
             この文章はダミーテキストです。この文章はダミーテキストです。
           </p>
         }
-        activeText="閉じる"
+        closeText="閉じる"
         onCloseDialog={onCloseAlertDialog}
       />
       <button onClick={() => isOpenDialog('alert')}>Open Alert Dialog</button>
       <Dialog
         isOpen={isConfirmDialogOpen}
         title="ConfirmDialog"
-        type="info"
+        type="warning"
+        position={{ top: 2, right: 20, left: 20 }}
         content={
           <p>
-            この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。
+            この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。
             <br />
-            この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。
+            この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。
             <br />
             この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。
           </p>
         }
         activeText="はい"
-        negativeText="いいえ"
+        closeText="いいえ"
         onCloseDialog={onCloseConfirmDialog}
+        onActionDialog={onCloseConfirmDialog}
       />
       <button onClick={() => isOpenDialog('confirm')}>show Confirm Dialog</button>
     </Container>

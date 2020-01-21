@@ -2,52 +2,152 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
+import { DEFAULT_PALETTE } from '../../themes/Palette';
+
+type Position = {
+  top?: number;
+  right?: number;
+  left?: number;
+};
 
 type Props = {
   title?: string;
   type: 'success' | 'info' | 'warning' | 'danger';
+  position?: Position;
   content: React.ReactNode;
-  activeText: string;
-  negativeText?: string;
+  activeText?: string;
+  closeText: string;
   onCloseDialog: () => void;
+  onActionDialog?: () => void;
 };
 
 let dialogTitle: React.ReactNode;
 
-export const DialogContent = ({ title, type, content, activeText, negativeText, onCloseDialog }: Props) => {
+export const DialogContent = ({
+  title,
+  type,
+  position,
+  content,
+  activeText,
+  closeText,
+  onCloseDialog,
+  onActionDialog,
+}: Props) => {
   const theme = useTheme();
+  let color: string;
 
-  if (title !== '')
-    dialogTitle = (
-      <DialogTitle theme={theme} type={type}>
-        {title}
-      </DialogTitle>
-    );
+  switch (type) {
+    case 'success':
+      color = theme.palette.SUCCESS;
+      break;
+    case 'info':
+      color = theme.palette.INFO;
+      break;
+    case 'warning':
+      color = theme.palette.WARNING;
+      break;
+    case 'danger':
+      color = theme.palette.DANGER;
+      break;
+    default:
+  }
+
+  if (title !== '') dialogTitle = <DialogTitle color={color}>{title}</DialogTitle>;
 
   return (
-    <Container>
+    <Container theme={theme} position={position}>
       {dialogTitle}
-      <BodyContent>{content}</BodyContent>
-      <DialogButton>
-        {negativeText === undefined ? null : <NegativeButton onClick={onCloseDialog}>{negativeText}</NegativeButton>}
-        <ActiveButton onClick={onCloseDialog}>{activeText}</ActiveButton>
-      </DialogButton>
+      <BodyContent theme={theme}>{content}</BodyContent>
+      <DialogButtonContainer>
+        <NegativeButton onClick={onCloseDialog}>{closeText}</NegativeButton>
+        {activeText === undefined ? null : <ActiveButton onClick={onActionDialog}>{activeText}</ActiveButton>}
+      </DialogButtonContainer>
     </Container>
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div<{ theme: Theme; position: Position }>`
+  ${({ theme, position }) => {
+    const { top, right, left } = position;
+    const { palette } = theme;
 
-const DialogTitle = styled.h2<{ theme: Theme; type: Props['type'] }>``;
-
-const BodyContentText = css``;
-
-const BodyContent = styled.div`
-  ${BodyContentText};
+    return css`
+      position: absolute;
+      top: ${top}%;
+      right: ${right}%;
+      left: ${left}%;
+      z-index: 9000;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      background: #fefefe;
+      border: 1px solid ${palette.BORDER};
+      border-radius: 8px;
+    `;
+  }}
 `;
 
-const DialogButton = styled.div``;
+const DialogTitle = styled.h2<{ color: string }>`
+  font-size: 20px;
+  color: ${props => props.color};
+  margin: 0;
+`;
 
-const NegativeButton = styled.button``;
+const BodyContentText = css`
+  color: #363636;
 
-const ActiveButton = styled.button``;
+  h1,
+  h2 {
+    font-size: 16px;
+  }
+
+  h3,
+  h4 {
+    font-sie: 14px;
+  }
+
+  p,
+  a {
+    font-size: 12px;
+  }
+
+  a {
+    color: #f39c12;
+  }
+`;
+
+const BodyContent = styled.div<{ theme: Theme }>`
+  ${BodyContentText};
+
+  margin-top: 0.5rem;
+  border-top: 1px solid ${props => props.theme.palette.BORDER};
+`;
+
+const DialogButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 36px;
+`;
+
+const DialogButton = styled.button`
+  min-width: 60px;
+  border: 1px solid #c2c2c2;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    border: 1px solid ${DEFAULT_PALETTE.MAIN};
+  }
+`;
+
+const NegativeButton = styled(DialogButton)``;
+
+const ActiveButton = styled(DialogButton)`
+  margin-left: 24px;
+`;
