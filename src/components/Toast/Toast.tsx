@@ -55,13 +55,13 @@ export const Toast = ({ text, time = VISIBLE_TIME, type, visible, onCloseToast }
   }
 
   return (
-    <Wrapper bgColor={bgColor} time={time}>
+    <Container bgColor={bgColor} time={time}>
       <Icon name={iconName} size={16} color={theme.palette.SECONDARY} />
       <MessageText apptheme={theme}>{text}</MessageText>
       <CloseButton onClick={onCloseToast}>
         <Icon size={20} name="Fi-XCircle" color={theme.palette.SECONDARY} />
       </CloseButton>
-    </Wrapper>
+    </Container>
   );
 };
 
@@ -83,7 +83,7 @@ const ToastFadeOut = keyframes`
   }
 `;
 
-const Wrapper = styled.div<{ bgColor: string; time: number }>`
+const Container = styled.div<{ bgColor: string; time: number }>`
   min-width: 100px;
   display: flex;
   align-items: center;
@@ -110,4 +110,9 @@ const CloseButton = styled.div`
   z-index: 9000;
   display: flex;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+    transition: 0.2s;
+  }
 `;

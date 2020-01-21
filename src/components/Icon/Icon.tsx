@@ -565,7 +565,7 @@ export const IconType: { [key: string]: React.ElementType } = {
 };
 
 export interface IconProps {
-  name: string;
+  name: keyof typeof IconType;
   color?: string;
   size?: number;
   className?: string;
