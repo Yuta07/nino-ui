@@ -105,18 +105,17 @@ const BodyContentText = css`
 
   h1,
   h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   h3,
   h4 {
-    font-sie: 14px;
+    font-sie: 16px;
   }
 
   p,
   a {
-    color: #f39c12;
-    text-decoration: none;
+    font-size: 14px;
   }
 
   a {
@@ -143,6 +142,7 @@ const DialogButtonContainer = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   height: 36px;
+  margin-top: 1rem;
 `;
 
 const DialogButton = styled.button`
