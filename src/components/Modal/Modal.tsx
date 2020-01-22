@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { usePortal } from '../../hooks/usePortal';
-import { DialogContent } from './DialogContent';
+import { ModalContent } from './ModalContent';
 
 type Position = {
   top?: number;
@@ -14,41 +14,18 @@ type Position = {
 type Props = {
   isOpen: boolean;
   title?: string;
-  type: 'success' | 'info' | 'warning' | 'danger';
   position?: Position;
   content: React.ReactNode;
-  activeText?: string;
-  closeText: string;
-  onCloseDialog: () => void;
-  onActionDialog?: () => void;
+  onCloseModal: () => void;
 };
 
-export const Dialog = ({
-  isOpen,
-  title,
-  type,
-  position,
-  content,
-  activeText,
-  closeText,
-  onCloseDialog,
-  onActionDialog,
-}: Props): React.ReactPortal => {
+export const Modal = ({ isOpen, title, position, content, onCloseModal }: Props) => {
   const theme = useTheme();
 
   const el = (
     <>
-      <Overlay theme={theme} />
-      <DialogContent
-        title={title}
-        type={type}
-        position={position}
-        content={content}
-        activeText={activeText}
-        closeText={closeText}
-        onCloseDialog={onCloseDialog}
-        onActionDialog={onActionDialog}
-      />
+      <Overlay theme={theme} onClick={onCloseModal} />
+      <ModalContent title={title} position={position} content={content} onCloseModal={onCloseModal} />
     </>
   );
 
