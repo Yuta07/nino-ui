@@ -9,6 +9,8 @@
     "moduleResolution": "node",
     "rootDirs": ["src", "stories"],
     "baseUrl": "src",
+    "allowJs": true,
+    "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
