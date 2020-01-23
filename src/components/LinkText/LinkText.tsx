@@ -9,42 +9,61 @@ type Props = {
   text: string;
   link: string;
   target?: string;
-  visited?: string;
+  visitCSS?: string;
 };
 
-export const LinkText = ({ color = '#f39c12', size = 14, customCSS, hoverCSS, text, link, target = '', visited = '' }: Props) => {
+export const LinkText = ({
+  color = '#f39c12',
+  size = 14,
+  customCSS,
+  hoverCSS,
+  text,
+  link,
+  target = '',
+  visitCSS = '',
+}: Props) => {
   return (
     <>
-      <Text href={link} target={target} visited={visited} color={color} size={size} customCSS={customCSS} hoverCSS={hoverCSS}>
+      <Text
+        href={link}
+        target={target}
+        color={color}
+        size={size}
+        customCSS={customCSS}
+        hoverCSS={hoverCSS}
+        visitCSS={visitCSS}
+      >
         {text}
       </Text>
     </>
   );
 };
 
-const Text = styled.a<{ color: string; size: number; customCSS: string; hoverCSS: string; visited: string }>`
-  ${({ color, size, customCSS, hoverCSS, visited }) => {
+const Text = styled.a<{ color: string; size: number; customCSS: string; hoverCSS: string; visitCSS: string }>`
+  ${({ color, size, customCSS, hoverCSS, visitCSS }) => {
     const customStyle = css`
       ${customCSS}
     `;
 
     const hoverStyle = css`
-      ${hoverCSS}
-    `
+      &:hover {
+        ${hoverCSS}
+      }
+    `;
+
+    const visitStyle = css`
+      &:visited {
+        color: ${visitCSS};
+      }
+    `;
 
     return css`
       color: ${color};
       font-size: ${size}px;
       display: inline-block;
       ${customStyle}
-
-      &:hover {
-        ${hoverStyle}
-      }
-
-      &:visited {
-        color: ${visited};
-      }
+      ${hoverStyle}
+      ${visitStyle}
     `;
   }}
 `;

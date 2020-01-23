@@ -7,7 +7,6 @@ import { ModalContent } from './ModalContent';
 
 type Position = {
   top?: number;
-  right?: number;
   left?: number;
 };
 

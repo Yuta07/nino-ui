@@ -5,7 +5,6 @@ import { useTheme } from '../../hooks/useTheme';
 
 type Position = {
   top?: number;
-  right?: number;
   left?: number;
 };
 
@@ -54,34 +53,53 @@ export const DialogContent = ({
   if (title !== '') dialogTitle = <DialogTitle color={color}>{title}</DialogTitle>;
 
   return (
-    <Container theme={theme} position={position}>
-      {dialogTitle}
-      <BodyContent theme={theme}>{content}</BodyContent>
-      <DialogButtonContainer>
-        <NegativeButton onClick={onCloseDialog}>{closeText}</NegativeButton>
-        {activeText === undefined ? null : <ActiveButton onClick={onActionDialog}>{activeText}</ActiveButton>}
-      </DialogButtonContainer>
-    </Container>
+    <Wrapper>
+      <Container position={position} theme={theme}>
+        {dialogTitle}
+        <BodyContent theme={theme}>{content}</BodyContent>
+        <DialogButtonContainer>
+          <NegativeButton onClick={onCloseDialog}>{closeText}</NegativeButton>
+          {activeText === undefined ? null : <ActiveButton onClick={onActionDialog}>{activeText}</ActiveButton>}
+        </DialogButtonContainer>
+      </Container>
+    </Wrapper>
   );
 };
 
-const Container = styled.div<{ theme: Theme; position: Position }>`
-  ${({ theme, position }) => {
-    const { top, right, left } = position;
+const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8500;
+  width: 100%;
+  height: 100%;
+`;
+
+const Container = styled.div<{ position: Position; theme: Theme }>`
+  ${({ position, theme }) => {
+    const { top, left } = position;
     const { palette } = theme;
+
+    const mobi: number = 35 - left;
 
     return css`
       position: absolute;
       top: ${top}%;
-      right: ${right}%;
       left: ${left}%;
       z-index: 9000;
       display: flex;
       flex-direction: column;
       padding: 1rem;
       background: #fefefe;
+      box-shadow: rgba(150, 150, 150, 0.2) 0px 2px 6px 0px;
       border: 1px solid ${palette.BORDER};
       border-radius: 8px;
+      transform: translate(-50%, -50%);
+
+      @media (max-width: 599px) {
+        left: calc(${left}% - 25%);
+        transform: translate(${mobi}%, -50%);
+      }
     `;
   }}
 `;
@@ -116,6 +134,7 @@ const BodyContentText = css`
   p,
   a {
     font-size: 14px;
+    line-height: 1.6;
   }
 
   a {

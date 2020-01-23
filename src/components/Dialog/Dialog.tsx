@@ -7,7 +7,6 @@ import { DialogContent } from './DialogContent';
 
 type Position = {
   top?: number;
-  right?: number;
   left?: number;
 };
 
