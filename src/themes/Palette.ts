@@ -19,5 +19,5 @@ export const DEFAULT_PALETTE: Palette = {
   WARNING: '#f1c40f',
   INFO: '#16a085',
   SUCCESS: '#3498db',
-  OVERLAY: 'rgba(0, 0, 0, 0.25)'
+  OVERLAY: 'rgba(250, 250, 250, 0.4)'
 }

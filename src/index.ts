@@ -1,3 +1,8 @@
+// for example
+export { Task } from './components/Task';
+
 // export componetns
-export { Task } from './components/Task'; // for example
+export { Dialog } from './components/Dialog';
+export { Icon } from './components/Icon';
 export { Spinner } from './components/Spinner';
+export { Toast } from './components/Toast';

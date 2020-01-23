@@ -3,7 +3,12 @@ import { theme, Theme } from './Theme';
 
 export const ThemeContext = React.createContext<Theme>(theme());
 
-// ThemeProvider使用の際は、tsxにすることを忘れずに行う。
-export const ThemeProvider = (theme: Theme, children: React.ReactNode) => {
+type Props = {
+  theme: Theme;
+  children: React.ReactNode;
+};
+
+// ThemeProvider使用の際は、tsxにすること
+export const ThemeProvider = ({ theme, children }: Props) => {
   return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;
 };

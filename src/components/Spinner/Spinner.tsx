@@ -3,7 +3,6 @@ import styled, { keyframes } from 'styled-components';
 
 type Props = {
   color?: string;
-  size?: 'small' | 'medium' | 'large';
 };
 
 export const Spinner = ({ color = '#f39c12' }: Props) => (
