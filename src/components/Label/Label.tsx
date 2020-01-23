@@ -21,8 +21,8 @@ export const Label = ({ label, icon = 'Fi-AlertCircle', required, requiredText =
         {label}
         {required ? (
           <RequiredContainer>
-            <Icon name={icon} color={theme.palette.DANGER} size={iconSize - 2} />
-            <RequiredText color={theme.palette.DANGER} size={iconSize - 2}>
+            <Icon name={icon} color={theme.palette.DANGER} size={iconSize - 4} />
+            <RequiredText color={theme.palette.DANGER} size={iconSize - 4}>
               {requiredText}
             </RequiredText>
           </RequiredContainer>
