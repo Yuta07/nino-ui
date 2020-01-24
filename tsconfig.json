@@ -10,7 +10,6 @@
     "rootDirs": ["src", "stories"],
     "baseUrl": "src",
     "allowJs": true,
-    "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -23,6 +22,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*", "./src/node_modules/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "scripts"]
 }
