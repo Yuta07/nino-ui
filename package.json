@@ -27,7 +27,6 @@
     "eject": "react-scripts eject",
     "lint:style": "stylelint 'src/**/*.ts{,x}'",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook-s": "build-storybook -s public",
     "build-storybook": "build-storybook"
   },
   "eslintConfig": {
