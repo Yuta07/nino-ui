@@ -93,8 +93,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "resolutions": {
-    "@types/react": "^16.9.19"
   }
 }
