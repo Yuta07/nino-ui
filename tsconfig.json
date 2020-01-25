@@ -7,20 +7,19 @@
     "sourceMap": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "strict": true,
-    "rootDirs": ["src"],
+    "rootDirs": ["src", "stories"],
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false,
-    "noUnusedLocals": true,
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "build", "scripts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
