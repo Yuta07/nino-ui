@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "build/lib",
+    "outDir": ".",
     "module": "commonjs",
     "target": "es5",
     "lib": ["es5", "es6", "es7", "es2017", "es2018", "dom"],
     "sourceMap": true,
-    "allowJs": false,
-    "noEmit": true,
     "jsx": "react",
     "moduleResolution": "node",
     "strict": true,
