@@ -5,6 +5,7 @@
     "target": "es5",
     "lib": ["es5", "es6", "es7", "es2017", "es2018", "dom"],
     "sourceMap": true,
+    "types": ["react", "jest"],
     "jsx": "react",
     "moduleResolution": "node",
     "rootDirs": ["src", "stories"],
@@ -22,5 +23,5 @@
     "emitDecoratorMetadata": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "public"]
 }
