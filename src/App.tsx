@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>storybook</h1>
+    <div>
+      <p>react</p>
     </div>
   );
 };

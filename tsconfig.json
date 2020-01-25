@@ -6,8 +6,6 @@
     "lib": ["es5", "es6", "es7", "es2017", "es2018", "dom"],
     "sourceMap": true,
     "jsx": "react",
-    "allowJs": true,
-    "checkJs": true,
     "moduleResolution": "node",
     "rootDirs": ["src", "stories"],
     "forceConsistentCasingInFileNames": true,
