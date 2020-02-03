@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/prefer-for-of': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
   },
   settings: {
     react: {
