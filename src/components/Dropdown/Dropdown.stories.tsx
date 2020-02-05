@@ -5,7 +5,7 @@ import { Dropdown } from './Dropdown';
 
 const Wrapper = () => {
   return (
-    <Dropdown position={{ top: 8, left: 1 }} controllable={false}>
+    <Dropdown position={{ top: 110, left: 0 }} controllable={false}>
       <List>
         <ListItem>MyPage</ListItem>
         <ListItem>Settings</ListItem>
