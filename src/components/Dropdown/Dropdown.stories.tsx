@@ -33,8 +33,8 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  padding: 0.5rem 0rem;
+  margin: 0 1rem;
   border-bottom: 1px solid #cccccc;
 
   &:last-child {

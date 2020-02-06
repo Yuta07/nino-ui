@@ -5,27 +5,22 @@ import { Input } from './Input';
 
 const Wrapper = () => {
   const [value, setValue] = React.useState('');
-  const [error, setError] = React.useState(false);
   const [touch, setTouch] = React.useState(false);
 
-  React.useEffect(() => {
-    const validationCheck = () => {
-      if (value === '' && touch) {
-        setError(true);
-      }
-    };
-
-    validationCheck();
-  }, [touch, value]);
+  const validationCheck = (value: string): boolean => {
+    return value === '';
+  };
 
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget;
     setValue(value);
   };
 
-  const handleInputBlur = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleInputBlur = () => {
     setTouch(true);
   };
+
+  const error = validationCheck(value);
 
   return (
     <>
@@ -43,7 +38,7 @@ const Wrapper = () => {
           handleInputBlur={handleInputBlur}
         />
       </Container>
-      <Container>
+      {/* <Container>
         <Input
           type="text"
           name="name"
@@ -64,7 +59,7 @@ const Wrapper = () => {
           width={200}
           height={40}
         />
-      </Container>
+      </Container> */}
     </>
   );
 };

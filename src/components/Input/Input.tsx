@@ -58,7 +58,6 @@ export const Input = ({
   }
 
   console.log(error, touch);
-  console.log(color);
 
   return (
     <>
