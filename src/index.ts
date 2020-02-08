@@ -2,6 +2,7 @@
 export { Task } from './components/Task';
 
 // export componetns
+export { Button } from './components/Button';
 export { Dialog } from './components/Dialog';
 export { FeatherIcon, GithubIcon, TypIcon } from './components/Icon';
 export { Input } from './components/Input';
