@@ -5,7 +5,7 @@ import { Dropdown } from './Dropdown';
 
 const Wrapper = () => {
   return (
-    <Dropdown position={{ top: 8, left: 1 }} controllable={false}>
+    <Dropdown position={{ top: 110, left: 0 }} controllable={false}>
       <List>
         <ListItem>MyPage</ListItem>
         <ListItem>Settings</ListItem>
@@ -33,8 +33,8 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  padding: 0.5rem 0rem;
+  margin: 0 1rem;
   border-bottom: 1px solid #cccccc;
 
   &:last-child {

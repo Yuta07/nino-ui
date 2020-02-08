@@ -282,7 +282,7 @@ import {
   FiZoomOut,
 } from 'react-icons/fi';
 
-export const IconType: { [key: string]: React.ElementType } = {
+export const FeatherIconType: { [key: string]: React.ElementType } = {
   'Fi-Activity': FiActivity,
   'Fi-Airplay': FiAirplay,
   'Fi-AlertCircle': FiAlertCircle,
@@ -564,15 +564,15 @@ export const IconType: { [key: string]: React.ElementType } = {
   'Fi-ZoomOut': FiZoomOut,
 };
 
-export interface IconProps {
-  name: keyof typeof IconType;
+export interface FeatherIconProps {
+  name: keyof typeof FeatherIconType;
   color?: string;
   size?: number;
   className?: string;
 }
 
-export const Icon = ({ name, color = '#363636', size = 16, className = '' }: IconProps) => {
-  const NinoIcon = IconType[name];
+export const FeatherIcon = ({ name, color = '#363636', size = 16, className = '' }: FeatherIconProps) => {
+  const NinoIcon = FeatherIconType[name];
   return (
     <IconContext.Provider value={{ color: color, size: `${size}px`, className: className }}>
       <NinoIcon />

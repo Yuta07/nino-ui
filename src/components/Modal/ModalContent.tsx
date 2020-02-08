@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { Icon } from '../Icon/Icon';
+import { FeatherIcon } from '../Icon/FeatherIcon';
 
 type Position = {
   top?: number;
@@ -28,7 +28,7 @@ export const ModalContent = ({ title, position, content, onCloseModal }: Props) 
     <Wrapper>
       <Container theme={theme} position={position}>
         <CloseIcon onClick={onCloseModal}>
-          <Icon name="Fi-XCircle" color="#9e9e9e" size={20} />
+          <FeatherIcon name="Fi-XCircle" color="#9e9e9e" size={20} />
         </CloseIcon>
         {dialogTitle}
         <BodyContent theme={theme}>{content}</BodyContent>
@@ -125,5 +125,6 @@ const BodyContent = styled.div<{ theme: Theme }>`
   ${BodyContentText};
 
   margin-top: 0.5rem;
+  padding-top: 1rem;
   border-top: 1px solid ${props => props.theme.palette.BORDER};
 `;

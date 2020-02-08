@@ -48,10 +48,11 @@ export const Dropdown = ({ children, controllable = false, position }: Props): R
         },
       }}
     >
-      <DropdownButton />
-      <DropdownContent position={position} controllable={controllable}>
-        {children}
-      </DropdownContent>
+      <DropdownButton>
+        <DropdownContent position={position} controllable={controllable}>
+          {children}
+        </DropdownContent>
+      </DropdownButton>
     </DropdownContext.Provider>,
     element
   );

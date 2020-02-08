@@ -152,6 +152,7 @@ const BodyContent = styled.div<{ theme: Theme }>`
   ${BodyContentText};
 
   margin-top: 0.5rem;
+  padding-top: 1.5rem;
   border-top: 1px solid ${props => props.theme.palette.BORDER};
 `;
 
