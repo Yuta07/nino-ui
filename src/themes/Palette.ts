@@ -12,7 +12,7 @@ export interface Palette {
 
 export const DEFAULT_PALETTE: Palette = {
   PRIMARY: '#363636',
-  SECONDARY: '#ebebeb',
+  SECONDARY: '#eeeeee',
   BORDER: '#c2c2c2',
   MAIN: '#f39c12',
   DANGER: '#c0392b',

@@ -38,7 +38,7 @@ const Wrapper = () => {
           handleInputBlur={handleInputBlur}
         />
       </Container>
-      {/* <Container>
+      <Container>
         <Input
           type="text"
           name="name"
@@ -58,8 +58,9 @@ const Wrapper = () => {
           readonly={true}
           width={200}
           height={40}
+          color="#16a085"
         />
-      </Container> */}
+      </Container>
     </>
   );
 };

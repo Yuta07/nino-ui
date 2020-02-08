@@ -129,7 +129,7 @@ const ToastBox = styled.div`
 
 const Input = styled.input`
   width: 240px;
-  height: 20px;
+  height: 32px;
   padding: 4px;
   margin-right: 8px;
   font-size: 1rem;

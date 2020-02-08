@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { Icon } from '../Icon/Icon';
+import { FeatherIcon } from '../Icon/FeatherIcon';
 
 type Props = {
   text: string;
@@ -56,10 +56,10 @@ export const Toast = ({ text, time = VISIBLE_TIME, type, visible, onCloseToast }
 
   return (
     <Container bgColor={bgColor} time={time}>
-      <Icon name={iconName} size={16} color={theme.palette.SECONDARY} />
+      <FeatherIcon name={iconName} size={16} color={theme.palette.SECONDARY} />
       <MessageText apptheme={theme}>{text}</MessageText>
       <CloseButton onClick={onCloseToast}>
-        <Icon size={20} name="Fi-XCircle" color={theme.palette.SECONDARY} />
+        <FeatherIcon size={20} name="Fi-XCircle" color={theme.palette.SECONDARY} />
       </CloseButton>
     </Container>
   );

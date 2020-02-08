@@ -1,19 +1,40 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Icon, IconType } from './Icon';
+import { FeatherIcon, FeatherIconType } from './FeatherIcon';
+import { GithubIcon, GithubIconType } from './GithubIcon';
+import { TypIcon, TypIconType } from './TypIcon';
 
 const iconColor = '#363636';
 
-const renderIconList = () =>
-  Object.keys(IconType).map(icon => (
+const renderFeatherIconList = () =>
+  Object.keys(FeatherIconType).map(icon => (
     <Container key={icon}>
-      <Icon name={icon} color={iconColor} />
+      <FeatherIcon name={icon} color={iconColor} />
       <IconName color={iconColor}>{icon}</IconName>
     </Container>
   ));
 
-storiesOf('Icon', module).add('all', () => <Wrapper>{renderIconList()}</Wrapper>);
+const renderGithubIconList = () =>
+  Object.keys(GithubIconType).map(icon => (
+    <Container key={icon}>
+      <GithubIcon name={icon} color={iconColor} />
+      <IconName color={iconColor}>{icon}</IconName>
+    </Container>
+  ));
+
+const renderTypIconList = () =>
+  Object.keys(TypIconType).map(icon => (
+    <Container key={icon}>
+      <TypIcon name={icon} color={iconColor} />
+      <IconName color={iconColor}>{icon}</IconName>
+    </Container>
+  ));
+
+storiesOf('Icon', module)
+  .add('Feather', () => <Wrapper>{renderFeatherIconList()}</Wrapper>)
+  .add('Github', () => <Wrapper>{renderGithubIconList()}</Wrapper>)
+  .add('Type', () => <Wrapper>{renderTypIconList()}</Wrapper>);
 
 const Wrapper = styled.div`
   display: flex;

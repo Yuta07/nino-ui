@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { Icon } from '../Icon/Icon';
+import { FeatherIcon } from '../Icon/FeatherIcon';
 
 type Props = {
   label: string;
@@ -21,7 +21,7 @@ export const Label = ({ label, icon = 'Fi-AlertCircle', required, requiredText =
         {label}
         {required ? (
           <RequiredContainer>
-            <Icon name={icon} color={theme.palette.DANGER} size={iconSize - 4} />
+            <FeatherIcon name={icon} color={theme.palette.DANGER} size={iconSize - 4} />
             <RequiredText color={theme.palette.DANGER} size={iconSize - 4}>
               {requiredText}
             </RequiredText>
