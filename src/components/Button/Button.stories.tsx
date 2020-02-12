@@ -9,8 +9,13 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <Button type="button" name="base" width="160px" height="32px" size={1} color="MAIN">
-          BASE Button
+        <Button type="button" name="base" width="160px" height="40px" size={1.4} color="MAIN">
+          original
+        </Button>
+      </Container>
+      <Container>
+        <Button type="button" name="base" width="160px" height="40px" size={1.4} color="MAIN" disabled={true}>
+          disabled
         </Button>
       </Container>
       <Container>
@@ -21,8 +26,8 @@ const Wrapper = () => {
           iconSize={20}
           iconColor="SECONDARY"
           top={25}
-          left={5}
-          width="200px"
+          left={10}
+          width="160px"
           height="40px"
           size={1.2}
           color="DANGER"

@@ -57,6 +57,11 @@ export const Input = ({
     borderColor = theme.palette.DANGER;
   }
 
+  let backgroundColor = '#fefefe';
+  if (error && touch) {
+    backgroundColor = '#ffe2ec';
+  }
+
   console.log(error, touch);
 
   return (
@@ -70,6 +75,7 @@ export const Input = ({
         disabled={disabled}
         readOnly={readonly}
         color={color}
+        backgroundColor={backgroundColor}
         borderColor={borderColor}
         width={width}
         height={height}
@@ -81,14 +87,22 @@ export const Input = ({
   );
 };
 
-const InputForm = styled.input<{ color: string; borderColor: string; width: number; height: number; themes: Theme }>`
-  ${({ color, borderColor, width, height, themes }) => {
+const InputForm = styled.input<{
+  color: string;
+  backgroundColor: string;
+  borderColor: string;
+  width: number;
+  height: number;
+  themes: Theme;
+}>`
+  ${({ color, backgroundColor, borderColor, width, height, themes }) => {
     const { palette } = themes;
 
     return css`
       width: ${width ? `${width}px` : `auto`};
       height: ${height}px;
       color: ${palette.PRIMARY};
+      background: ${backgroundColor};
       font-size: 16px;
       line-height: 1.4;
       letter-spacing: 1px;

@@ -9,5 +9,6 @@ export { Input } from './components/Input';
 export { Label } from './components/Label';
 export { LinkText } from './components/LinkText';
 export { Modal } from './components/Modal';
+export { SelectBox } from './components/SelectBox';
 export { Spinner } from './components/Spinner';
 export { Toast } from './components/Toast';

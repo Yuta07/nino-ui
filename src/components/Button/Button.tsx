@@ -71,6 +71,11 @@ const Base = styled.button<{
       &:focus {
         outline: none;
       }
+
+      &:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+      }
     `;
   }}
 `;
