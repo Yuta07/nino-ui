@@ -1,6 +1,8 @@
 export interface Palette {
   PRIMARY: string
   SECONDARY: string
+  SUB_SECONDARY: string
+  GRAY: string
   BORDER: string
   MAIN: string
   DANGER: string
@@ -12,7 +14,9 @@ export interface Palette {
 
 export const DEFAULT_PALETTE: Palette = {
   PRIMARY: '#363636',
-  SECONDARY: '#eeeeee',
+  SECONDARY: '#fefefe',
+  SUB_SECONDARY: '#f5f5f5',
+  GRAY: '#e1e4e7',
   BORDER: '#c2c2c2',
   MAIN: '#f39c12',
   DANGER: '#c0392b',
