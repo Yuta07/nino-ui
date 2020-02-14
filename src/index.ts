@@ -11,4 +11,5 @@ export { LinkText } from './components/LinkText';
 export { Modal } from './components/Modal';
 export { SelectBox } from './components/SelectBox';
 export { Spinner } from './components/Spinner';
+export { Textarea } from './components/Textarea';
 export { Toast } from './components/Toast';
