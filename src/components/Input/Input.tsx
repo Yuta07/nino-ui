@@ -62,8 +62,6 @@ export const Input = ({
     backgroundColor = '#ffe2ec';
   }
 
-  console.log(error, touch);
-
   return (
     <>
       <InputForm
