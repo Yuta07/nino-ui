@@ -9,6 +9,7 @@ export const bodyStyles = css`
   margin: 0.5rem;
   font-size: 1rem;
   font-family: ${FONT_FAMILY};
+  letter-spacing: 0.1em;
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -16,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    letter-spacing: 0.1em;
   }
 
   body {

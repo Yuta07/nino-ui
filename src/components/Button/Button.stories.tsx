@@ -9,12 +9,12 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <Button type="button" name="base" width="160px" height="40px" size={1.4} color="MAIN">
+        <Button type="button" name="base" width="160px" height="40px" size={1.1} color="MAIN">
           original
         </Button>
       </Container>
       <Container>
-        <Button type="button" name="base" width="160px" height="40px" size={1.4} color="MAIN" disabled={true}>
+        <Button type="button" name="base" width="160px" height="40px" size={1.2} color="MAIN" disabled={true}>
           disabled
         </Button>
       </Container>
@@ -29,14 +29,14 @@ const Wrapper = () => {
           left={10}
           width="160px"
           height="40px"
-          size={1.2}
+          size={1}
           color="DANGER"
         >
           Favorite
         </WithIconButton>
       </Container>
       <Container>
-        <TransmissionButton type="button" name="base" width="160px" height="40px" size={1.2} color="INFO">
+        <TransmissionButton type="button" name="base" width="160px" height="40px" size={1.1} color="INFO">
           Transmission
         </TransmissionButton>
       </Container>

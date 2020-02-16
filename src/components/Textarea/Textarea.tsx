@@ -4,25 +4,9 @@ import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
-  type:
-    | 'hidden'
-    | 'text'
-    | 'number'
-    | 'tel'
-    | 'url'
-    | 'datetime'
-    | 'date'
-    | 'month'
-    | 'week'
-    | 'time'
-    | 'datetime-local'
-    | 'range'
-    | 'email'
-    | 'password';
   name: string;
   value: string;
   placeholder?: string;
-  autoComplete?: 'on' | 'off';
   disabled?: boolean;
   readonly?: boolean;
   error?: boolean;
@@ -30,16 +14,14 @@ type Props = {
   color?: string;
   width?: number;
   height?: number;
-  handleInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleInputBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleInputBlur?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
-export const Input = ({
-  type,
+export const Textarea = ({
   name,
   value,
   placeholder = '',
-  autoComplete = 'off',
   disabled,
   readonly,
   error = false,
@@ -62,14 +44,14 @@ export const Input = ({
     backgroundColor = '#ffe2ec';
   }
 
+  console.log(error, touch);
+
   return (
     <>
       <InputForm
-        type={type}
         name={name}
         value={value}
         placeholder={placeholder}
-        autoComplete={autoComplete}
         disabled={disabled}
         readOnly={readonly}
         color={color}
@@ -85,7 +67,7 @@ export const Input = ({
   );
 };
 
-const InputForm = styled.input<{
+const InputForm = styled.textarea<{
   color: string;
   backgroundColor: string;
   borderColor: string;
