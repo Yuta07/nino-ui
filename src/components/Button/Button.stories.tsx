@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Button } from './Button';
 import { WithIconButton } from './WithIconButton';
 import { TransmissionButton } from './TransmissionButton';
+import { IconOnyButton } from './IconOnlyButton';
 
 const Wrapper = () => {
   return (
@@ -20,32 +21,32 @@ const Wrapper = () => {
       </Container>
       <Container>
         <WithIconButton
-          type="button"
-          name="base"
           iconName="Fi-Heart"
           iconSize={16}
           iconColor="SECONDARY"
-          position="left"
+          type="button"
+          name="base"
           width="120px"
           height="32px"
           size={1}
           color="DANGER"
+          position="left"
         >
           Favorite
         </WithIconButton>
       </Container>
       <Container>
         <WithIconButton
-          type="button"
-          name="base"
           iconName="Fi-Share2"
           iconSize={16}
           iconColor="SECONDARY"
-          position="Right"
+          type="button"
+          name="base"
           width="120px"
           height="32px"
           size={1}
           color="INFO"
+          position="Right"
         >
           Share
         </WithIconButton>
@@ -55,6 +56,52 @@ const Wrapper = () => {
           Transmission
         </TransmissionButton>
       </Container>
+      <IconOnlyContainer>
+        <IconOnyButton
+          iconName="Go-Zap"
+          iconSize={16}
+          iconColor="SECONDARY"
+          type="button"
+          name="base"
+          height="32px"
+          size={1}
+          color="WARNING"
+          pattern="Go"
+        />
+        <IconOnyButton
+          iconName="Go-Bell"
+          iconSize={16}
+          iconColor="SECONDARY"
+          type="button"
+          name="base"
+          height="32px"
+          size={1}
+          color="INFO"
+          pattern="Go"
+        />
+        <IconOnyButton
+          iconName="Ti-Cog"
+          iconSize={16}
+          iconColor="PRIMARY"
+          type="button"
+          name="base"
+          height="32px"
+          size={1}
+          color="GRAY"
+          pattern="Ti"
+        />
+        <IconOnyButton
+          iconName="Ti-WeatherStormy"
+          iconSize={16}
+          iconColor="SECONDARY"
+          type="button"
+          name="base"
+          height="32px"
+          size={1}
+          color="SUCCESS"
+          pattern="Ti"
+        />
+      </IconOnlyContainer>
     </>
   );
 };
@@ -67,4 +114,11 @@ storiesOf('Button', module).add('all', () =>
 
 const Container = styled.div`
   margin: 20px 0;
+`;
+
+const IconOnlyContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 `;

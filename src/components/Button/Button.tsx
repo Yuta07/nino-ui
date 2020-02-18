@@ -7,14 +7,19 @@ import { useTheme } from '../../hooks/useTheme';
 export type Props = {
   type: 'button' | 'submit' | 'reset';
   name?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   size: number;
   color?: string;
-  position?: string;
   width?: string;
   height: string;
   disabled?: boolean;
   handleClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
+};
+
+export type IconProps = {
+  iconName: string;
+  iconSize?: number;
+  iconColor?: string;
 };
 
 export const Button = ({
@@ -74,7 +79,7 @@ const Base = styled.button<{
       cursor: pointer;
 
       &:hover {
-        opacity: 0.9;
+        opacity: 0.8;
         transition: 0.3s;
       }
 

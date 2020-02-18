@@ -2,7 +2,7 @@
 export { Task } from './components/Task';
 
 // export componetns
-export { Button } from './components/Button';
+export { Button, IconOnlyButtonProps, TransmissionButton, WithIconButton } from './components/Button';
 export { CheckBox } from './components/CheckBox';
 export { Dialog } from './components/Dialog';
 export { Dropdown } from './components/Dropdown';

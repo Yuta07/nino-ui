@@ -4,29 +4,45 @@ import { IconProps, Props } from './Button';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
+import { GithubIcon } from '../Icon/GithubIcon';
+import { TypIcon } from '../Icon/TypIcon';
 
-export type Position = {
-  position: string;
+export type Pattern = {
+  pattern: string;
 };
 
-export type WithIconButtonProps = IconProps & Props & Position;
+export type IconOnlyButtonProps = IconProps & Props & Pattern;
 
-export const WithIconButton = ({
+export const IconOnyButton = ({
   iconName,
   iconSize,
   iconColor,
   type,
   name,
-  children,
   size,
   color = 'MAIN',
-  position,
   width,
   height,
   disabled = false,
   handleClick,
-}: WithIconButtonProps) => {
+  pattern,
+}: IconOnlyButtonProps) => {
   const theme = useTheme();
+
+  let iconButton: JSX.Element;
+  switch (pattern) {
+    case 'Fi':
+      iconButton = <FeatherIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />;
+      break;
+    case 'Go':
+      iconButton = <GithubIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />;
+      break;
+    case 'Ti':
+      iconButton = <TypIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />;
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
@@ -41,21 +57,7 @@ export const WithIconButton = ({
         themes={theme}
         onClick={handleClick}
       >
-        {position === 'left' ? (
-          <>
-            <IconContainer>
-              <FeatherIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />
-            </IconContainer>
-            <ButtonText position={position}>{children}</ButtonText>
-          </>
-        ) : (
-          <>
-            <ButtonText position={position}>{children}</ButtonText>
-            <IconContainer>
-              <FeatherIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />
-            </IconContainer>
-          </>
-        )}
+        <IconContainer>{iconButton}</IconContainer>
       </Base>
     </>
   );
@@ -79,13 +81,14 @@ const Base = styled.button<{
       width: ${width ? width : 'auto'};
       height: ${height ? height : '24px'};
       border: none;
-      border-radius: 6px;
+      border-radius: 50%;
       text-align: center;
       cursor: pointer;
       white-space: nowrap;
       cursor: pointer;
       display: inline-flex;
       justify-content: center;
+      align-items: center;
       padding: 0 0.5rem;
 
       &:hover {
@@ -101,11 +104,3 @@ const Base = styled.button<{
 `;
 
 const IconContainer = styled.div``;
-
-const ButtonText = styled.span<{ position: Position['position'] }>`
-  ${({ position }) => {
-    return css`
-      ${position === 'left' ? `margin-left: 8px;` : `margin-right: 8px;`}
-    `;
-  }}
-`;
