@@ -16,12 +16,12 @@ type Props = {
   handleRadioChange?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>, value: string) => void;
 };
 
-export const Radio = ({ value, checked, disabled = false, size, color = 'MAIN', handleRadioChange }: Props) => {
+export const CheckBox = ({ value, checked, disabled = false, size, color = 'MAIN', handleRadioChange }: Props) => {
   const theme = useTheme();
 
   return (
     <>
-      <RadioButton type="radio" />
+      <RadioButton type="checkbox" />
       <RadioLabel
         themes={theme}
         color={color}
@@ -49,7 +49,7 @@ const RadioLabel = styled.label<{
 }>`
   ${({ themes, color, size, checked, disabled }) => {
     const { palette } = themes;
-    const radioColor = disabled ? palette.GRAY : palette[color];
+    const checkBoxColor = disabled ? palette.GRAY : palette[color];
 
     return css`
       position: relative;
@@ -66,31 +66,35 @@ const RadioLabel = styled.label<{
 
       &:before {
         position: absolute;
-        top: 50%;
-        left: 7px;
+        top: 25%;
+        left: 5px;
+        z-index: 1;
         opacity: ${checked ? 1 : 0};
         -webkit-transition: opacity 0.2s linear;
         transition: opacity 0.2s linear;
-        width: ${`${size - 8}px`};
+        width: ${`${size - 12}px`};
         height: ${`${size - 8}px`};
         margin-top: -3px;
-        background: ${checked ? radioColor : palette.GRAY};
-        border-radius: 50%;
+        border-right: 3px solid ${checked ? palette.SECONDARY : palette.GRAY};
+        border-bottom: 2px solid ${checked ? palette.SECONDARY : palette.GRAY};
         display: block;
         content: '';
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
       }
 
       &:after {
         position: absolute;
         top: 50%;
         left: 0;
-        -webkit-transition: border-color 0.2s linear;
-        transition: border-color 0.2s linear;
+        -webkit-transition: background 0.2s linear;
+        transition: background 0.2s linear;
         width: ${`${size}px`};
         height: ${size}px;
         margin-top: -10px;
-        border: 3px solid ${checked ? radioColor : palette.GRAY};
-        border-radius: 50%;
+        background: ${checked ? checkBoxColor : palette.GRAY};
+        border-radius: 4px;
         display: block;
         content: '';
         cursor: pointer;

@@ -10,6 +10,7 @@ type Position = {
 };
 
 type Props = {
+  isOpen: boolean;
   title?: string;
   position?: Position;
   content: React.ReactNode;
@@ -18,15 +19,15 @@ type Props = {
 
 let dialogTitle: React.ReactNode;
 
-export const ModalContent = ({ title, position, content, onCloseModal }: Props) => {
+export const ModalContent = ({ isOpen, title, position, content, onCloseModal }: Props) => {
   const theme = useTheme();
   let color: string;
 
   if (title !== '') dialogTitle = <DialogTitle color={color}>{title}</DialogTitle>;
 
   return (
-    <Wrapper>
-      <Container theme={theme} position={position}>
+    <Wrapper isOpen={isOpen}>
+      <Container position={position} theme={theme}>
         <CloseIcon onClick={onCloseModal}>
           <FeatherIcon name="Fi-XCircle" color="#9e9e9e" size={20} />
         </CloseIcon>
@@ -37,16 +38,24 @@ export const ModalContent = ({ title, position, content, onCloseModal }: Props) 
   );
 };
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+const Wrapper = styled.div<{ isOpen: Props['isOpen'] }>`
+  ${({ isOpen }) => {
+    return css`
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      visibility: ${isOpen ? `visible` : `hidden`};
+      opacity: ${isOpen ? `1` : `0`};
+      -webkit-transition: all 0.2s linear;
+      transition: all 0.2s linear;
+    `;
+  }}
 `;
 
-const Container = styled.div<{ theme: Theme; position: Position }>`
-  ${({ theme, position }) => {
+const Container = styled.div<{ position: Position; theme: Theme }>`
+  ${({ position, theme }) => {
     const { top, left } = position;
     const { palette } = theme;
 

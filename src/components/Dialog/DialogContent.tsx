@@ -9,6 +9,7 @@ type Position = {
 };
 
 type Props = {
+  isOpen: boolean;
   title?: string;
   type: 'success' | 'info' | 'warning' | 'danger';
   position?: Position;
@@ -22,6 +23,7 @@ type Props = {
 let dialogTitle: React.ReactNode;
 
 export const DialogContent = ({
+  isOpen,
   title,
   type,
   position,
@@ -53,7 +55,7 @@ export const DialogContent = ({
   if (title !== '') dialogTitle = <DialogTitle color={color}>{title}</DialogTitle>;
 
   return (
-    <Wrapper>
+    <Wrapper isOpen={isOpen}>
       <Container position={position} theme={theme}>
         {dialogTitle}
         <BodyContent theme={theme}>{content}</BodyContent>
@@ -66,12 +68,20 @@ export const DialogContent = ({
   );
 };
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+const Wrapper = styled.div<{ isOpen: Props['isOpen'] }>`
+  ${({ isOpen }) => {
+    return css`
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      visibility: ${isOpen ? `visible` : `hidden`};
+      opacity: ${isOpen ? `1` : `0`};
+      -webkit-transition: all 0.2s linear;
+      transition: all 0.2s linear;
+    `;
+  }}
 `;
 
 const Container = styled.div<{ position: Position; theme: Theme }>`

@@ -2,6 +2,6 @@
 
 This is storybook project by yutazon
 
-nino-ui refers to flar ui
+nino-ui refers to flat ui
 
 ref:[Flat UI](http://designmodo.github.io/Flat-UI/)
