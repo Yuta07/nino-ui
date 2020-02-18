@@ -19,7 +19,7 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <RadioContent>
+        <CheckContent>
           <CheckBox
             name="gender"
             value="male"
@@ -27,8 +27,8 @@ const Wrapper = () => {
             size={14}
             handleRadioChange={handleRadioChange}
           />
-        </RadioContent>
-        <RadioContent>
+        </CheckContent>
+        <CheckContent>
           <CheckBox
             name="gender"
             value="female"
@@ -37,8 +37,8 @@ const Wrapper = () => {
             handleRadioChange={handleRadioChange}
             color="INFO"
           />
-        </RadioContent>
-        <RadioContent>
+        </CheckContent>
+        <CheckContent>
           <CheckBox
             name="gender"
             value="others"
@@ -47,10 +47,10 @@ const Wrapper = () => {
             handleRadioChange={handleRadioChange}
             color="SUCCESS"
           />
-        </RadioContent>
-        <RadioContent>
+        </CheckContent>
+        <CheckContent>
           <CheckBox name="gender" value="disabled" checked={true} disabled={true} size={16} />
-        </RadioContent>
+        </CheckContent>
       </Container>
     </>
   );
@@ -66,6 +66,6 @@ const Container = styled.div`
   margin: 20px 0;
 `;
 
-const RadioContent = styled.div`
+const CheckContent = styled.div`
   margin: 1rem 0;
 `;

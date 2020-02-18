@@ -11,27 +11,21 @@ export type IconProps = {
   iconColor?: string;
 };
 
-export type Position = {
-  top?: number;
-  left?: number;
-};
-
-export type WithIconButtonProps = IconProps & Position & Props;
+export type WithIconButtonProps = IconProps & Props;
 
 export const WithIconButton = ({
   iconName,
   iconSize,
   iconColor,
-  top,
-  left,
   type,
   name,
   children,
   size,
-  color,
+  color = 'MAIN',
+  position,
   width,
   height,
-  disabled,
+  disabled = false,
   handleClick,
 }: WithIconButtonProps) => {
   const theme = useTheme();
@@ -49,10 +43,21 @@ export const WithIconButton = ({
         themes={theme}
         onClick={handleClick}
       >
-        <IconContainer top={top} left={left}>
-          <FeatherIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />
-        </IconContainer>
-        {children}
+        {position === 'left' ? (
+          <>
+            <IconContainer>
+              <FeatherIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />
+            </IconContainer>
+            <ButtonText position={position}>{children}</ButtonText>
+          </>
+        ) : (
+          <>
+            <ButtonText position={position}>{children}</ButtonText>
+            <IconContainer>
+              <FeatherIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />
+            </IconContainer>
+          </>
+        )}
       </Base>
     </>
   );
@@ -75,14 +80,15 @@ const Base = styled.button<{
       letter-spacing: 1.4;
       width: ${width ? width : 'auto'};
       height: ${height ? height : '24px'};
-      padding: 0 1rem;
       border: none;
       border-radius: 6px;
       text-align: center;
       cursor: pointer;
       white-space: nowrap;
       cursor: pointer;
-      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      padding: 0 0.5rem;
 
       &:hover {
         opacity: 0.9;
@@ -96,8 +102,12 @@ const Base = styled.button<{
   }}
 `;
 
-const IconContainer = styled.div<{ top: number; left: number }>`
-  position: absolute;
-  left: ${props => props.left}%;
-  top: ${props => props.top}%;
+const IconContainer = styled.div``;
+
+const ButtonText = styled.span<{ position: Props['position'] }>`
+  ${({ position }) => {
+    return css`
+      ${position === 'left' ? `margin-left: 8px;` : `margin-right: 8px;`}
+    `;
+  }}
 `;

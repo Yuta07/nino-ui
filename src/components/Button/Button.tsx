@@ -9,14 +9,25 @@ export type Props = {
   name?: string;
   children: React.ReactNode;
   size: number;
-  color: string;
+  color?: string;
+  position?: string;
   width?: string;
   height: string;
   disabled?: boolean;
   handleClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
 };
 
-export const Button = ({ type, name, children, size, color, width, height, disabled = false, handleClick }: Props) => {
+export const Button = ({
+  type,
+  name,
+  children,
+  size,
+  color = 'MAIN',
+  width,
+  height,
+  disabled = false,
+  handleClick,
+}: Props) => {
   const theme = useTheme();
 
   return (
@@ -55,7 +66,6 @@ const Base = styled.button<{
       letter-spacing: 1.4;
       width: ${width ? width : 'auto'};
       height: ${height ? height : '32px'};
-      padding: 0 1rem;
       border: none;
       border-radius: 6px;
       text-align: center;

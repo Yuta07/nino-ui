@@ -21,8 +21,8 @@ export const CheckBox = ({ value, checked, disabled = false, size, color = 'MAIN
 
   return (
     <>
-      <RadioButton type="checkbox" />
-      <RadioLabel
+      <Check type="checkbox" />
+      <CheckButton
         themes={theme}
         color={color}
         size={size}
@@ -31,16 +31,16 @@ export const CheckBox = ({ value, checked, disabled = false, size, color = 'MAIN
         onClick={disabled ? null : event => handleRadioChange(event, value)}
       >
         {value}
-      </RadioLabel>
+      </CheckButton>
     </>
   );
 };
 
-const RadioButton = styled.input`
+const Check = styled.input`
   display: none;
 `;
 
-const RadioLabel = styled.label<{
+const CheckButton = styled.label<{
   themes: Theme;
   color: string;
   size: number;
@@ -61,6 +61,10 @@ const RadioLabel = styled.label<{
       &:hover {
         &:before {
           opacity: 1;
+          -webkit-transition: opacity 0.2s linear;
+          transition: opacity 0.2s linear;
+          border-right: 3px solid ${palette.SECONDARY};
+          border-bottom: 2px solid ${palette.SECONDARY};
         }
       }
 
@@ -74,7 +78,7 @@ const RadioLabel = styled.label<{
         transition: opacity 0.2s linear;
         width: ${`${size - 12}px`};
         height: ${`${size - 8}px`};
-        margin-top: -3px;
+        margin-top: ${`${15 - size}px`};
         border-right: 3px solid ${checked ? palette.SECONDARY : palette.GRAY};
         border-bottom: 2px solid ${checked ? palette.SECONDARY : palette.GRAY};
         display: block;
@@ -82,6 +86,7 @@ const RadioLabel = styled.label<{
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
+        cursor: pointer;
       }
 
       &:after {
@@ -92,7 +97,7 @@ const RadioLabel = styled.label<{
         transition: background 0.2s linear;
         width: ${`${size}px`};
         height: ${size}px;
-        margin-top: -10px;
+        margin-top: ${`${8 - size}px`};
         background: ${checked ? checkBoxColor : palette.GRAY};
         border-radius: 4px;
         display: block;

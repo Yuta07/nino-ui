@@ -9,12 +9,12 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <Button type="button" name="base" width="160px" height="40px" size={1.1} color="MAIN">
+        <Button type="button" name="base" width="120px" height="32px" size={1} color="MAIN">
           original
         </Button>
       </Container>
       <Container>
-        <Button type="button" name="base" width="160px" height="40px" size={1.2} color="MAIN" disabled={true}>
+        <Button type="button" name="base" width="120px" height="32px" size={1} disabled={true}>
           disabled
         </Button>
       </Container>
@@ -23,12 +23,11 @@ const Wrapper = () => {
           type="button"
           name="base"
           iconName="Fi-Heart"
-          iconSize={20}
+          iconSize={16}
           iconColor="SECONDARY"
-          top={25}
-          left={10}
-          width="160px"
-          height="40px"
+          position="left"
+          width="120px"
+          height="32px"
           size={1}
           color="DANGER"
         >
@@ -36,7 +35,23 @@ const Wrapper = () => {
         </WithIconButton>
       </Container>
       <Container>
-        <TransmissionButton type="button" name="base" width="160px" height="40px" size={1.1} color="INFO">
+        <WithIconButton
+          type="button"
+          name="base"
+          iconName="Fi-Share2"
+          iconSize={16}
+          iconColor="SECONDARY"
+          position="Right"
+          width="120px"
+          height="32px"
+          size={1}
+          color="INFO"
+        >
+          Share
+        </WithIconButton>
+      </Container>
+      <Container>
+        <TransmissionButton type="button" name="base" width="140px" height="28px" size={1} color="INFO">
           Transmission
         </TransmissionButton>
       </Container>

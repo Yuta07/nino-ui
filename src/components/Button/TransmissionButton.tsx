@@ -43,7 +43,6 @@ const Base = styled.button<{
       letter-spacing: 1.4;
       width: ${width ? width : 'auto'};
       height: ${height ? height : '24px'};
-      padding: 0 1rem;
       border: none;
       border-radius: 6px;
       text-align: center;
