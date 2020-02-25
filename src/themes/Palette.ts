@@ -3,6 +3,7 @@ export interface Palette {
   SECONDARY: string
   SUB_SECONDARY: string
   GRAY: string
+  PLACE_HOLDER: string
   BORDER: string
   MAIN: string
   DANGER: string
@@ -10,6 +11,7 @@ export interface Palette {
   INFO: string
   SUCCESS: string
   OVERLAY: string
+  TRANSPARENT: string
 }
 
 export const DEFAULT_PALETTE: Palette = {
@@ -17,11 +19,13 @@ export const DEFAULT_PALETTE: Palette = {
   SECONDARY: '#fefefe',
   SUB_SECONDARY: '#f5f5f5',
   GRAY: '#e1e4e7',
+  PLACE_HOLDER: 'rgba(69, 69, 69, 0.5)',
   BORDER: '#c2c2c2',
   MAIN: '#f39c12',
   DANGER: '#c0392b',
   WARNING: '#f1c40f',
   INFO: '#16a085',
   SUCCESS: '#3498db',
-  OVERLAY: 'rgba(250, 250, 250, 0.4)'
+  OVERLAY: 'rgba(250, 250, 250, 0.4)',
+  TRANSPARENT: 'transparent'
 }

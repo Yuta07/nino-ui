@@ -7,16 +7,32 @@ import { useTheme } from '../../hooks/useTheme';
 export type Props = {
   type: 'button' | 'submit' | 'reset';
   name?: string;
-  children: React.ReactNode;
-  size: number;
-  color: string;
-  width?: string;
-  height: string;
+  children?: React.ReactNode;
+  size?: number;
+  color?: string;
+  width?: number;
+  height: number;
   disabled?: boolean;
   handleClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
 };
 
-export const Button = ({ type, name, children, size, color, width, height, disabled = false, handleClick }: Props) => {
+export type IconProps = {
+  iconName: string;
+  iconSize?: number;
+  iconColor?: string;
+};
+
+export const Button = ({
+  type,
+  name,
+  children,
+  size,
+  color = 'MAIN',
+  width,
+  height,
+  disabled = false,
+  handleClick,
+}: Props) => {
   const theme = useTheme();
 
   return (
@@ -41,8 +57,8 @@ export const Button = ({ type, name, children, size, color, width, height, disab
 const Base = styled.button<{
   size: number;
   color: string;
-  width: string;
-  height: string;
+  width: number;
+  height: number;
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
@@ -52,10 +68,8 @@ const Base = styled.button<{
       font-size: ${size}rem;
       color: ${palette.SECONDARY};
       background: ${palette[color]};
-      letter-spacing: 1.4;
-      width: ${width ? width : 'auto'};
-      height: ${height ? height : '32px'};
-      padding: 0 1rem;
+      width: ${width ? `${width}px` : 'auto'};
+      height: ${height}px;
       border: none;
       border-radius: 6px;
       text-align: center;
@@ -64,7 +78,7 @@ const Base = styled.button<{
       cursor: pointer;
 
       &:hover {
-        opacity: 0.9;
+        opacity: 0.8;
         transition: 0.3s;
       }
 

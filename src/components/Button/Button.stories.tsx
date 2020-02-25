@@ -4,42 +4,103 @@ import styled from 'styled-components';
 import { Button } from './Button';
 import { WithIconButton } from './WithIconButton';
 import { TransmissionButton } from './TransmissionButton';
+import { IconOnlyButton } from './IconOnlyButton';
 
 const Wrapper = () => {
   return (
     <>
       <Container>
-        <Button type="button" name="base" width="160px" height="40px" size={1.1} color="MAIN">
+        <Button type="button" name="base" width={120} height={32} size={1} color="MAIN">
           original
         </Button>
       </Container>
       <Container>
-        <Button type="button" name="base" width="160px" height="40px" size={1.2} color="MAIN" disabled={true}>
+        <Button type="button" name="base" width={120} height={32} size={1} disabled={true}>
           disabled
         </Button>
       </Container>
       <Container>
         <WithIconButton
+          iconName="Fi-Heart"
+          iconSize={16}
+          iconColor="SECONDARY"
           type="button"
           name="base"
-          iconName="Fi-Heart"
-          iconSize={20}
-          iconColor="SECONDARY"
-          top={25}
-          left={10}
-          width="160px"
-          height="40px"
+          width={120}
+          height={32}
           size={1}
           color="DANGER"
+          position="left"
         >
           Favorite
         </WithIconButton>
       </Container>
       <Container>
-        <TransmissionButton type="button" name="base" width="160px" height="40px" size={1.1} color="INFO">
+        <WithIconButton
+          iconName="Fi-Share2"
+          iconColor="SECONDARY"
+          type="button"
+          name="base"
+          width={120}
+          height={32}
+          size={1}
+          color="INFO"
+          position="Right"
+        >
+          Share
+        </WithIconButton>
+      </Container>
+      <Container>
+        <TransmissionButton type="button" name="base" width={140} height={28} size={1} color="INFO">
           Transmission
         </TransmissionButton>
       </Container>
+      <IconOnlyContainer>
+        <IconOnlyButton
+          iconName="Go-Zap"
+          iconSize={16}
+          iconColor="SECONDARY"
+          width={32}
+          height={32}
+          size={1}
+          color="WARNING"
+          pattern="Go"
+          shape="circle"
+        />
+        <IconOnlyButton
+          iconName="Go-Bell"
+          iconSize={16}
+          iconColor="SECONDARY"
+          width={32}
+          height={32}
+          size={1}
+          color="INFO"
+          pattern="Go"
+          shape="circle"
+        />
+        <IconOnlyButton
+          iconName="Ti-Cog"
+          iconSize={16}
+          iconColor="PRIMARY"
+          width={32}
+          height={32}
+          size={1}
+          color="GRAY"
+          pattern="Ti"
+          shape="square"
+        />
+        <IconOnlyButton
+          iconName="Ti-WeatherStormy"
+          iconSize={16}
+          iconColor="SECONDARY"
+          width={32}
+          height={32}
+          size={1}
+          color="SUCCESS"
+          pattern="Ti"
+          shape="circle"
+        />
+      </IconOnlyContainer>
     </>
   );
 };
@@ -52,4 +113,12 @@ storiesOf('Button', module).add('all', () =>
 
 const Container = styled.div`
   margin: 20px 0;
+`;
+
+const IconOnlyContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 400px;
 `;
