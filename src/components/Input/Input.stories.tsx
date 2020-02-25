@@ -2,10 +2,13 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Input } from './Input';
+import { SearchForm } from './SearchForm';
 
 const Wrapper = () => {
   const [value, setValue] = React.useState('');
   const [touch, setTouch] = React.useState(false);
+  const [detect, setDetect] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState('');
 
   const validationCheck = (value: string): boolean => {
     return value === '';
@@ -16,15 +19,32 @@ const Wrapper = () => {
     setValue(value);
   };
 
+  const handleSearchInputChange = (event: React.FormEvent<HTMLInputElement>): void => {
+    const { value } = event.currentTarget;
+    setSearchValue(value);
+  };
+
   const handleInputBlur = () => {
     setTouch(true);
+  };
+
+  const handleSearchFocus = () => {
+    setDetect(true);
+  };
+
+  const handleSearchBlur = () => {
+    setDetect(false);
+  };
+
+  const handleSearchClick = () => {
+    console.log(searchValue);
   };
 
   const error = validationCheck(value);
 
   return (
     <>
-      <Container>
+      <BackGround>
         <Input
           type="text"
           name="name"
@@ -32,10 +52,23 @@ const Wrapper = () => {
           placeholder="Please input..."
           error={error}
           touch={touch}
+          border={false}
           width={200}
-          height={40}
+          height={36}
           handleInputChange={handleInputChange}
           handleInputBlur={handleInputBlur}
+        />
+      </BackGround>
+      <Container>
+        <Input
+          type="text"
+          name="name"
+          value={value}
+          placeholder="Please input..."
+          width={200}
+          height={36}
+          color="INFO"
+          handleInputChange={handleInputChange}
         />
       </Container>
       <Container>
@@ -45,8 +78,10 @@ const Wrapper = () => {
           value="Disabled"
           placeholder="Please input..."
           disabled={true}
+          border={false}
           width={200}
-          height={40}
+          height={36}
+          handleInputChange={handleInputChange}
         />
       </Container>
       <Container>
@@ -57,8 +92,24 @@ const Wrapper = () => {
           placeholder="Please input..."
           readonly={true}
           width={200}
-          height={40}
-          color="#16a085"
+          height={36}
+          color="GRAY"
+          handleInputChange={handleInputChange}
+        />
+      </Container>
+      <Container>
+        <SearchForm
+          name="search"
+          value={searchValue}
+          placeholder="Please input..."
+          detect={detect}
+          width={200}
+          height={36}
+          iconSize={16}
+          handleSearchFocus={handleSearchFocus}
+          handleSearchBlur={handleSearchBlur}
+          handleSearchChange={handleSearchInputChange}
+          handleSearchClick={handleSearchClick}
         />
       </Container>
     </>
@@ -70,6 +121,11 @@ storiesOf('Input', module).add('all', () =>
     return <Wrapper />;
   })
 );
+
+const BackGround = styled.div`
+  background: #dddddd;
+  padding: 10px;
+`;
 
 const Container = styled.div`
   margin: 20px 0;

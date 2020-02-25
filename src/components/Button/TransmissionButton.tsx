@@ -30,8 +30,8 @@ export const TransmissionButton = ({ ...props }: Props) => {
 const Base = styled.button<{
   size: number;
   color: string;
-  width: string;
-  height: string;
+  width: number;
+  height: number;
   themes: Theme;
 }>`
   ${({ size, width, height, themes }) => {
@@ -40,9 +40,8 @@ const Base = styled.button<{
     return css`
       font-size: ${size}rem;
       color: ${palette.PRIMARY};
-      letter-spacing: 1.4;
-      width: ${width ? width : 'auto'};
-      height: ${height ? height : '24px'};
+      width: ${width ? `${width}px` : 'auto'};
+      height: ${height ? `${height}px` : '24px'};
       border: none;
       border-radius: 6px;
       text-align: center;

@@ -1,6 +1,3 @@
-// for example
-export { Task } from './components/Task';
-
 // export componetns
 export { Button, IconOnlyButtonProps, TransmissionButton, WithIconButton } from './components/Button';
 export { CheckBox } from './components/CheckBox';

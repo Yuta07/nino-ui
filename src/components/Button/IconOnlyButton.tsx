@@ -1,31 +1,35 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { IconProps, Props } from './Button';
+import { IconProps } from './Button';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
 import { GithubIcon } from '../Icon/GithubIcon';
 import { TypIcon } from '../Icon/TypIcon';
 
-export type Pattern = {
+export type IconButtonProps = {
+  children?: React.ReactNode;
+  size?: number;
+  color?: string;
+  width?: number;
+  height: number;
   pattern: string;
+  shape: 'square' | 'circle';
+  handleClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
-export type IconOnlyButtonProps = IconProps & Props & Pattern;
+export type IconOnlyButtonProps = IconProps & IconButtonProps;
 
-export const IconOnyButton = ({
+export const IconOnlyButton = ({
   iconName,
   iconSize,
   iconColor,
-  type,
-  name,
-  size,
   color = 'MAIN',
   width,
   height,
-  disabled = false,
   handleClick,
   pattern,
+  shape,
 }: IconOnlyButtonProps) => {
   const theme = useTheme();
 
@@ -45,43 +49,28 @@ export const IconOnyButton = ({
   }
 
   return (
-    <>
-      <Base
-        type={type}
-        name={name}
-        size={size}
-        color={color}
-        width={width}
-        height={height}
-        disabled={disabled}
-        themes={theme}
-        onClick={handleClick}
-      >
-        <IconContainer>{iconButton}</IconContainer>
-      </Base>
-    </>
+    <Button color={color} width={width} height={height} shape={shape} themes={theme} onClick={handleClick}>
+      <IconButton>{iconButton}</IconButton>
+    </Button>
   );
 };
 
-const Base = styled.button<{
-  size: number;
+const Button = styled.div<{
   color: string;
-  width: string;
-  height: string;
+  width: number;
+  height: number;
+  shape: IconButtonProps['shape'];
   themes: Theme;
 }>`
-  ${({ size, color, width, height, themes }) => {
+  ${({ color, width, height, shape, themes }) => {
     const { palette } = themes;
 
     return css`
-      font-size: ${size}rem;
-      color: ${palette.SECONDARY};
       background: ${palette[color]};
-      letter-spacing: 1.4;
-      width: ${width ? width : 'auto'};
-      height: ${height ? height : '24px'};
+      width: ${width ? `${width}px` : 'auto'};
+      height: ${height}px;
       border: none;
-      border-radius: 50%;
+      border-radius: ${shape === 'circle' ? '50%' : '6px'};
       text-align: center;
       cursor: pointer;
       white-space: nowrap;
@@ -103,4 +92,7 @@ const Base = styled.button<{
   }}
 `;
 
-const IconContainer = styled.div``;
+const IconButton = styled.span`
+  position: absolute;
+  display: flex;
+`;

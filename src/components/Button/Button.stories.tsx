@@ -4,18 +4,18 @@ import styled from 'styled-components';
 import { Button } from './Button';
 import { WithIconButton } from './WithIconButton';
 import { TransmissionButton } from './TransmissionButton';
-import { IconOnyButton } from './IconOnlyButton';
+import { IconOnlyButton } from './IconOnlyButton';
 
 const Wrapper = () => {
   return (
     <>
       <Container>
-        <Button type="button" name="base" width="120px" height="32px" size={1} color="MAIN">
+        <Button type="button" name="base" width={120} height={32} size={1} color="MAIN">
           original
         </Button>
       </Container>
       <Container>
-        <Button type="button" name="base" width="120px" height="32px" size={1} disabled={true}>
+        <Button type="button" name="base" width={120} height={32} size={1} disabled={true}>
           disabled
         </Button>
       </Container>
@@ -26,8 +26,8 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           type="button"
           name="base"
-          width="120px"
-          height="32px"
+          width={120}
+          height={32}
           size={1}
           color="DANGER"
           position="left"
@@ -38,12 +38,11 @@ const Wrapper = () => {
       <Container>
         <WithIconButton
           iconName="Fi-Share2"
-          iconSize={16}
           iconColor="SECONDARY"
           type="button"
           name="base"
-          width="120px"
-          height="32px"
+          width={120}
+          height={32}
           size={1}
           color="INFO"
           position="Right"
@@ -52,54 +51,54 @@ const Wrapper = () => {
         </WithIconButton>
       </Container>
       <Container>
-        <TransmissionButton type="button" name="base" width="140px" height="28px" size={1} color="INFO">
+        <TransmissionButton type="button" name="base" width={140} height={28} size={1} color="INFO">
           Transmission
         </TransmissionButton>
       </Container>
       <IconOnlyContainer>
-        <IconOnyButton
+        <IconOnlyButton
           iconName="Go-Zap"
           iconSize={16}
           iconColor="SECONDARY"
-          type="button"
-          name="base"
-          height="32px"
+          width={32}
+          height={32}
           size={1}
           color="WARNING"
           pattern="Go"
+          shape="circle"
         />
-        <IconOnyButton
+        <IconOnlyButton
           iconName="Go-Bell"
           iconSize={16}
           iconColor="SECONDARY"
-          type="button"
-          name="base"
-          height="32px"
+          width={32}
+          height={32}
           size={1}
           color="INFO"
           pattern="Go"
+          shape="circle"
         />
-        <IconOnyButton
+        <IconOnlyButton
           iconName="Ti-Cog"
           iconSize={16}
           iconColor="PRIMARY"
-          type="button"
-          name="base"
-          height="32px"
+          width={32}
+          height={32}
           size={1}
           color="GRAY"
           pattern="Ti"
+          shape="square"
         />
-        <IconOnyButton
+        <IconOnlyButton
           iconName="Ti-WeatherStormy"
           iconSize={16}
           iconColor="SECONDARY"
-          type="button"
-          name="base"
-          height="32px"
+          width={32}
+          height={32}
           size={1}
           color="SUCCESS"
           pattern="Ti"
+          shape="circle"
         />
       </IconOnlyContainer>
     </>
@@ -121,4 +120,5 @@ const IconOnlyContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  width: 400px;
 `;

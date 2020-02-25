@@ -27,6 +27,7 @@ type Props = {
   readonly?: boolean;
   error?: boolean;
   touch?: boolean;
+  border?: boolean;
   color?: string;
   width?: number;
   height?: number;
@@ -44,9 +45,10 @@ export const Input = ({
   readonly,
   error = false,
   touch = false,
+  border = true,
   width,
   height,
-  color = '#f39c12',
+  color = 'MAIN',
   handleInputChange,
   handleInputBlur,
 }: Props) => {
@@ -57,7 +59,7 @@ export const Input = ({
     borderColor = theme.palette.DANGER;
   }
 
-  let backgroundColor = '#fefefe';
+  let backgroundColor = theme.palette.SECONDARY;
   if (error && touch) {
     backgroundColor = '#ffe2ec';
   }
@@ -75,6 +77,7 @@ export const Input = ({
         color={color}
         backgroundColor={backgroundColor}
         borderColor={borderColor}
+        border={border}
         width={width}
         height={height}
         themes={theme}
@@ -86,46 +89,52 @@ export const Input = ({
 };
 
 const InputForm = styled.input<{
+  readOnly: boolean;
   color: string;
   backgroundColor: string;
   borderColor: string;
+  border: boolean;
   width: number;
   height: number;
   themes: Theme;
 }>`
-  ${({ color, backgroundColor, borderColor, width, height, themes }) => {
+  ${({ readOnly, color, backgroundColor, borderColor, border, width, height, themes }) => {
     const { palette } = themes;
 
     return css`
       width: ${width ? `${width}px` : `auto`};
       height: ${height}px;
-      color: ${palette.PRIMARY};
+      color: ${readOnly ? palette.PLACE_HOLDER : palette.PRIMARY};
       background: ${backgroundColor};
       font-size: 16px;
       line-height: 1.4;
       padding: 4px 8px;
-      border: 2px solid ${borderColor};
+      border: ${border ? `2px solid ${borderColor}` : `none`};
       border-radius: 6px;
       box-shadow: none;
 
       &:focus {
+        padding: ${border ? `4px 8px` : `2px 6px`};
         outline: none;
-        border: 2px solid ${color};
+        border: 2px solid ${palette[color]};
       }
 
       ::placeholder,
       ::-webkit-input-placeholder {
-        color: rgba(69, 69, 69, 0.5);
+        color: ${palette.PLACE_HOLDER};
+        font-size: 14px;
       }
 
       :-ms-input-placeholder {
-        color: rgba(69, 69, 69, 0.5);
+        color: ${palette.PLACE_HOLDER};
+        font-size: 14px;
       }
 
       &:disabled {
-        color: #d5dbdb;
+        color: ${palette.PLACE_HOLDER};
         background-color: #f4f6f6;
-        border-color: #d5dbdb;
+        font-size: 14px;
+        border-color: ${palette.PLACE_HOLDER};
         pointer-events: none;
         cursor: default;
       }
