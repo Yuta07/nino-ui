@@ -11,5 +11,6 @@ export { Modal } from './components/Modal';
 export { Radio } from './components/Radio';
 export { SelectBox } from './components/SelectBox';
 export { Spinner } from './components/Spinner';
+export { Switch } from './components/Switch';
 export { Textarea } from './components/Textarea';
 export { Toast } from './components/Toast';
