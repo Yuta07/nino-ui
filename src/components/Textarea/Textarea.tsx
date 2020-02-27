@@ -44,8 +44,6 @@ export const Textarea = ({
     backgroundColor = '#ffe2ec';
   }
 
-  console.log(error, touch);
-
   return (
     <>
       <InputForm
