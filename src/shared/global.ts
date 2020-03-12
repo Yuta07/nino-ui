@@ -4,9 +4,9 @@ import { FONT_FAMILY } from '../themes/Font';
 export const fontUrl = 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900';
 
 export const bodyStyles = css`
-  width: 100%;
+  width: 96%;
   height: 100vh;
-  margin: 0.5rem;
+  margin: 2%;
   font-size: 1rem;
   font-family: ${FONT_FAMILY};
   letter-spacing: 0.1em;
