@@ -5,6 +5,7 @@ export { CheckBox } from './components/CheckBox';
 export { Dialog } from './components/Dialog';
 export { Dropdown } from './components/Dropdown';
 export { FeatherIcon, GithubIcon, TypIcon } from './components/Icon';
+export { Heading } from './components/Heading';
 export { Input } from './components/Input';
 export { Label } from './components/Label';
 export { Modal } from './components/Modal';
