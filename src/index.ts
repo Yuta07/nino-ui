@@ -9,6 +9,7 @@ export { Input } from './components/Input';
 export { Label } from './components/Label';
 export { Modal } from './components/Modal';
 export { Pagination } from './components/Pagenation';
+export { ProgressBar, ProgressCircle } from './components/Progress';
 export { Radio } from './components/Radio';
 export { SelectBox } from './components/SelectBox';
 export { Spinner } from './components/Spinner';
