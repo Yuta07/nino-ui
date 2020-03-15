@@ -6,19 +6,29 @@ import { useTheme } from '../../hooks/useTheme';
 type Props = {
   size: number;
   color: string;
+  width: number;
   textColor?: string;
   progress: number;
 };
 
-export const ProgressCircle = ({ size = 120, color = 'MAIN', textColor = '#2c3e50', progress }: Props) => {
+export const ProgressCircle = ({ size = 120, color = 'MAIN', width, textColor = '#2c3e50', progress }: Props) => {
+  const [state, setstate] = React.useState(0);
   const theme = useTheme();
 
-  console.log(progress);
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (state < progress) {
+        setstate(state => state + 1);
+      }
+    }, 20);
+
+    return () => clearTimeout(timer);
+  }, [state, progress]);
 
   return (
     <Circle size={size} color={color} progress={progress} themes={theme}>
-      <Progress themes={theme}>
-        <Text textColor={textColor}>{progress}</Text>%
+      <Progress size={size} width={width} themes={theme}>
+        <Text textColor={textColor}>{state}</Text>%
       </Progress>
     </Circle>
   );
@@ -79,17 +89,17 @@ const Circle = styled.div<{
   }}
 `;
 
-const Progress = styled.div<{ themes: Theme }>`
-  ${({ themes }) => {
+const Progress = styled.div<{ size: Props['size']; width: Props['width']; themes: Theme }>`
+  ${({ size, width, themes }) => {
     const { palette } = themes;
 
     return css`
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: ${width}px;
+      left: ${width}px;
       background: ${palette.SECONDARY};
-      width: 60px;
-      height: 60px;
+      width: ${size - width * 2}px;
+      height: ${size - width * 2}px;
       border-radius: 50%;
       z-index: 400;
       display: inline-flex;
@@ -105,7 +115,7 @@ const Text = styled.span<{ textColor: Props['textColor'] }>`
       color: ${textColor};
       background: transparent;
       font-weight: 550;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.2px;
     `;
   }}
 `;
