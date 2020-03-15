@@ -15,10 +15,10 @@ export interface Palette {
 }
 
 export const DEFAULT_PALETTE: Palette = {
-  PRIMARY: '#363636',
+  PRIMARY: '#2c3e50',
   SECONDARY: '#fefefe',
   SUB_SECONDARY: '#f5f5f5',
-  GRAY: '#e1e4e7',
+  GRAY: '#d6dbdf',
   PLACE_HOLDER: 'rgba(69, 69, 69, 0.5)',
   BORDER: '#c2c2c2',
   MAIN: '#f39c12',
