@@ -35,11 +35,12 @@ const Base = styled.button<{
   themes: Theme;
 }>`
   ${({ size, width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       font-size: ${size}rem;
       color: ${palette.PRIMARY};
+      background: ${palette.TRANSPARENT};
       width: ${width ? `${width}` : 'auto'};
       height: ${height ? `${height}px` : '24px'};
       border: none;
@@ -47,7 +48,6 @@ const Base = styled.button<{
       text-align: center;
       cursor: pointer;
       white-space: nowrap;
-      cursor: pointer;
 
       &:hover {
         opacity: 0.6;
@@ -56,6 +56,14 @@ const Base = styled.button<{
 
       &:focus {
         outline: none;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

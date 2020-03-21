@@ -62,7 +62,7 @@ const Base = styled.button<{
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       font-size: ${size}rem;
@@ -75,7 +75,6 @@ const Base = styled.button<{
       text-align: center;
       cursor: pointer;
       white-space: nowrap;
-      cursor: pointer;
 
       &:hover {
         opacity: 0.8;
@@ -89,6 +88,14 @@ const Base = styled.button<{
       &:disabled {
         background-color: #bdc3c7;
         cursor: not-allowed;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

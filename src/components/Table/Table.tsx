@@ -15,12 +15,21 @@ export const Table = ({ children }: Props) => {
 
 const TableWrapper = styled.div<{ themes: Theme }>`
   ${({ themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
     return css`
-      width: 100%;
       color: ${palette.PRIMARY};
       background: ${palette.SECONDARY};
       border: 1px solid ${palette.BORDER};
+      font-size: ${fontSize.LARGE}px;
+      overflow-x: scroll;
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE} {
+        font-size: ${fontSize.SMALL}px;
+      }
     `;
   }}
 `;

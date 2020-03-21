@@ -10,12 +10,12 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <Button type="button" name="base" width='120px' height={32} size={1} color="MAIN">
+        <Button type="button" name="base" width="120px" height={32} size={1} color="MAIN">
           original
         </Button>
       </Container>
       <Container>
-        <Button type="button" name="base" width='120px' height={32} size={1} disabled={true}>
+        <Button type="button" name="base" width="120px" height={32} size={1} disabled={true}>
           disabled
         </Button>
       </Container>
@@ -26,7 +26,7 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           type="button"
           name="base"
-          width='100%'
+          width="100%"
           height={32}
           size={1}
           color="DANGER"
@@ -41,7 +41,7 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           type="button"
           name="base"
-          width='100%'
+          width="100%"
           height={32}
           size={1}
           color="INFO"
@@ -51,7 +51,7 @@ const Wrapper = () => {
         </WithIconButton>
       </Container>
       <Container>
-        <TransmissionButton type="button" name="base" width='120px' height={28} size={1} color="INFO">
+        <TransmissionButton type="button" name="base" width="120px" height={28} size={1} color="INFO">
           Transmission
         </TransmissionButton>
       </Container>
@@ -60,7 +60,7 @@ const Wrapper = () => {
           iconName="Go-Zap"
           iconSize={16}
           iconColor="SECONDARY"
-          width='32px'
+          width="32px"
           height={32}
           size={1}
           color="WARNING"
@@ -71,7 +71,7 @@ const Wrapper = () => {
           iconName="Go-Bell"
           iconSize={16}
           iconColor="SECONDARY"
-          width='32px'
+          width="32px"
           height={32}
           size={1}
           color="INFO"
@@ -82,7 +82,7 @@ const Wrapper = () => {
           iconName="Ti-Cog"
           iconSize={16}
           iconColor="PRIMARY"
-          width='32px'
+          width="32px"
           height={32}
           size={1}
           color="GRAY"
@@ -93,7 +93,7 @@ const Wrapper = () => {
           iconName="Ti-WeatherStormy"
           iconSize={16}
           iconColor="SECONDARY"
-          width='32px'
+          width="32px"
           height={32}
           size={1}
           color="SUCCESS"
@@ -120,5 +120,5 @@ const IconOnlyContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 400px;
+  width: 100%;
 `;

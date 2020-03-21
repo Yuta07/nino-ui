@@ -12,11 +12,10 @@ type Props = {
   disabled?: boolean;
   readonly?: boolean;
   color?: string;
-  size: number;
   handleRadioChange?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>, value: string) => void;
 };
 
-export const CheckBox = ({ value, checked, disabled = false, size, color = 'MAIN', handleRadioChange }: Props) => {
+export const CheckBox = ({ value, checked, disabled = false, color = 'MAIN', handleRadioChange }: Props) => {
   const theme = useTheme();
 
   return (
@@ -25,7 +24,6 @@ export const CheckBox = ({ value, checked, disabled = false, size, color = 'MAIN
       <CheckButton
         themes={theme}
         color={color}
-        size={size}
         checked={checked}
         disabled={disabled}
         onClick={disabled ? null : event => handleRadioChange(event, value)}
@@ -43,12 +41,11 @@ const Check = styled.input`
 const CheckButton = styled.label<{
   themes: Theme;
   color: string;
-  size: Props['size'];
   checked: Props['checked'];
   disabled: Props['disabled'];
 }>`
-  ${({ themes, color, size, checked, disabled }) => {
-    const { palette } = themes;
+  ${({ themes, color, checked, disabled }) => {
+    const { device, fontSize, palette } = themes;
     const checkBoxColor = disabled ? palette.GRAY : palette[color];
 
     return css`
@@ -56,7 +53,7 @@ const CheckButton = styled.label<{
       display: inline-block;
       padding-left: 2rem;
       vertical-align: middle;
-      font-size: ${size}px;
+      font-size: 16px;
 
       &:hover {
         &:before {
@@ -76,9 +73,9 @@ const CheckButton = styled.label<{
         opacity: ${checked ? 1 : 0};
         -webkit-transition: opacity 0.2s linear;
         transition: opacity 0.2s linear;
-        width: ${`${size - 12}px`};
-        height: ${`${size - 8}px`};
-        margin-top: ${`${15 - size}px`};
+        width: 4px;
+        height: 8px;
+        margin-top: -1px;
         border-right: 3px solid ${checked ? palette.SECONDARY : palette.GRAY};
         border-bottom: 2px solid ${checked ? palette.SECONDARY : palette.GRAY};
         display: block;
@@ -95,14 +92,22 @@ const CheckButton = styled.label<{
         left: 0;
         -webkit-transition: background 0.2s linear;
         transition: background 0.2s linear;
-        width: ${`${size}px`};
-        height: ${size}px;
-        margin-top: ${`${8 - size}px`};
+        width: 16px;
+        height: 16px;
+        margin-top: -8px;
         background: ${checked ? checkBoxColor : palette.GRAY};
         border-radius: 4px;
         display: block;
         content: '';
         cursor: pointer;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

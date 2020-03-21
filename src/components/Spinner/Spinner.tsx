@@ -31,7 +31,7 @@ const LoaderSpin = keyframes`
 
 const Loader = styled.div<{ color: Props['color']; themes: Theme }>`
   ${({ color, themes }) => {
-    const { palette } = themes;
+    const { device, palette } = themes;
     return css`
       margin: 0 auto;
       width: 3rem;
@@ -48,6 +48,24 @@ const Loader = styled.div<{ color: Props['color']; themes: Theme }>`
       transform: translateZ(0);
       -webkit-animation: ${LoaderSpin} 1.2s infinite linear;
       animation: ${LoaderSpin} 1.2s infinite linear;
+
+      @media screen and ${device.TABLET} {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-top: 0.25rem solid rgba(218, 218, 218, 0.2);
+        border-right: 0.25rem solid rgba(218, 218, 218, 0.2);
+        border-bottom: 0.25rem solid rgba(218, 218, 218, 0.2);
+        border-left: 0.25rem solid ${palette[color]};
+      }
+
+      @media screen and ${device.MOBILE} {
+        width: 2rem;
+        height: 2rem;
+        border-top: 0.2rem solid rgba(218, 218, 218, 0.2);
+        border-right: 0.2rem solid rgba(218, 218, 218, 0.2);
+        border-bottom: 0.2rem solid rgba(218, 218, 218, 0.2);
+        border-left: 0.2rem solid ${palette[color]};
+      }
     `;
   }}
 `;

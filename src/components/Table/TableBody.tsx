@@ -20,7 +20,6 @@ const Body = styled.li<{ width: Props['width'] }>`
     return css`
       width: ${width}%;
       padding: 0 0.5rem;
-      font-size: 0.8rem;
       line-height: 1.6;
     `;
   }}
@@ -29,7 +28,6 @@ const Body = styled.li<{ width: Props['width'] }>`
 const Content = styled.p<{ truncate: Props['truncate'] }>`
   ${({ truncate }) => {
     return css`
-      width: 100%;
       ${BodyStyle(truncate)};
       ${truncate ? BodyOverflow : null}
     `;

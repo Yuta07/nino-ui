@@ -33,7 +33,6 @@ const Wrapper = () => {
         isOpen={isAlertDialogOpen}
         title="AlertDialog"
         type="info"
-        position={{ top: 45, left: 50 }}
         content={
           <p>
             この文章はダミーテキストです。この文章はダミーテキストです。
@@ -51,7 +50,6 @@ const Wrapper = () => {
         isOpen={isConfirmDialogOpen}
         title="ConfirmDialog"
         type="warning"
-        position={{ top: 45, left: 50 }}
         content={
           <p>
             この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。

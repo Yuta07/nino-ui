@@ -19,7 +19,6 @@ const Wrapper = () => {
             name="gender"
             value="male"
             checked={value === 'male' ? true : false}
-            size={14}
             handleRadioChange={handleRadioChange}
           />
         </RadioContent>
@@ -28,7 +27,6 @@ const Wrapper = () => {
             name="gender"
             value="female"
             checked={value === 'female' ? true : false}
-            size={16}
             handleRadioChange={handleRadioChange}
             color="INFO"
           />
@@ -38,13 +36,12 @@ const Wrapper = () => {
             name="gender"
             value="others"
             checked={value === 'others' ? true : false}
-            size={18}
             handleRadioChange={handleRadioChange}
             color="SUCCESS"
           />
         </RadioContent>
         <RadioContent>
-          <Radio name="gender" value="disabled" checked={true} disabled={true} size={12} />
+          <Radio name="gender" value="disabled" checked={true} disabled={true} />
         </RadioContent>
       </Container>
     </>

@@ -15,17 +15,17 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <SelectBox value={state} options={options} color="INFO" width={200} handleSelectChange={handleSelectChange} />
+        <SelectBox value={state} options={options} color="INFO" width={160} handleSelectChange={handleSelectChange} />
       </Container>
       <Container>
-        <SelectBox value={state} options={options} color="MAIN" width={200} handleSelectChange={handleSelectChange} />
+        <SelectBox value={state} options={options} color="MAIN" width={160} handleSelectChange={handleSelectChange} />
       </Container>
       <Container>
         <SelectBox
           value={state}
           options={options}
           color="SECONDARY"
-          width={200}
+          width={160}
           handleSelectChange={handleSelectChange}
         />
       </Container>

@@ -69,7 +69,7 @@ const Base = styled.button<{
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       font-size: ${size}rem;
@@ -82,8 +82,8 @@ const Base = styled.button<{
       text-align: center;
       cursor: pointer;
       white-space: nowrap;
-      cursor: pointer;
       display: inline-flex;
+      align-items: center;
       justify-content: center;
       padding: 0 0.5rem;
 
@@ -94,6 +94,14 @@ const Base = styled.button<{
 
       &:focus {
         outline: none;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

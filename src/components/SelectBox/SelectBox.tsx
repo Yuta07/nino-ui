@@ -77,6 +77,14 @@ const Wrapper = styled.div<{ width: Props['width'] }>`
       position: relative;
       display: inline-block;
       vertical-align: top;
+
+      @media screen and (max-width: 768px) {
+        width: ${width ? `${width * 0.875}px` : `auto`};
+      }
+
+      @media screen and (max-width: 320px) {
+        width: ${width ? `${width * 0.75}px` : `auto`};
+      }
     `;
   }}
 `;

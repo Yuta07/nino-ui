@@ -5,16 +5,10 @@ import { useTheme } from '../../hooks/useTheme';
 import { usePortal } from '../../hooks/usePortal';
 import { DialogContent } from './DialogContent';
 
-type Position = {
-  top?: number;
-  left?: number;
-};
-
 type Props = {
   isOpen: boolean;
   title?: string;
   type: 'success' | 'info' | 'warning' | 'danger';
-  position?: Position;
   content: React.ReactNode;
   activeText?: string;
   closeText: string;
@@ -26,7 +20,6 @@ export const Dialog = ({
   isOpen,
   title,
   type,
-  position,
   content,
   activeText,
   closeText,
@@ -39,10 +32,8 @@ export const Dialog = ({
     <>
       <Overlay isOpen={isOpen} theme={theme} />
       <DialogContent
-        isOpen={isOpen}
         title={title}
         type={type}
-        position={position}
         content={content}
         activeText={activeText}
         closeText={closeText}

@@ -111,5 +111,5 @@ const IconOnlyContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 400px;
+  width: 100%;
 `;

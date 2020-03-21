@@ -6,12 +6,10 @@ import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
   children: React.ReactNode;
-  controllable?: boolean;
-  color: string;
 };
 
-export const DropdownContent = ({ children, controllable, color }: Props) => {
-  const { isOpen, handleClickDropdownClose } = React.useContext(DropdownContext);
+export const DropdownContent = ({ children }: Props) => {
+  const { isOpen, controllable, color, handleClickDropdownClose } = React.useContext(DropdownContext);
   const themes = useTheme();
 
   return (
@@ -21,7 +19,7 @@ export const DropdownContent = ({ children, controllable, color }: Props) => {
   );
 };
 
-const Container = styled.div<{ isOpen: Dropdown['isOpen']; color: Props['color']; themes: Theme; }>`
+const Container = styled.div<{ isOpen: Dropdown['isOpen']; color: string; themes: Theme }>`
   ${({ isOpen, color, themes }) => {
     const { palette } = themes;
 
@@ -32,7 +30,7 @@ const Container = styled.div<{ isOpen: Dropdown['isOpen']; color: Props['color']
       transition: all 0.3s ease;
       position: absolute;
       z-index: 200;
-      transform: ${isOpen ?  `translate3d(0px, 10px, 0px)` : null};
+      transform: ${isOpen ? `translate3d(0px, 10px, 0px)` : null};
       border: none;
       border-radius: 8px;
       background: ${palette[color]};

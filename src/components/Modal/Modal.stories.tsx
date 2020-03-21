@@ -19,7 +19,6 @@ const Wrapper = () => {
       <Modal
         isOpen={isOpen}
         title="Modal Window"
-        position={{ top: 45, left: 50 }}
         content={
           <div>
             <p>

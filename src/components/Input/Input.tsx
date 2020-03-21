@@ -92,7 +92,7 @@ const InputForm = styled.input<{
   themes: Theme;
 }>`
   ${({ readOnly, color, borderColor, border, width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       width: ${width ? `${width}px` : `auto`};
@@ -130,6 +130,14 @@ const InputForm = styled.input<{
         border-color: ${palette.PLACE_HOLDER};
         pointer-events: none;
         cursor: default;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

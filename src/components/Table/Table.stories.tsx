@@ -10,17 +10,25 @@ storiesOf('Table', module).add('all', () => (
   <>
     <Container>
       <Table>
-        <TableRow type="header">
+        <TableRow type="header" width={150}>
           <TableHeader width={25}>column1</TableHeader>
           <TableHeader width={25}>column2</TableHeader>
           <TableHeader width={25}>column3</TableHeader>
           <TableHeader width={25}>column4</TableHeader>
+          <TableHeader width={25}>column5</TableHeader>
+          <TableHeader width={25}>column6</TableHeader>
+          <TableHeader width={25}>column7</TableHeader>
+          <TableHeader width={25}>column8</TableHeader>
         </TableRow>
-        <TableRow type="body">
+        <TableRow type="body" width={150}>
           <TableBody width={25}>body1</TableBody>
           <TableBody width={25}>body2</TableBody>
           <TableBody width={25}>body3</TableBody>
           <TableBody width={25}>body4</TableBody>
+          <TableBody width={25}>body5</TableBody>
+          <TableBody width={25}>body6</TableBody>
+          <TableBody width={25}>body7</TableBody>
+          <TableBody width={25}>body8</TableBody>
         </TableRow>
       </Table>
     </Container>

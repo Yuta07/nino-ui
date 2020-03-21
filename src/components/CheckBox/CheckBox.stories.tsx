@@ -24,7 +24,6 @@ const Wrapper = () => {
             name="gender"
             value="male"
             checked={values.includes('male') ? true : false}
-            size={14}
             handleRadioChange={handleRadioChange}
           />
         </CheckContent>
@@ -33,7 +32,6 @@ const Wrapper = () => {
             name="gender"
             value="female"
             checked={values.includes('female') ? true : false}
-            size={16}
             handleRadioChange={handleRadioChange}
             color="INFO"
           />
@@ -43,13 +41,12 @@ const Wrapper = () => {
             name="gender"
             value="others"
             checked={values.includes('others') ? true : false}
-            size={18}
             handleRadioChange={handleRadioChange}
             color="SUCCESS"
           />
         </CheckContent>
         <CheckContent>
-          <CheckBox name="gender" value="disabled" checked={true} disabled={true} size={16} />
+          <CheckBox name="gender" value="disabled" checked={true} disabled={true} />
         </CheckContent>
       </Container>
     </>

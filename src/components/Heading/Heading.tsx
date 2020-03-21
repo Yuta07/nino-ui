@@ -81,25 +81,65 @@ const Text = css<{ color: Props['color']; theme: Theme }>`
 
 const H1 = styled.h1`
   ${Text};
-  font-size: 1.6rem;
+  font-size: 1.625rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 22px;
+  }
 `;
 
 const H2 = styled.h2`
   ${Text};
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
 
 const H3 = styled.h3`
   ${Text};
-  font-size: 1.3rem;
+  font-size: 1.375rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 const H4 = styled.h4`
   ${Text};
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 const H5 = styled.h5`
   ${Text};
-  font-size: 1.1rem;
+  font-size: 1.125rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+  }
 `;

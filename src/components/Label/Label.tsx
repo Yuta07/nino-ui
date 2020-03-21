@@ -7,7 +7,7 @@ import { FeatherIcon } from '../Icon/FeatherIcon';
 type Position = {
   top: number;
   left: number;
-}
+};
 
 type Props = {
   label: string;
@@ -17,7 +17,13 @@ type Props = {
   position?: Position;
 };
 
-export const Label = ({ label, icon = 'Fi-AlertCircle', required, requiredText = '必須', position = { top: 20, left: 0} }: Props) => {
+export const Label = ({
+  label,
+  icon = 'Fi-AlertCircle',
+  required,
+  requiredText = '必須',
+  position = { top: 20, left: 0 },
+}: Props) => {
   const theme = useTheme();
 
   return (
@@ -39,12 +45,20 @@ export const Label = ({ label, icon = 'Fi-AlertCircle', required, requiredText =
 
 const Text = styled.label<{ themes: Theme }>`
   ${({ themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       color: ${palette.PRIMARY};
       font-size: 16px;
       position: relative;
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
+      }
     `;
   }}
 `;
@@ -60,13 +74,13 @@ const RequiredContainer = styled.div<{ position: Position }>`
   ${({ position }) => {
     const { top, left } = position;
 
-    return css `
+    return css`
       position: absolute;
       top: ${top}px;
-      left: 0${left}x;
+      left: 0 ${left}x;
       width: 100%;
       display: flex;
       align-items: center;
-    `
+    `;
   }}
 `;
