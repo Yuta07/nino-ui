@@ -1,31 +1,29 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { DropdownContext } from './DropdownProvider';
-
-type Position = {
-  top?: number;
-  left?: number;
-};
+import { Dropdown, DropdownContext } from './DropdownProvider';
+import { Theme } from '../../themes/Theme';
+import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
   children: React.ReactNode;
   controllable?: boolean;
-  position?: Position;
+  color: string;
 };
 
-export const DropdownContent = ({ children, controllable, position }: Props) => {
+export const DropdownContent = ({ children, controllable, color }: Props) => {
   const { isOpen, handleClickDropdownClose } = React.useContext(DropdownContext);
+  const themes = useTheme();
 
   return (
-    <Container isOpen={isOpen} position={position} onClick={controllable ? handleClickDropdownClose : null}>
+    <Container isOpen={isOpen} onClick={controllable ? handleClickDropdownClose : null} color={color} themes={themes}>
       {children}
     </Container>
   );
 };
 
-const Container = styled.div<{ isOpen: boolean; position: Position }>`
-  ${({ isOpen, position }) => {
-    const { top, left } = position;
+const Container = styled.div<{ isOpen: Dropdown['isOpen']; color: Props['color']; themes: Theme; }>`
+  ${({ isOpen, color, themes }) => {
+    const { palette } = themes;
 
     return css`
       visibility: ${isOpen ? `visible` : `hidden`};
@@ -34,8 +32,11 @@ const Container = styled.div<{ isOpen: boolean; position: Position }>`
       transition: all 0.3s ease;
       position: absolute;
       z-index: 200;
-      top: ${top}%;
-      left: ${left}%;
+      transform: ${isOpen ?  `translate3d(0px, 10px, 0px)` : null};
+      border: none;
+      border-radius: 8px;
+      background: ${palette[color]};
+      box-shadow: 1px 1px 3px -1px #cccccc;
     `;
   }}
 `;

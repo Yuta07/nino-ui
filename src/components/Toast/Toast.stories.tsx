@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Toast } from './Toast';
 
-type Toast = 'success' | 'info' | 'warning' | 'danger';
+type Toast = 'SUCCESS' | 'INFO' | 'WARNING' | 'DANGER';
 
 type Props = {
   type: Toast;
@@ -12,22 +12,22 @@ type Props = {
 };
 
 const initialSuccessState: Props = {
-  type: 'success',
+  type: 'SUCCESS',
   text: '',
   visible: false,
 };
 const initialInfoState: Props = {
-  type: 'info',
+  type: 'INFO',
   text: '',
   visible: false,
 };
 const initialWarningState: Props = {
-  type: 'warning',
+  type: 'WARNING',
   text: '',
   visible: false,
 };
 const initialDangerState: Props = {
-  type: 'danger',
+  type: 'DANGER',
   text: '',
   visible: false,
 };
@@ -49,16 +49,16 @@ const Wrapper = () => {
     const name = event.currentTarget.name;
     const value = event.currentTarget.value;
     switch (name) {
-      case 'success':
+      case 'SUCCESS':
         setSuccessState({ ...successState, text: value });
         break;
-      case 'info':
+      case 'INFO':
         setInfoState({ ...infoState, text: value });
         break;
-      case 'warning':
+      case 'WARNING':
         setWarningState({ ...warningState, text: value });
         break;
-      case 'danger':
+      case 'DANGER':
         setDangerState({ ...dangerState, text: value });
         break;
       default:
@@ -68,16 +68,16 @@ const Wrapper = () => {
 
   const onVisibleToast = (name: string) => {
     switch (name) {
-      case 'success':
+      case 'SUCCESS':
         setSuccessState({ ...successState, visible: true });
         break;
-      case 'info':
+      case 'INFO':
         setInfoState({ ...infoState, visible: true });
         break;
-      case 'warning':
+      case 'WARNING':
         setWarningState({ ...warningState, visible: true });
         break;
-      case 'danger':
+      case 'DANGER':
         setDangerState({ ...dangerState, visible: true });
         break;
       default:
@@ -88,24 +88,24 @@ const Wrapper = () => {
   return (
     <Container>
       <ToastBox>
-        <Input type="text" name="success" value={successState.text} onChange={onChangeToastMessage} />
+        <Input type="text" name="SUCCESS" value={successState.text} onChange={onChangeToastMessage} />
         <Toast {...successState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('success')}>Submit</VisibleButton>
+        <VisibleButton onClick={() => onVisibleToast('SUCCESS')}>Submit</VisibleButton>
       </ToastBox>
       <ToastBox>
-        <Input type="text" name="info" value={infoState.text} onChange={onChangeToastMessage} />
+        <Input type="text" name="INFO" value={infoState.text} onChange={onChangeToastMessage} />
         <Toast {...infoState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('info')}>Submit</VisibleButton>
+        <VisibleButton onClick={() => onVisibleToast('INFO')}>Submit</VisibleButton>
       </ToastBox>
       <ToastBox>
-        <Input type="text" name="warning" value={warningState.text} onChange={onChangeToastMessage} />
+        <Input type="text" name="WARNING" value={warningState.text} onChange={onChangeToastMessage} />
         <Toast {...warningState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('warning')}>Submit</VisibleButton>
+        <VisibleButton onClick={() => onVisibleToast('WARNING')}>Submit</VisibleButton>
       </ToastBox>
       <ToastBox>
-        <Input type="text" name="danger" value={dangerState.text} onChange={onChangeToastMessage} />
+        <Input type="text" name="DANGER" value={dangerState.text} onChange={onChangeToastMessage} />
         <Toast {...dangerState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('danger')}>Submit</VisibleButton>
+        <VisibleButton onClick={() => onVisibleToast('DANGER')}>Submit</VisibleButton>
       </ToastBox>
     </Container>
   );

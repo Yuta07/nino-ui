@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
@@ -26,8 +26,8 @@ export const ModalContent = ({ isOpen, title, position, content, onCloseModal }:
   if (title !== '') dialogTitle = <DialogTitle color={color}>{title}</DialogTitle>;
 
   return (
-    <Wrapper isOpen={isOpen}>
-      <Container position={position} theme={theme}>
+    <Wrapper>
+      <Container position={position} themes={theme}>
         <CloseIcon onClick={onCloseModal}>
           <FeatherIcon name="Fi-XCircle" color="#9e9e9e" size={20} />
         </CloseIcon>
@@ -38,26 +38,31 @@ export const ModalContent = ({ isOpen, title, position, content, onCloseModal }:
   );
 };
 
-const Wrapper = styled.div<{ isOpen: Props['isOpen'] }>`
-  ${({ isOpen }) => {
-    return css`
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      visibility: ${isOpen ? `visible` : `hidden`};
-      opacity: ${isOpen ? `1` : `0`};
-      -webkit-transition: all 0.2s linear;
-      transition: all 0.2s linear;
-    `;
-  }}
+const ShowAnimation = keyframes`
+  0% {
+    visibility: hiddehn;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
-const Container = styled.div<{ position: Position; theme: Theme }>`
-  ${({ position, theme }) => {
+const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
+  animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
+`;
+
+const Container = styled.div<{ position: Position; themes: Theme }>`
+  ${({ position, themes }) => {
     const { top, left } = position;
-    const { palette } = theme;
+    const { palette } = themes;
 
     return css`
       position: absolute;
@@ -67,9 +72,9 @@ const Container = styled.div<{ position: Position; theme: Theme }>`
       display: flex;
       flex-direction: column;
       padding: 1rem;
-      background: #fefefe;
-      box-shadow: rgba(150, 150, 150, 0.2) 0px 2px 6px 0px;
-      border: 1px solid ${palette.BORDER};
+      background: ${palette.SECONDARY};
+      box-shadow: rgba(150, 150, 150, 0.2) 0px 1px 2px 0px;
+      border: 2px solid ${palette.BORDER};
       border-radius: 8px;
       transform: translate(-50%, -50%);
     `;

@@ -42,10 +42,10 @@ const RadioButton = styled.input`
 
 const RadioLabel = styled.label<{
   themes: Theme;
-  color: string;
-  size: number;
-  checked: boolean;
-  disabled: boolean;
+  color: Props['color'];
+  size: Props['size'];
+  checked: Props['checked'];
+  disabled: Props['disabled'];
 }>`
   ${({ themes, color, size, checked, disabled }) => {
     const { palette } = themes;

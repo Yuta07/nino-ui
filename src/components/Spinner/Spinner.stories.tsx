@@ -6,11 +6,11 @@ import { Spinner } from './Spinner';
 
 storiesOf('Spinner', module).add('all', () => (
   <Wrapper>
-    <Spinner color="#c0392b" />
-    <Spinner color="#f39c12" />
-    <Spinner color="#f1c40f" />
-    <Spinner color="#16a085" />
-    <Spinner color="#3498db" />
+    <Spinner color="MAIN" />
+    <Spinner color="DANGER" />
+    <Spinner color="SUCCESS" />
+    <Spinner color="WARNING" />
+    <Spinner color="INFO" />
   </Wrapper>
 ));
 

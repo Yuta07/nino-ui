@@ -4,25 +4,30 @@ import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
 
+type Position = {
+  top: number;
+  left: number;
+}
+
 type Props = {
   label: string;
   icon?: string;
   required?: boolean;
   requiredText?: string;
-  iconSize?: number;
+  position?: Position;
 };
 
-export const Label = ({ label, icon = 'Fi-AlertCircle', required, requiredText = '必須', iconSize = 16 }: Props) => {
+export const Label = ({ label, icon = 'Fi-AlertCircle', required, requiredText = '必須', position = { top: 20, left: 0} }: Props) => {
   const theme = useTheme();
 
   return (
     <>
-      <Text theme={theme} size={iconSize}>
+      <Text themes={theme}>
         {label}
         {required ? (
-          <RequiredContainer>
-            <FeatherIcon name={icon} color={theme.palette.DANGER} size={iconSize - 4} />
-            <RequiredText color={theme.palette.DANGER} size={iconSize - 4}>
+          <RequiredContainer position={position}>
+            <FeatherIcon name={icon} color={theme.palette.DANGER} size={12} />
+            <RequiredText color={theme.palette.DANGER} size={12}>
               {requiredText}
             </RequiredText>
           </RequiredContainer>
@@ -32,13 +37,13 @@ export const Label = ({ label, icon = 'Fi-AlertCircle', required, requiredText =
   );
 };
 
-const Text = styled.label<{ theme: Theme; size: number }>`
-  ${({ theme, size }) => {
-    const { palette } = theme;
+const Text = styled.label<{ themes: Theme }>`
+  ${({ themes }) => {
+    const { palette } = themes;
 
     return css`
-      color: ${palette.PRIMERY};
-      font-size: ${size}px;
+      color: ${palette.PRIMARY};
+      font-size: 16px;
       position: relative;
     `;
   }}
@@ -51,11 +56,17 @@ const RequiredText = styled.span<{ color: string; size: number }>`
   margin-left: 4px;
 `;
 
-const RequiredContainer = styled.div`
-  position: absolute;
-  top: 25px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
+const RequiredContainer = styled.div<{ position: Position }>`
+  ${({ position }) => {
+    const { top, left } = position;
+
+    return css `
+      position: absolute;
+      top: ${top}px;
+      left: 0${left}x;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    `
+  }}
 `;

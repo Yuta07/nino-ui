@@ -3,6 +3,7 @@ export interface Palette {
   SECONDARY: string
   SUB_SECONDARY: string
   GRAY: string
+  DARK: string
   PLACE_HOLDER: string
   BORDER: string
   MAIN: string
@@ -18,7 +19,8 @@ export const DEFAULT_PALETTE: Palette = {
   PRIMARY: '#2c3e50',
   SECONDARY: '#fefefe',
   SUB_SECONDARY: '#f5f5f5',
-  GRAY: '#d6dbdf',
+  GRAY: '#ced4da',
+  DARK: 'rgb(40, 44, 53)',
   PLACE_HOLDER: 'rgba(69, 69, 69, 0.5)',
   BORDER: '#c2c2c2',
   MAIN: '#f39c12',

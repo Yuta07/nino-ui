@@ -54,7 +54,7 @@ const Wrapper = () => {
           touch={touch}
           border={false}
           width={200}
-          height={36}
+          height={42}
           handleInputChange={handleInputChange}
           handleInputBlur={handleInputBlur}
         />
@@ -66,7 +66,7 @@ const Wrapper = () => {
           value={value}
           placeholder="Please input..."
           width={200}
-          height={36}
+          height={42}
           color="INFO"
           handleInputChange={handleInputChange}
         />
@@ -80,7 +80,7 @@ const Wrapper = () => {
           disabled={true}
           border={false}
           width={200}
-          height={36}
+          height={42}
           handleInputChange={handleInputChange}
         />
       </Container>
@@ -92,7 +92,7 @@ const Wrapper = () => {
           placeholder="Please input..."
           readonly={true}
           width={200}
-          height={36}
+          height={42}
           color="GRAY"
           handleInputChange={handleInputChange}
         />
@@ -104,7 +104,7 @@ const Wrapper = () => {
           placeholder="Please input..."
           detect={detect}
           width={200}
-          height={36}
+          height={42}
           iconSize={16}
           handleSearchFocus={handleSearchFocus}
           handleSearchBlur={handleSearchBlur}

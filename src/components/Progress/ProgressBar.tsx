@@ -29,7 +29,7 @@ const BarAnimation = keyframes`
   }
 `;
 
-const Bar = styled.div<{ width: Props['width']; height: Props['height']; progress: Props['progress']  }>`
+const Bar = styled.div<{ width: Props['width']; height: Props['height']; progress: Props['progress'] }>`
   ${({ width, height, progress }) => {
     return css`
       position: relative;
@@ -42,7 +42,7 @@ const Bar = styled.div<{ width: Props['width']; height: Props['height']; progres
   }}
 `;
 
-const Progress = styled.div<{ color: Props['color']; progress: Props['progress']; themes: Theme;  }>`
+const Progress = styled.div<{ color: Props['color']; progress: Props['progress']; themes: Theme; }>`
   ${({ color, progress, themes }) => {
     const { palette } = themes;
 

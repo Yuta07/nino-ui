@@ -6,7 +6,7 @@ import { Label } from './Label';
 storiesOf('Label', module).add('all', () => (
   <Wrapper>
     <Container>
-      <Label label="メールアドレス" icon="Fi-AlertCircle" required={true} requiredText="必須" iconSize={20} />
+      <Label label="メールアドレス" icon="Fi-AlertCircle" required={true} requiredText="必須" />
     </Container>
     <Container>
       <Label label="パスワード" />

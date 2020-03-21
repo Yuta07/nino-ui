@@ -5,7 +5,7 @@ import { Dropdown } from './Dropdown';
 
 const Wrapper = () => {
   return (
-    <Dropdown position={{ top: 110, left: 0 }} controllable={false}>
+    <Dropdown controllable={false} color='DARK'>
       <List>
         <ListItem>MyPage</ListItem>
         <ListItem>Settings</ListItem>
@@ -25,11 +25,8 @@ storiesOf('Dropdown', module).add('all', () =>
 const List = styled.ul`
   padding: 0.5rem;
   margin: 0;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  background: #fefefe;
-  box-shadow: 2px 2px 4px -1px #cccccc;
   list-style: none;
+  color: #fefefe;
 `;
 
 const ListItem = styled.li`

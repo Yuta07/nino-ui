@@ -50,10 +50,10 @@ export const WithIconAnchor = ({
 };
 
 const Base = styled.a<{
-  size: number;
-  color: string;
-  width: string;
-  height: number;
+  size: WithIconAnchorProps['size'];
+  color: WithIconAnchorProps['color'];
+  width: WithIconAnchorProps['width'];
+  height: WithIconAnchorProps['height'];
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
@@ -79,7 +79,7 @@ const Base = styled.a<{
 
       &:hover {
         opacity: 0.8;
-        transition: 0.3s;
+        transition: 0.4s;
       }
 
       &:focus {
@@ -96,7 +96,7 @@ const IconContainer = styled.div`
 const ButtonText = styled.span<{ position: Position['position'] }>`
   ${({ position }) => {
     return css`
-      ${position === 'left' ? `margin-left: 8px;` : `margin-right: 8px;`}
+      ${position === 'left' ? `margin-left: 12px;` : `margin-right: 12px;`}
     `;
   }}
 `;

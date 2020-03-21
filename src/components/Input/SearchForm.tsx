@@ -62,7 +62,7 @@ export const SearchForm = ({
           iconName="Go-Search"
           iconColor={detect ? color : 'GRAY'}
           iconSize={iconSize}
-          width={height}
+          width={`${height.toString()}px`}
           height={height}
           color="TRANSPARENT"
           pattern="Go"
@@ -77,10 +77,10 @@ export const SearchForm = ({
 
 const Form = styled.div<{
   color: string;
-  border: boolean;
-  detect: boolean;
-  width: number;
-  height: number;
+  border: Props['border'];
+  detect: Props['detect'];
+  width: Props['width'];
+  height: Props['height'];
   themes: Theme;
 }>`
   ${({ color, border, detect, width, height, themes }) => {
@@ -100,8 +100,8 @@ const Form = styled.div<{
 `;
 
 const Search = styled.input<{
-  width: number;
-  height: number;
+  width: Props['width'];
+  height: Props['height'];
   themes: Theme;
 }>`
   ${({ width, height, themes }) => {
@@ -113,7 +113,7 @@ const Search = styled.input<{
       color: ${palette.PRIMARY};
       font-size: 16px;
       line-height: 1.4;
-      padding: 2px 6px;
+      padding: 8px 12px;
       margin: 2px;
       border: none;
 
@@ -124,19 +124,19 @@ const Search = styled.input<{
       ::placeholder,
       ::-webkit-input-placeholder {
         color: ${palette.PLACE_HOLDER};
-        font-size: 14px;
+        font-size: 16px;
       }
 
       :-ms-input-placeholder {
         color: ${palette.PLACE_HOLDER};
-        font-size: 14px;
+        font-size: 16px;
       }
     `;
   }}
 `;
 
 const SearchButton = styled.div<{
-  height: number;
+  height: Props['height'];
 }>`
   ${({ height }) => {
     return css`

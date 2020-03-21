@@ -11,7 +11,7 @@ export type IconButtonProps = {
   children?: React.ReactNode;
   size?: number;
   color?: string;
-  width?: number;
+  width?: string;
   height: number;
   pattern: string;
   shape: 'square' | 'circle';
@@ -56,9 +56,9 @@ export const IconOnlyButton = ({
 };
 
 const Button = styled.div<{
-  color: string;
-  width: number;
-  height: number;
+  color: IconButtonProps['color'];
+  width: IconButtonProps['width'];
+  height: IconButtonProps['height'];
   shape: IconButtonProps['shape'];
   themes: Theme;
 }>`
@@ -67,7 +67,7 @@ const Button = styled.div<{
 
     return css`
       background: ${palette[color]};
-      width: ${width ? `${width}px` : 'auto'};
+      width: ${width ? `${width}` : 'auto'};
       height: ${height}px;
       border: none;
       border-radius: ${shape === 'circle' ? '50%' : '6px'};
