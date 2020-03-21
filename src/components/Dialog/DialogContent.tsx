@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 
@@ -55,8 +55,8 @@ export const DialogContent = ({
   if (title !== '') dialogTitle = <DialogTitle color={color}>{title}</DialogTitle>;
 
   return (
-    <Wrapper isOpen={isOpen}>
-      <Container position={position} theme={theme}>
+    <Wrapper>
+      <Container position={position} themes={theme}>
         {dialogTitle}
         <BodyContent theme={theme}>{content}</BodyContent>
         <DialogButtonContainer>
@@ -68,26 +68,32 @@ export const DialogContent = ({
   );
 };
 
-const Wrapper = styled.div<{ isOpen: Props['isOpen'] }>`
-  ${({ isOpen }) => {
-    return css`
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      visibility: ${isOpen ? `visible` : `hidden`};
-      opacity: ${isOpen ? `1` : `0`};
-      -webkit-transition: all 0.2s linear;
-      transition: all 0.2s linear;
-    `;
-  }}
+const ShowAnimation = keyframes`
+  0% {
+    visibility: hiddehn;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
-const Container = styled.div<{ position: Position; theme: Theme }>`
-  ${({ position, theme }) => {
+const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
+  animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
+    
+`;
+
+const Container = styled.div<{ position: Position; themes: Theme }>`
+  ${({ position, themes }) => {
     const { top, left } = position;
-    const { palette } = theme;
+    const { palette } = themes;
 
     const mobi: number = 35 - left;
 
@@ -100,8 +106,8 @@ const Container = styled.div<{ position: Position; theme: Theme }>`
       flex-direction: column;
       padding: 1rem;
       background: #fefefe;
-      box-shadow: rgba(150, 150, 150, 0.2) 0px 2px 6px 0px;
-      border: 1px solid ${palette.BORDER};
+      box-shadow: rgba(150, 150, 150, 0.2) 0px 1px 2px 0px;
+      border: 2px solid ${palette.BORDER};
       border-radius: 8px;
       transform: translate(-50%, -50%);
 

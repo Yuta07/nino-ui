@@ -28,10 +28,10 @@ export const TransmissionButton = ({ ...props }: Props) => {
 };
 
 const Base = styled.button<{
-  size: number;
-  color: string;
-  width: number;
-  height: number;
+  size: Props['size'];
+  color: Props['color'];
+  width: Props['width'];
+  height: Props['height'];
   themes: Theme;
 }>`
   ${({ size, width, height, themes }) => {
@@ -40,7 +40,7 @@ const Base = styled.button<{
     return css`
       font-size: ${size}rem;
       color: ${palette.PRIMARY};
-      width: ${width ? `${width}px` : 'auto'};
+      width: ${width ? `${width}` : 'auto'};
       height: ${height ? `${height}px` : '24px'};
       border: none;
       border-radius: 6px;

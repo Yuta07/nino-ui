@@ -10,7 +10,7 @@ export type Props = {
   children?: React.ReactNode;
   size?: number;
   color?: string;
-  width?: number;
+  width?: string;
   height: number;
   disabled?: boolean;
   handleClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
@@ -55,10 +55,10 @@ export const Button = ({
 };
 
 const Base = styled.button<{
-  size: number;
-  color: string;
-  width: number;
-  height: number;
+  size: Props['size'];
+  color: Props['color'];
+  width: Props['width'];
+  height: Props['height'];
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
@@ -68,7 +68,7 @@ const Base = styled.button<{
       font-size: ${size}rem;
       color: ${palette.SECONDARY};
       background: ${palette[color]};
-      width: ${width ? `${width}px` : 'auto'};
+      width: ${width ? `${width}` : 'auto'};
       height: ${height}px;
       border: none;
       border-radius: 6px;

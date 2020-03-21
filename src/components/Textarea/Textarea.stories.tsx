@@ -31,8 +31,8 @@ const Wrapper = () => {
           placeholder="Please input..."
           error={error}
           touch={touch}
-          width={540}
-          height={200}
+          width={480}
+          height={120}
           handleInputChange={handleInputChange}
           handleInputBlur={handleInputBlur}
         />
@@ -42,8 +42,8 @@ const Wrapper = () => {
           name="name"
           value={value}
           placeholder="Please input..."
-          width={540}
-          height={200}
+          width={480}
+          height={120}
           handleInputChange={handleInputChange}
           handleInputBlur={handleInputBlur}
         />

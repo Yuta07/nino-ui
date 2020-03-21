@@ -43,9 +43,9 @@ const Check = styled.input`
 const CheckButton = styled.label<{
   themes: Theme;
   color: string;
-  size: number;
-  checked: boolean;
-  disabled: boolean;
+  size: Props['size'];
+  checked: Props['checked'];
+  disabled: Props['disabled'];
 }>`
   ${({ themes, color, size, checked, disabled }) => {
     const { palette } = themes;

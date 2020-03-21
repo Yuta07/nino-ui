@@ -58,9 +58,9 @@ export const IconOnlyAnchor = ({
 };
 
 const Anchor = styled.a<{
-  color: string;
-  width: string;
-  height: number;
+  color: IconOnlyAnchorProps['color'];
+  width: IconOnlyAnchorProps['width'];
+  height: IconOnlyAnchorProps['height'];
   shape: IconAnchorProps['shape'];
   themes: Theme;
 }>`
@@ -84,7 +84,7 @@ const Anchor = styled.a<{
 
       &:hover {
         opacity: 0.8;
-        transition: 0.3s;
+        transition: 0.4s;
       }
     `;
   }}

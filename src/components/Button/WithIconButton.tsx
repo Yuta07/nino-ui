@@ -62,10 +62,10 @@ export const WithIconButton = ({
 };
 
 const Base = styled.button<{
-  size: number;
-  color: string;
-  width: number;
-  height: number;
+  size: WithIconButtonProps['size'];
+  color: WithIconButtonProps['color'];
+  width: WithIconButtonProps['width'];
+  height: WithIconButtonProps['height'];
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
@@ -75,7 +75,7 @@ const Base = styled.button<{
       font-size: ${size}rem;
       color: ${palette.SECONDARY};
       background: ${palette[color]};
-      width: ${width ? `${width}px` : 'auto'};
+      width: ${width ? `${width}` : 'auto'};
       height: ${height ? `${height}px` : '24px'};
       border: none;
       border-radius: 6px;
@@ -104,7 +104,7 @@ const IconContainer = styled.div``;
 const ButtonText = styled.span<{ position: Position['position'] }>`
   ${({ position }) => {
     return css`
-      ${position === 'left' ? `margin-left: 8px;` : `margin-right: 8px;`}
+      ${position === 'left' ? `margin-left: 12px;` : `margin-right: 12px;`}
     `;
   }}
 `;

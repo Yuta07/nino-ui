@@ -59,11 +59,6 @@ export const Input = ({
     borderColor = theme.palette.DANGER;
   }
 
-  let backgroundColor = theme.palette.SECONDARY;
-  if (error && touch) {
-    backgroundColor = '#ffe2ec';
-  }
-
   return (
     <>
       <InputForm
@@ -75,7 +70,6 @@ export const Input = ({
         disabled={disabled}
         readOnly={readonly}
         color={color}
-        backgroundColor={backgroundColor}
         borderColor={borderColor}
         border={border}
         width={width}
@@ -89,32 +83,31 @@ export const Input = ({
 };
 
 const InputForm = styled.input<{
-  readOnly: boolean;
+  readOnly: Props['readonly'];
   color: string;
-  backgroundColor: string;
   borderColor: string;
-  border: boolean;
-  width: number;
-  height: number;
+  border: Props['border'];
+  width: Props['width'];
+  height: Props['height'];
   themes: Theme;
 }>`
-  ${({ readOnly, color, backgroundColor, borderColor, border, width, height, themes }) => {
+  ${({ readOnly, color, borderColor, border, width, height, themes }) => {
     const { palette } = themes;
 
     return css`
       width: ${width ? `${width}px` : `auto`};
       height: ${height}px;
       color: ${readOnly ? palette.PLACE_HOLDER : palette.PRIMARY};
-      background: ${backgroundColor};
+      background: ${palette.SECONDARY};
       font-size: 16px;
       line-height: 1.4;
-      padding: 4px 8px;
+      padding: 8px 12px;
       border: ${border ? `2px solid ${borderColor}` : `none`};
       border-radius: 6px;
       box-shadow: none;
 
       &:focus {
-        padding: ${border ? `4px 8px` : `2px 6px`};
+        padding: ${border ? `8px 12px` : `6px 10px`};
         outline: none;
         border: 2px solid ${palette[color]};
       }

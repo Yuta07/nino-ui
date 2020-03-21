@@ -32,10 +32,10 @@ export const Anchor = ({ link, children, size, color = 'MAIN', width, height, ha
 };
 
 const Base = styled.a<{
-  size: number;
-  color: string;
-  width: string;
-  height: number;
+  size: Props['size'];
+  color: Props['color'];
+  width: Props['width'];
+  height: Props['height'];
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
@@ -61,7 +61,7 @@ const Base = styled.a<{
 
       &:hover {
         opacity: 0.8;
-        transition: 0.3s;
+        transition: 0.4s;
       }
     `;
   }}

@@ -37,7 +37,7 @@ storiesOf('Table', module).add('all', () => (
           <TableBody width={25}>
             <a href="https://yutazon.me">yutazon.me@gmail.com</a>
           </TableBody>
-          <TableBody width={25} wrap={false}>
+          <TableBody width={25} truncate={false}>
             東京都千代田区永田町１丁目７−１
           </TableBody>
           <TableBody width={25}>000-0000-0000</TableBody>

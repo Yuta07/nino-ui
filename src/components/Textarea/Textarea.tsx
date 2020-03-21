@@ -28,7 +28,7 @@ export const Textarea = ({
   touch = false,
   width,
   height,
-  color = '#f39c12',
+  color = 'MAIN',
   handleInputChange,
   handleInputBlur,
 }: Props) => {
@@ -37,11 +37,6 @@ export const Textarea = ({
   let borderColor = theme.palette.GRAY;
   if (error && touch) {
     borderColor = theme.palette.DANGER;
-  }
-
-  let backgroundColor = '#fefefe';
-  if (error && touch) {
-    backgroundColor = '#ffe2ec';
   }
 
   return (
@@ -53,7 +48,6 @@ export const Textarea = ({
         disabled={disabled}
         readOnly={readonly}
         color={color}
-        backgroundColor={backgroundColor}
         borderColor={borderColor}
         width={width}
         height={height}
@@ -66,31 +60,30 @@ export const Textarea = ({
 };
 
 const InputForm = styled.textarea<{
-  color: string;
-  backgroundColor: string;
+  color: Props['color'];
   borderColor: string;
-  width: number;
-  height: number;
+  width: Props['width'];
+  height: Props['height'];
   themes: Theme;
 }>`
-  ${({ color, backgroundColor, borderColor, width, height, themes }) => {
+  ${({ color, borderColor, width, height, themes }) => {
     const { palette } = themes;
 
     return css`
       width: ${width ? `${width}px` : `auto`};
       height: ${height}px;
       color: ${palette.PRIMARY};
-      background: ${backgroundColor};
+      background: ${palette.SECONDARY};
       font-size: 16px;
       line-height: 1.4;
-      padding: 4px 8px;
+      padding: 8px 12px;
       border: 2px solid ${borderColor};
       border-radius: 6px;
       box-shadow: none;
 
       &:focus {
         outline: none;
-        border: 2px solid ${color};
+        border: 2px solid ${palette[color]};
       }
 
       ::placeholder,

@@ -30,6 +30,8 @@ export const Modal = ({ isOpen, title, position, content, onCloseModal }: Props)
 
   const targetPortal = usePortal(el);
 
+  if (!isOpen) return null;
+
   return targetPortal;
 };
 

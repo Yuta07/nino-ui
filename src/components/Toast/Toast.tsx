@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
@@ -7,7 +7,7 @@ import { FeatherIcon } from '../Icon/FeatherIcon';
 type Props = {
   text: string;
   time?: number;
-  type: 'success' | 'info' | 'warning' | 'danger';
+  type: 'SUCCESS' | 'INFO' | 'WARNING' | 'DANGER';
   visible?: boolean;
   onCloseToast: () => void;
 };
@@ -31,33 +31,28 @@ export const Toast = ({ text, time = VISIBLE_TIME, type, visible, onCloseToast }
   if (!visible) return null;
 
   let iconName = '';
-  let bgColor: string;
 
   switch (type) {
-    case 'success':
+    case 'SUCCESS':
       iconName = 'Fi-CheckCircle';
-      bgColor = theme.palette.SUCCESS;
       break;
-    case 'info':
+    case 'INFO':
       iconName = 'Fi-AlertCircle';
-      bgColor = theme.palette.INFO;
       break;
-    case 'warning':
+    case 'WARNING':
       iconName = 'Fi-AlertTriangle';
-      bgColor = theme.palette.WARNING;
       break;
-    case 'danger':
+    case 'DANGER':
       iconName = 'Fi-Slash';
-      bgColor = theme.palette.DANGER;
       break;
     default:
       break;
   }
 
   return (
-    <Container bgColor={bgColor} time={time}>
+    <Container type={type} time={time} themes={theme}>
       <FeatherIcon name={iconName} size={16} color={theme.palette.SECONDARY} />
-      <MessageText apptheme={theme}>{text}</MessageText>
+      <MessageText themes={theme}>{text}</MessageText>
       <CloseButton onClick={onCloseToast}>
         <FeatherIcon size={20} name="Fi-XCircle" color={theme.palette.SECONDARY} />
       </CloseButton>
@@ -83,26 +78,32 @@ const ToastFadeOut = keyframes`
   }
 `;
 
-const Container = styled.div<{ bgColor: string; time: number }>`
-  min-width: 100px;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  z-index: 8000;
-  line-height: 1.8;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  box-shadow: 1px 1px 2px 0px rgba(171, 166, 166, 0.9);
-  background-color: ${props => props.bgColor};
-  -webkit-animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,
-    ${ToastFadeOut} 0.5s linear ${props => props.time - 500}ms 1 normal forwards running;
-  animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,
-    ${ToastFadeOut} 0.5s linear ${props => props.time - 500}ms 1 normal forwards running;
+const Container = styled.div<{ type: Props['type']; time: Props['time']; themes: Theme }>`
+  ${({ type, time, themes }) => {
+    const { palette } = themes;
+
+    return css`
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      z-index: 8000;
+      line-height: 1.8;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      box-shadow: 1px 1px 2px 0px rgba(171, 166, 166, 0.9);
+      background-color: ${palette[type]};
+      -webkit-animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,
+        ${ToastFadeOut} 0.5s linear ${time - 500}ms 1 normal forwards running;
+      animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,
+        ${ToastFadeOut} 0.5s linear ${time - 500}ms 1 normal forwards running;
+    `;
+  }}
 `;
 
-const MessageText = styled.span<{ apptheme: Theme }>`
+const MessageText = styled.span<{ themes: Theme }>`
   font-size: 1rem;
-  color: ${props => props.apptheme.palette.SECONDARY};
+  color: ${props => props.themes.palette.SECONDARY};
   margin: 0 2rem 0 1rem;
 `;
 

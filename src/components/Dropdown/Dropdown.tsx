@@ -4,18 +4,13 @@ import { DropdownContext } from './DropdownProvider';
 import { DropdownButton } from './DropdownButton';
 import { DropdownContent } from './DropdownContent';
 
-type Position = {
-  top?: number;
-  left?: number;
-};
-
 type Props = {
   children: React.ReactNode;
   controllable?: boolean;
-  position?: Position;
+  color: string;
 };
 
-export const Dropdown = ({ children, controllable = false, position }: Props): React.ReactPortal => {
+export const Dropdown = ({ children, controllable = false, color }: Props): React.ReactPortal => {
   const [isOpen, setIsOpen] = React.useState(false);
   const element = React.useRef(document.createElement('div')).current;
   element.style.display = 'inline-block';
@@ -49,7 +44,7 @@ export const Dropdown = ({ children, controllable = false, position }: Props): R
       }}
     >
       <DropdownButton>
-        <DropdownContent position={position} controllable={controllable}>
+        <DropdownContent controllable={controllable} color={color}>
           {children}
         </DropdownContent>
       </DropdownButton>

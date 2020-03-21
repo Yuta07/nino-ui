@@ -71,7 +71,6 @@ export const Pagination = ({
             color={color}
             themes={theme}
             round={false}
-            position=""
             onClick={e => onClickPageNum(e, i)}
           >
             <Item>{i}</Item>
@@ -155,7 +154,7 @@ const UnOrderedPageList = styled.ul`
   width: 100%;
 `;
 
-const PageList = styled.li<{ size: number; themes: Theme }>`
+const PageList = styled.li<{ size: Props['size']; themes: Theme }>`
   ${({ size, themes }) => {
     const { palette } = themes;
 
@@ -170,13 +169,13 @@ const PageList = styled.li<{ size: number; themes: Theme }>`
 
 const Button = styled.a<{
   active?: boolean;
-  color: string;
+  color: Props['color'];
   themes: Theme;
   disable?: boolean;
   round: boolean;
-  position: string;
+  position?: string;
 }>`
-  ${({ active, color, themes, round, position }) => {
+  ${({ active, color, themes, round, position = '' }) => {
     const { palette } = themes;
 
     return css`
@@ -195,7 +194,7 @@ const Button = styled.a<{
 
       &:hover {
         background: ${palette[color]};
-        transition: 0.3s;
+        transition: 0.2s;
       }
     `;
   }}

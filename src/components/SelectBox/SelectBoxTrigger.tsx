@@ -35,6 +35,7 @@ const SelectBoxTriggerRef = styled.a<{ color: string; themes: Theme }>`
       padding: 10px 39px 10px 15px;
       min-height: 41px;
       transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+      cursor: pointer;
 
       ${color === 'SECONDARY'
         ? `color: ${palette.PRIMARY}; border: 2px solid ${palette.GRAY}`

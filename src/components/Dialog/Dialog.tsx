@@ -54,6 +54,8 @@ export const Dialog = ({
 
   const targetPortal = usePortal(el);
 
+  if (!isOpen) return null;
+
   return targetPortal;
 };
 
@@ -71,8 +73,8 @@ const Overlay = styled.div<{ isOpen: Props['isOpen']; theme: Theme }>`
       background: ${palette.OVERLAY};
       visibility: ${isOpen ? `visible` : `hidden`};
       opacity: ${isOpen ? `1` : `0`};
-      -webkit-transition: all 0.2s ease;
-      transition: all 0.2s ease;
+      -webkit-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
     `;
   }}
 `;
