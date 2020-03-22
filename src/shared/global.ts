@@ -1,15 +1,24 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { FONT_FAMILY } from '../themes/Font';
+import { FONT_SIZE, DEVICE } from '../themes/Size';
 
 export const fontUrl = 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900';
 
 export const bodyStyles = css`
   width: 96%;
   height: 100vh;
-  margin: 2%;
-  font-size: 1rem;
+  padding: 2%;
+  font-size: ${FONT_SIZE.LARGE}px;
   font-family: ${FONT_FAMILY};
   letter-spacing: 0.1em;
+
+  @media ${DEVICE.TABLET_PRO} {
+    font-size: ${FONT_SIZE.MEDIUM}px;
+  }
+
+  @media ${DEVICE.MOBILE} {
+    font-size: ${FONT_SIZE.SMALL}px;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`

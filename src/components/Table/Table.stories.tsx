@@ -5,25 +5,36 @@ import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
+import { Heading } from '../Heading';
 
 storiesOf('Table', module).add('all', () => (
   <>
+    <Heading heading="scroll" size={4} />
     <Container>
       <Table>
-        <TableRow type="header">
+        <TableRow type="header" width={150}>
           <TableHeader width={25}>column1</TableHeader>
           <TableHeader width={25}>column2</TableHeader>
           <TableHeader width={25}>column3</TableHeader>
           <TableHeader width={25}>column4</TableHeader>
+          <TableHeader width={25}>column5</TableHeader>
+          <TableHeader width={25}>column6</TableHeader>
+          <TableHeader width={25}>column7</TableHeader>
+          <TableHeader width={25}>column8</TableHeader>
         </TableRow>
-        <TableRow type="body">
+        <TableRow type="body" width={150}>
           <TableBody width={25}>body1</TableBody>
           <TableBody width={25}>body2</TableBody>
           <TableBody width={25}>body3</TableBody>
           <TableBody width={25}>body4</TableBody>
+          <TableBody width={25}>body5</TableBody>
+          <TableBody width={25}>body6</TableBody>
+          <TableBody width={25}>body7</TableBody>
+          <TableBody width={25}>body8</TableBody>
         </TableRow>
       </Table>
     </Container>
+    <Heading heading="table" size={4} />
     <Container>
       <Table>
         <TableRow type="header">
@@ -44,6 +55,7 @@ storiesOf('Table', module).add('all', () => (
         </TableRow>
       </Table>
     </Container>
+    <Heading heading="truncate" size={4} />
     <Container>
       <Table>
         <TableRow type="header">
@@ -66,5 +78,5 @@ storiesOf('Table', module).add('all', () => (
 ));
 
 const Container = styled.div`
-  margin: 1rem 0;
+  margin: 2rem 0;
 `;

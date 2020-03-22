@@ -105,14 +105,15 @@ const Search = styled.input<{
   themes: Theme;
 }>`
   ${({ width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       width: ${width}px;
       height: ${height - 8}px;
       color: ${palette.PRIMARY};
-      font-size: 16px;
+      font-size: 14px;
       line-height: 1.4;
+      letter-spacing: 1px;
       padding: 8px 12px;
       margin: 2px;
       border: none;
@@ -130,6 +131,14 @@ const Search = styled.input<{
       :-ms-input-placeholder {
         color: ${palette.PLACE_HOLDER};
         font-size: 16px;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE} {
+        font-size: ${fontSize.MEDIUM}px;
       }
     `;
   }}

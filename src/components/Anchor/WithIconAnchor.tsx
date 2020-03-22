@@ -57,7 +57,7 @@ const Base = styled.a<{
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       font-size: ${size}rem;
@@ -65,14 +65,15 @@ const Base = styled.a<{
       background: ${palette[color]};
       width: ${width ? `${width}` : 'auto'};
       height: ${height ? `${height}px` : '24px'};
+      padding: 4px 0.5rem;
       border: none;
       border-radius: 8px;
       text-align: center;
       text-decoration: none;
       cursor: pointer;
       white-space: nowrap;
-      cursor: pointer;
       display: inline-flex;
+      align-items: center;
       justify-content: center;
       align-items: center;
       padding: 0 0.5rem;
@@ -84,6 +85,14 @@ const Base = styled.a<{
 
       &:focus {
         outline: none;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

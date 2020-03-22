@@ -2,6 +2,8 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Toast } from './Toast';
+import { Input } from '../Input';
+import { Button } from '../Button';
 
 type Toast = 'SUCCESS' | 'INFO' | 'WARNING' | 'DANGER';
 
@@ -88,24 +90,68 @@ const Wrapper = () => {
   return (
     <Container>
       <ToastBox>
-        <Input type="text" name="SUCCESS" value={successState.text} onChange={onChangeToastMessage} />
+        <Input
+          type="text"
+          name="SUCCESS"
+          width={320}
+          height={28}
+          value={successState.text}
+          handleInputChange={onChangeToastMessage}
+        />
         <Toast {...successState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('SUCCESS')}>Submit</VisibleButton>
+        <ButtonMargin>
+          <Button type="button" height={28} color="SUCCESS" handleClick={() => onVisibleToast('SUCCESS')}>
+            Success PUSH!!
+          </Button>
+        </ButtonMargin>
       </ToastBox>
       <ToastBox>
-        <Input type="text" name="INFO" value={infoState.text} onChange={onChangeToastMessage} />
+        <Input
+          type="text"
+          name="INFO"
+          width={320}
+          height={28}
+          value={infoState.text}
+          handleInputChange={onChangeToastMessage}
+        />
         <Toast {...infoState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('INFO')}>Submit</VisibleButton>
+        <ButtonMargin>
+          <Button type="button" height={28} color="INFO" handleClick={() => onVisibleToast('INFO')}>
+            Info PUSH!!
+          </Button>
+        </ButtonMargin>
       </ToastBox>
       <ToastBox>
-        <Input type="text" name="WARNING" value={warningState.text} onChange={onChangeToastMessage} />
+        <Input
+          type="text"
+          name="WARNING"
+          width={320}
+          height={28}
+          value={warningState.text}
+          handleInputChange={onChangeToastMessage}
+        />
         <Toast {...warningState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('WARNING')}>Submit</VisibleButton>
+        <ButtonMargin>
+          <Button type="button" height={28} color="WARNING" handleClick={() => onVisibleToast('WARNING')}>
+            Warning PUSH!!
+          </Button>
+        </ButtonMargin>
       </ToastBox>
       <ToastBox>
-        <Input type="text" name="DANGER" value={dangerState.text} onChange={onChangeToastMessage} />
+        <Input
+          type="text"
+          name="DANGER"
+          width={320}
+          height={28}
+          value={dangerState.text}
+          handleInputChange={onChangeToastMessage}
+        />
         <Toast {...dangerState} onCloseToast={onCloseToast} />
-        <VisibleButton onClick={() => onVisibleToast('DANGER')}>Submit</VisibleButton>
+        <ButtonMargin>
+          <Button type="button" height={28} color="DANGER" handleClick={() => onVisibleToast('DANGER')}>
+            Danger PUSH!!
+          </Button>
+        </ButtonMargin>
       </ToastBox>
     </Container>
   );
@@ -127,20 +173,7 @@ const ToastBox = styled.div`
   margin: 1rem;
 `;
 
-const Input = styled.input`
-  width: 240px;
-  height: 32px;
-  padding: 4px;
-  margin-right: 8px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #b5b5b5;
-`;
-
-const VisibleButton = styled.button`
-  height: 30px;
-  padding: 4px;
-  font-size: 14px;
-  border-radius: 8px;
-  cursor: pointer;
+const ButtonMargin = styled.div`
+  margin-left: 10px;
+  display: inline-block;
 `;

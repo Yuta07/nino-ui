@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { DropdownContext } from './DropdownProvider';
-import { DropdownButton } from './DropdownButton';
-import { DropdownContent } from './DropdownContent';
 
 type Props = {
   children: React.ReactNode;
@@ -35,6 +33,8 @@ export const Dropdown = ({ children, controllable = false, color }: Props): Reac
     <DropdownContext.Provider
       value={{
         isOpen: isOpen,
+        controllable: controllable,
+        color: color,
         onClickDropdownButton: () => {
           setIsOpen(!isOpen);
         },
@@ -43,11 +43,7 @@ export const Dropdown = ({ children, controllable = false, color }: Props): Reac
         },
       }}
     >
-      <DropdownButton>
-        <DropdownContent controllable={controllable} color={color}>
-          {children}
-        </DropdownContent>
-      </DropdownButton>
+      {children}
     </DropdownContext.Provider>,
     element
   );

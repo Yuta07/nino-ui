@@ -67,7 +67,7 @@ const InputForm = styled.textarea<{
   themes: Theme;
 }>`
   ${({ color, borderColor, width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       width: ${width ? `${width}px` : `auto`};
@@ -101,6 +101,20 @@ const InputForm = styled.textarea<{
         border-color: #d5dbdb;
         pointer-events: none;
         cursor: default;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+        max-width: 720px;
+      }
+
+      @media screen and ${device.MOBILE} {
+        max-width: 360px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
+        max-width: 300px;
       }
     `;
   }}

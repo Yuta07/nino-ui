@@ -9,7 +9,6 @@ import { TypIcon } from '../Icon/TypIcon';
 
 export type IconButtonProps = {
   children?: React.ReactNode;
-  size?: number;
   color?: string;
   width?: string;
   height: number;

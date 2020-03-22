@@ -8,19 +8,13 @@ type Props = {
 
 export const DropdownButton = ({ children }: Props) => {
   const { onClickDropdownButton } = React.useContext(DropdownContext);
-  const buttonRef = React.useRef(null);
+  const triggerRef = React.useRef(null);
 
   return (
-    <Container>
-      <button ref={buttonRef} type="button" onClick={onClickDropdownButton}>
-        show dropdown
-      </button>
+    <Container ref={triggerRef} onClick={onClickDropdownButton}>
       {children}
     </Container>
   );
 };
 
-const Container = styled.div`
-  display: inline-block;
-  position: relative;
-`;
+const Container = styled.div``;

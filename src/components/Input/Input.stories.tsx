@@ -6,6 +6,7 @@ import { SearchForm } from './SearchForm';
 
 const Wrapper = () => {
   const [value, setValue] = React.useState('');
+  const [value2, setValue2] = React.useState('');
   const [touch, setTouch] = React.useState(false);
   const [detect, setDetect] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
@@ -17,6 +18,11 @@ const Wrapper = () => {
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget;
     setValue(value);
+  };
+
+  const handleInputChange2 = (event: React.FormEvent<HTMLInputElement>): void => {
+    const { value } = event.currentTarget;
+    setValue2(value);
   };
 
   const handleSearchInputChange = (event: React.FormEvent<HTMLInputElement>): void => {
@@ -54,7 +60,7 @@ const Wrapper = () => {
           touch={touch}
           border={false}
           width={200}
-          height={42}
+          height={32}
           handleInputChange={handleInputChange}
           handleInputBlur={handleInputBlur}
         />
@@ -63,12 +69,12 @@ const Wrapper = () => {
         <Input
           type="text"
           name="name"
-          value={value}
+          value={value2}
           placeholder="Please input..."
           width={200}
-          height={42}
+          height={32}
           color="INFO"
-          handleInputChange={handleInputChange}
+          handleInputChange={handleInputChange2}
         />
       </Container>
       <Container>
@@ -80,7 +86,7 @@ const Wrapper = () => {
           disabled={true}
           border={false}
           width={200}
-          height={42}
+          height={32}
           handleInputChange={handleInputChange}
         />
       </Container>
@@ -92,7 +98,7 @@ const Wrapper = () => {
           placeholder="Please input..."
           readonly={true}
           width={200}
-          height={42}
+          height={32}
           color="GRAY"
           handleInputChange={handleInputChange}
         />
@@ -104,7 +110,7 @@ const Wrapper = () => {
           placeholder="Please input..."
           detect={detect}
           width={200}
-          height={42}
+          height={32}
           iconSize={16}
           handleSearchFocus={handleSearchFocus}
           handleSearchBlur={handleSearchBlur}

@@ -4,22 +4,15 @@ import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
 
-type Position = {
-  top?: number;
-  left?: number;
-};
-
 type Props = {
-  isOpen: boolean;
   title?: string;
-  position?: Position;
   content: React.ReactNode;
   onCloseModal: () => void;
 };
 
 let dialogTitle: React.ReactNode;
 
-export const ModalContent = ({ isOpen, title, position, content, onCloseModal }: Props) => {
+export const ModalContent = ({ title, content, onCloseModal }: Props) => {
   const theme = useTheme();
   let color: string;
 
@@ -27,7 +20,7 @@ export const ModalContent = ({ isOpen, title, position, content, onCloseModal }:
 
   return (
     <Wrapper>
-      <Container position={position} themes={theme}>
+      <Container themes={theme}>
         <CloseIcon onClick={onCloseModal}>
           <FeatherIcon name="Fi-XCircle" color="#9e9e9e" size={20} />
         </CloseIcon>
@@ -55,20 +48,21 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   -webkit-animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
   animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
 `;
 
-const Container = styled.div<{ position: Position; themes: Theme }>`
-  ${({ position, themes }) => {
-    const { top, left } = position;
-    const { palette } = themes;
+const Container = styled.div<{ themes: Theme }>`
+  ${({ themes }) => {
+    const { device, palette } = themes;
 
     return css`
       position: absolute;
-      top: ${top}%;
-      left: ${left}%;
       z-index: 9000;
+      max-width: 600px
       display: flex;
       flex-direction: column;
       padding: 1rem;
@@ -76,7 +70,18 @@ const Container = styled.div<{ position: Position; themes: Theme }>`
       box-shadow: rgba(150, 150, 150, 0.2) 0px 1px 2px 0px;
       border: 2px solid ${palette.BORDER};
       border-radius: 8px;
-      transform: translate(-50%, -50%);
+
+      @media screen and ${device.TABLET} {
+        max-width: 480px;
+      }
+
+      @media screen and ${device.MOBILE} {
+        max-width: 320px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        max-width: 300px;
+      }
     `;
   }}
 `;

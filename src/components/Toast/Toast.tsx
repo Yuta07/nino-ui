@@ -102,9 +102,23 @@ const Container = styled.div<{ type: Props['type']; time: Props['time']; themes:
 `;
 
 const MessageText = styled.span<{ themes: Theme }>`
-  font-size: 1rem;
-  color: ${props => props.themes.palette.SECONDARY};
-  margin: 0 2rem 0 1rem;
+  ${({ themes }) => {
+    const { device, fontSize, palette } = themes;
+
+    return css`
+      font-size: 16px;
+      color: ${palette.SECONDARY};
+      margin: 0 2rem 0 1rem;
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
+      }
+    `;
+  }}
 `;
 
 const CloseButton = styled.div`

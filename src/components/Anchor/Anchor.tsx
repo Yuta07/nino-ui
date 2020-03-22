@@ -39,7 +39,7 @@ const Base = styled.a<{
   themes: Theme;
 }>`
   ${({ size, color, width, height, themes }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       font-size: ${size}rem;
@@ -49,6 +49,7 @@ const Base = styled.a<{
       height: ${height}px;
       padding: 4px 0.5rem;
       display: inline-flex;
+      align-items: center;
       justify-content: center;
       align-items: center;
       border: none;
@@ -57,11 +58,18 @@ const Base = styled.a<{
       text-decoration: none;
       cursor: pointer;
       white-space: nowrap;
-      cursor: pointer;
 
       &:hover {
         opacity: 0.8;
         transition: 0.4s;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

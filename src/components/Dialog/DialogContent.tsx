@@ -3,16 +3,9 @@ import styled, { css, keyframes } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 
-type Position = {
-  top?: number;
-  left?: number;
-};
-
 type Props = {
-  isOpen: boolean;
   title?: string;
   type: 'success' | 'info' | 'warning' | 'danger';
-  position?: Position;
   content: React.ReactNode;
   activeText?: string;
   closeText: string;
@@ -23,10 +16,8 @@ type Props = {
 let dialogTitle: React.ReactNode;
 
 export const DialogContent = ({
-  isOpen,
   title,
   type,
-  position,
   content,
   activeText,
   closeText,
@@ -56,9 +47,9 @@ export const DialogContent = ({
 
   return (
     <Wrapper>
-      <Container position={position} themes={theme}>
+      <Container themes={theme}>
         {dialogTitle}
-        <BodyContent theme={theme}>{content}</BodyContent>
+        <BodyContent themes={theme}>{content}</BodyContent>
         <DialogButtonContainer>
           <NegativeButton onClick={onCloseDialog}>{closeText}</NegativeButton>
           {activeText === undefined ? null : <ActiveButton onClick={onActionDialog}>{activeText}</ActiveButton>}
@@ -85,35 +76,39 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   -webkit-animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
   animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
-    
 `;
 
-const Container = styled.div<{ position: Position; themes: Theme }>`
-  ${({ position, themes }) => {
-    const { top, left } = position;
-    const { palette } = themes;
-
-    const mobi: number = 35 - left;
+const Container = styled.div<{ themes: Theme }>`
+  ${({ themes }) => {
+    const { device, palette } = themes;
 
     return css`
       position: absolute;
-      top: ${top}%;
-      left: ${left}%;
       z-index: 9000;
+      max-width: 600px
       display: flex;
       flex-direction: column;
       padding: 1rem;
-      background: #fefefe;
+      background: ${palette.SECONDARY};
       box-shadow: rgba(150, 150, 150, 0.2) 0px 1px 2px 0px;
       border: 2px solid ${palette.BORDER};
       border-radius: 8px;
-      transform: translate(-50%, -50%);
 
-      @media (max-width: 599px) {
-        left: calc(${left}% - 25%);
-        transform: translate(${mobi}%, -50%);
+      @media screen and ${device.TABLET} {
+        max-width: 480px;
+      }
+
+      @media screen and ${device.MOBILE} {
+        max-width: 320px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        max-width: 300px;
       }
     `;
   }}
@@ -164,12 +159,18 @@ const BodyContentText = css`
   }
 `;
 
-const BodyContent = styled.div<{ theme: Theme }>`
-  ${BodyContentText};
+const BodyContent = styled.div<{ themes: Theme }>`
+  ${({ themes }) => {
+    const { palette } = themes;
 
-  margin-top: 0.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid ${props => props.theme.palette.BORDER};
+    return css`
+      ${BodyContentText};
+
+      margin-top: 0.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid ${palette.BORDER};
+    `;
+  }}
 `;
 
 const DialogButtonContainer = styled.div`
@@ -184,6 +185,7 @@ const DialogButton = styled.button`
   min-width: 60px;
   border: 1px solid #c2c2c2;
   border-radius: 8px;
+  background: #fefefe;
   padding: 4px 8px;
   cursor: pointer;
 

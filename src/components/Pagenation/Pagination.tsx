@@ -176,11 +176,12 @@ const Button = styled.a<{
   position?: string;
 }>`
   ${({ active, color, themes, round, position = '' }) => {
-    const { palette } = themes;
+    const { device, fontSize, palette } = themes;
 
     return css`
       color: ${palette.SECONDARY};
       background: ${active ? palette[color] : palette.GRAY};
+      font-size: 16px;
       width: 100%;
       height: 100%;
       display: flex;
@@ -195,6 +196,14 @@ const Button = styled.a<{
       &:hover {
         background: ${palette[color]};
         transition: 0.2s;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

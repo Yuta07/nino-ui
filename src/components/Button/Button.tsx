@@ -8,7 +8,6 @@ export type Props = {
   type: 'button' | 'submit' | 'reset';
   name?: string;
   children?: React.ReactNode;
-  size?: number;
   color?: string;
   width?: string;
   height: number;
@@ -26,7 +25,6 @@ export const Button = ({
   type,
   name,
   children,
-  size,
   color = 'MAIN',
   width,
   height,
@@ -40,7 +38,6 @@ export const Button = ({
       <Base
         type={type}
         name={name}
-        size={size}
         color={color}
         width={width}
         height={height}
@@ -55,27 +52,26 @@ export const Button = ({
 };
 
 const Base = styled.button<{
-  size: Props['size'];
   color: Props['color'];
   width: Props['width'];
   height: Props['height'];
   themes: Theme;
 }>`
-  ${({ size, color, width, height, themes }) => {
-    const { palette } = themes;
+  ${({ color, width, height, themes }) => {
+    const { device, fontSize, palette } = themes;
 
     return css`
-      font-size: ${size}rem;
+      font-size: 16px;
       color: ${palette.SECONDARY};
       background: ${palette[color]};
       width: ${width ? `${width}` : 'auto'};
       height: ${height}px;
+      padding: 4px 0.5rem;
       border: none;
       border-radius: 6px;
       text-align: center;
       cursor: pointer;
       white-space: nowrap;
-      cursor: pointer;
 
       &:hover {
         opacity: 0.8;
@@ -89,6 +85,14 @@ const Base = styled.button<{
       &:disabled {
         background-color: #bdc3c7;
         cursor: not-allowed;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
       }
     `;
   }}

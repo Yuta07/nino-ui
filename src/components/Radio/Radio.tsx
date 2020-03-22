@@ -12,11 +12,10 @@ type Props = {
   disabled?: boolean;
   readonly?: boolean;
   color?: string;
-  size: number;
   handleRadioChange?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>, value: string) => void;
 };
 
-export const Radio = ({ value, checked, disabled = false, size, color = 'MAIN', handleRadioChange }: Props) => {
+export const Radio = ({ value, checked, disabled = false, color = 'MAIN', handleRadioChange }: Props) => {
   const theme = useTheme();
 
   return (
@@ -25,7 +24,6 @@ export const Radio = ({ value, checked, disabled = false, size, color = 'MAIN', 
       <RadioLabel
         themes={theme}
         color={color}
-        size={size}
         checked={checked}
         disabled={disabled}
         onClick={disabled ? null : event => handleRadioChange(event, value)}
@@ -43,12 +41,11 @@ const RadioButton = styled.input`
 const RadioLabel = styled.label<{
   themes: Theme;
   color: Props['color'];
-  size: Props['size'];
   checked: Props['checked'];
   disabled: Props['disabled'];
 }>`
-  ${({ themes, color, size, checked, disabled }) => {
-    const { palette } = themes;
+  ${({ themes, color, checked, disabled }) => {
+    const { device, fontSize, palette } = themes;
     const radioColor = disabled ? palette.GRAY : palette[color];
 
     return css`
@@ -56,7 +53,7 @@ const RadioLabel = styled.label<{
       display: inline-block;
       padding-left: 2rem;
       vertical-align: middle;
-      font-size: ${size}px;
+      font-size: 14px;
 
       &:hover {
         &:before {
@@ -71,8 +68,8 @@ const RadioLabel = styled.label<{
         opacity: ${checked ? 1 : 0};
         -webkit-transition: opacity 0.2s linear;
         transition: opacity 0.2s linear;
-        width: ${`${size - 8}px`};
-        height: ${`${size - 8}px`};
+        width: 6px;
+        height: 6px;
         margin-top: -3px;
         background: ${checked ? radioColor : palette.GRAY};
         border-radius: 50%;
@@ -86,14 +83,44 @@ const RadioLabel = styled.label<{
         left: 0;
         -webkit-transition: border-color 0.2s linear;
         transition: border-color 0.2s linear;
-        width: ${`${size}px`};
-        height: ${size}px;
+        width: 14px;
+        height: 14px;
         margin-top: -10px;
         border: 3px solid ${checked ? radioColor : palette.GRAY};
         border-radius: 50%;
         display: block;
         content: '';
         cursor: pointer;
+      }
+
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.MEDIUM}px;
+
+        &:before {
+          width: 6px;
+          height: 6px;
+        }
+
+        &:after {
+          width: ${fontSize.MEDIUM}px;
+          height: ${fontSize.MEDIUM}px;
+        }
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: ${fontSize.SMALL}px;
+
+        &:before {
+          width: 6px;
+          height: 6px;
+          top: 45%;
+          left: 6px;
+        }
+
+        &:after {
+          width: ${fontSize.SMALL}px;
+          height: ${fontSize.SMALL}px;
+        }
       }
     `;
   }}
