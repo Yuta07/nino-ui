@@ -18,7 +18,6 @@ export const WithIconButton = ({
   type,
   name,
   children,
-  size,
   color = 'MAIN',
   position,
   width,
@@ -33,7 +32,6 @@ export const WithIconButton = ({
       <Base
         type={type}
         name={name}
-        size={size}
         color={color}
         width={width}
         height={height}
@@ -62,21 +60,21 @@ export const WithIconButton = ({
 };
 
 const Base = styled.button<{
-  size: WithIconButtonProps['size'];
   color: WithIconButtonProps['color'];
   width: WithIconButtonProps['width'];
   height: WithIconButtonProps['height'];
   themes: Theme;
 }>`
-  ${({ size, color, width, height, themes }) => {
+  ${({ color, width, height, themes }) => {
     const { device, fontSize, palette } = themes;
 
     return css`
-      font-size: ${size}rem;
+      font-size: 16px;
       color: ${palette.SECONDARY};
       background: ${palette[color]};
       width: ${width ? `${width}` : 'auto'};
       height: ${height ? `${height}px` : '24px'};
+      padding: 4px 0.5rem;
       border: none;
       border-radius: 6px;
       text-align: center;
@@ -85,7 +83,6 @@ const Base = styled.button<{
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 0.5rem;
 
       &:hover {
         opacity: 0.8;

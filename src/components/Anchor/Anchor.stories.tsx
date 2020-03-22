@@ -4,15 +4,48 @@ import styled from 'styled-components';
 import { Anchor } from './Anchor';
 import { IconOnlyAnchor } from './IconOnlyAnchor';
 import { WithIconAnchor } from './WithIconAnchor';
+import { Heading } from '../Heading';
 
 const Wrapper = () => {
   return (
     <>
+      <Heading heading="Original Anchor" size={4} />
       <Container>
         <Anchor link="#" width="120px" height={32} size={1} color="MAIN">
           original
         </Anchor>
       </Container>
+      <Heading heading="WithIcon Anchor" size={4} />
+      <Container>
+        <WithIconAnchor
+          link="#"
+          iconName="Fi-Heart"
+          iconSize={16}
+          iconColor="SECONDARY"
+          width="100%"
+          height={32}
+          size={1}
+          color="DANGER"
+          position="left"
+        >
+          Favorite
+        </WithIconAnchor>
+      </Container>
+      <Container>
+        <WithIconAnchor
+          link="#"
+          iconName="Fi-Share2"
+          iconColor="SECONDARY"
+          width="100%"
+          height={32}
+          size={1}
+          color="INFO"
+          position="Right"
+        >
+          Share
+        </WithIconAnchor>
+      </Container>
+      <Heading heading="IconOnly Anchor" size={4} />
       <IconOnlyContainer>
         <IconOnlyAnchor
           iconName="Go-Zap"
@@ -63,35 +96,6 @@ const Wrapper = () => {
           shape="circle"
         />
       </IconOnlyContainer>
-      <Container>
-        <WithIconAnchor
-          link="#"
-          iconName="Fi-Heart"
-          iconSize={16}
-          iconColor="SECONDARY"
-          width="100%"
-          height={32}
-          size={1}
-          color="DANGER"
-          position="left"
-        >
-          Favorite
-        </WithIconAnchor>
-      </Container>
-      <Container>
-        <WithIconAnchor
-          link="#"
-          iconName="Fi-Share2"
-          iconColor="SECONDARY"
-          width="100%"
-          height={32}
-          size={1}
-          color="INFO"
-          position="Right"
-        >
-          Share
-        </WithIconAnchor>
-      </Container>
     </>
   );
 };
@@ -103,7 +107,7 @@ storiesOf('Anchor', module).add('all', () =>
 );
 
 const Container = styled.div`
-  margin: 20px 0;
+  margin: 2rem 0;
 `;
 
 const IconOnlyContainer = styled.div`
@@ -112,4 +116,5 @@ const IconOnlyContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  margin: 2rem 0;
 `;

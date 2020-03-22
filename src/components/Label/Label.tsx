@@ -49,7 +49,7 @@ const Text = styled.label<{ themes: Theme }>`
 
     return css`
       color: ${palette.PRIMARY};
-      font-size: 16px;
+      font-size: 14px;
       position: relative;
 
       @media screen and ${device.TABLET} {

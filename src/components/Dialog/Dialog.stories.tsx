@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Dialog } from './Dialog';
+import { Button } from '../Button';
 
 const Wrapper = () => {
   const [isAlertDialogOpen, setIsAlertDialogOpen] = React.useState(false);
@@ -45,7 +46,11 @@ const Wrapper = () => {
         closeText="閉じる"
         onCloseDialog={onCloseAlertDialog}
       />
-      <button onClick={() => isOpenDialog('alert')}>Open Alert Dialog</button>
+      <ButtonMargin>
+        <Button type="button" width="200px" height={32} handleClick={() => isOpenDialog('alert')}>
+          Open Alert Dialog
+        </Button>
+      </ButtonMargin>
       <Dialog
         isOpen={isConfirmDialogOpen}
         title="ConfirmDialog"
@@ -64,7 +69,11 @@ const Wrapper = () => {
         onCloseDialog={onCloseConfirmDialog}
         onActionDialog={onCloseConfirmDialog}
       />
-      <button onClick={() => isOpenDialog('confirm')}>show Confirm Dialog</button>
+      <ButtonMargin>
+        <Button type="button" width="200px" height={32} handleClick={() => isOpenDialog('confirm')}>
+          show Confirm Dialog
+        </Button>
+      </ButtonMargin>
     </Container>
   );
 };
@@ -76,3 +85,7 @@ storiesOf('Dialog', module).add('all', () =>
 );
 
 const Container = styled.div``;
+
+const ButtonMargin = styled.div`
+  margin: 1.5rem;
+`;

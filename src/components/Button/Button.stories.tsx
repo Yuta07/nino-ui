@@ -5,20 +5,30 @@ import { Button } from './Button';
 import { WithIconButton } from './WithIconButton';
 import { TransmissionButton } from './TransmissionButton';
 import { IconOnlyButton } from './IconOnlyButton';
+import { Heading } from '../Heading';
 
 const Wrapper = () => {
   return (
     <>
+      <Heading heading="Original Button" size={4} />
       <Container>
-        <Button type="button" name="base" width="120px" height={32} size={1} color="MAIN">
+        <Button type="button" name="base" width="120px" height={32} color="MAIN">
           original
         </Button>
       </Container>
+      <Heading heading="Disabled Button" size={4} />
       <Container>
-        <Button type="button" name="base" width="120px" height={32} size={1} disabled={true}>
+        <Button type="button" name="base" width="120px" height={32} disabled={true}>
           disabled
         </Button>
       </Container>
+      <Heading heading="Transmission Button" size={4} />
+      <Container>
+        <TransmissionButton type="button" name="base" width="120px" height={28} color="INFO">
+          Transmission
+        </TransmissionButton>
+      </Container>
+      <Heading heading="WithIcon Button" size={4} />
       <Container>
         <WithIconButton
           iconName="Fi-Heart"
@@ -28,7 +38,6 @@ const Wrapper = () => {
           name="base"
           width="100%"
           height={32}
-          size={1}
           color="DANGER"
           position="left"
         >
@@ -43,18 +52,13 @@ const Wrapper = () => {
           name="base"
           width="100%"
           height={32}
-          size={1}
           color="INFO"
           position="Right"
         >
           Share
         </WithIconButton>
       </Container>
-      <Container>
-        <TransmissionButton type="button" name="base" width="120px" height={28} size={1} color="INFO">
-          Transmission
-        </TransmissionButton>
-      </Container>
+      <Heading heading="IconOnly Button" size={4} />
       <IconOnlyContainer>
         <IconOnlyButton
           iconName="Go-Zap"
@@ -62,7 +66,6 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           width="32px"
           height={32}
-          size={1}
           color="WARNING"
           pattern="Go"
           shape="circle"
@@ -73,7 +76,6 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           width="32px"
           height={32}
-          size={1}
           color="INFO"
           pattern="Go"
           shape="circle"
@@ -84,7 +86,6 @@ const Wrapper = () => {
           iconColor="PRIMARY"
           width="32px"
           height={32}
-          size={1}
           color="GRAY"
           pattern="Ti"
           shape="square"
@@ -95,7 +96,6 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           width="32px"
           height={32}
-          size={1}
           color="SUCCESS"
           pattern="Ti"
           shape="circle"
@@ -112,7 +112,7 @@ storiesOf('Button', module).add('all', () =>
 );
 
 const Container = styled.div`
-  margin: 20px 0;
+  margin: 2rem 0;
 `;
 
 const IconOnlyContainer = styled.div`
@@ -121,4 +121,5 @@ const IconOnlyContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  margin: 2rem 0;
 `;

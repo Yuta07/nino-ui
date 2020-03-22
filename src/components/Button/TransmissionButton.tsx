@@ -6,14 +6,13 @@ import { useTheme } from '../../hooks/useTheme';
 
 export const TransmissionButton = ({ ...props }: Props) => {
   const theme = useTheme();
-  const { type, name, children, size, color, width, height, disabled, handleClick } = props;
+  const { type, name, children, color, width, height, disabled, handleClick } = props;
 
   return (
     <>
       <Base
         type={type}
         name={name}
-        size={size}
         color={color}
         width={width}
         height={height}
@@ -28,21 +27,21 @@ export const TransmissionButton = ({ ...props }: Props) => {
 };
 
 const Base = styled.button<{
-  size: Props['size'];
   color: Props['color'];
   width: Props['width'];
   height: Props['height'];
   themes: Theme;
 }>`
-  ${({ size, width, height, themes }) => {
+  ${({ width, height, themes }) => {
     const { device, fontSize, palette } = themes;
 
     return css`
-      font-size: ${size}rem;
+      font-size: 16px;
       color: ${palette.PRIMARY};
       background: ${palette.TRANSPARENT};
       width: ${width ? `${width}` : 'auto'};
       height: ${height ? `${height}px` : '24px'};
+      padding: 4px 0.5rem;
       border: none;
       border-radius: 6px;
       text-align: center;

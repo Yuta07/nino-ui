@@ -64,7 +64,7 @@ const Overlay = styled.div<{ isOpen: Props['isOpen']; theme: Theme }>`
       background: ${palette.OVERLAY};
       visibility: ${isOpen ? `visible` : `hidden`};
       opacity: ${isOpen ? `1` : `0`};
-      -webkit-transition: all 0.2s ease-in;
+      -webkit-transition: all 0.3s ease-in;
       transition: all 0.2s ease-in;
     `;
   }}

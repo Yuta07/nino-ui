@@ -111,8 +111,9 @@ const Search = styled.input<{
       width: ${width}px;
       height: ${height - 8}px;
       color: ${palette.PRIMARY};
-      font-size: 16px;
+      font-size: 14px;
       line-height: 1.4;
+      letter-spacing: 1px;
       padding: 8px 12px;
       margin: 2px;
       border: none;

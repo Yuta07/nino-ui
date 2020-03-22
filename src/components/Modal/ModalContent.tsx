@@ -62,6 +62,7 @@ const Container = styled.div<{ themes: Theme }>`
     return css`
       position: absolute;
       z-index: 9000;
+      max-width: 600px
       display: flex;
       flex-direction: column;
       padding: 1rem;

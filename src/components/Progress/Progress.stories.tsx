@@ -23,10 +23,20 @@ const Wrapper = () => {
         <ProgressBar width="100%" height={10} color="MAIN" progress={percentage} />
       </Container>
       <CircleContainer>
-        <ProgressCircle size={60} color="DANGER" width={5} progress={percentage} />
-        <ProgressCircle size={80} color="WARNING" width={10} progress={percentage} />
-        <ProgressCircle size={100} color="INFO" width={10} progress={percentage} />
-        <ProgressCircle size={120} color="SUCCESS" width={15} progress={percentage} />
+        <Circle>
+          <ProgressCircle size={60} color="DANGER" width={5} progress={percentage} />
+        </Circle>
+        <Circle>
+          <ProgressCircle size={80} color="WARNING" width={10} progress={percentage} />
+        </Circle>
+      </CircleContainer>
+      <CircleContainer>
+        <Circle>
+          <ProgressCircle size={100} color="INFO" width={10} progress={percentage} />
+        </Circle>
+        <Circle>
+          <ProgressCircle size={120} color="SUCCESS" width={15} progress={percentage} />
+        </Circle>
       </CircleContainer>
     </>
   );
@@ -46,5 +56,12 @@ const CircleContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  width: 100%
+  margin: 10px 0;
+`;
+
+const Circle = styled.div`
+  width: 50%
+  padding: 0 5%;
 `;

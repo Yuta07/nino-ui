@@ -53,7 +53,7 @@ const RadioLabel = styled.label<{
       display: inline-block;
       padding-left: 2rem;
       vertical-align: middle;
-      font-size: 16px;
+      font-size: 14px;
 
       &:hover {
         &:before {
@@ -68,8 +68,8 @@ const RadioLabel = styled.label<{
         opacity: ${checked ? 1 : 0};
         -webkit-transition: opacity 0.2s linear;
         transition: opacity 0.2s linear;
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         margin-top: -3px;
         background: ${checked ? radioColor : palette.GRAY};
         border-radius: 50%;
@@ -83,8 +83,8 @@ const RadioLabel = styled.label<{
         left: 0;
         -webkit-transition: border-color 0.2s linear;
         transition: border-color 0.2s linear;
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
         margin-top: -10px;
         border: 3px solid ${checked ? radioColor : palette.GRAY};
         border-radius: 50%;

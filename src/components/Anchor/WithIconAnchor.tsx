@@ -65,6 +65,7 @@ const Base = styled.a<{
       background: ${palette[color]};
       width: ${width ? `${width}` : 'auto'};
       height: ${height ? `${height}px` : '24px'};
+      padding: 4px 0.5rem;
       border: none;
       border-radius: 8px;
       text-align: center;

@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Modal } from './Modal';
+import { Button } from '../Button';
 
 const Wrapper = () => {
   const [isOpen, setIsCOpen] = React.useState(false);
@@ -34,7 +35,9 @@ const Wrapper = () => {
         }
         onCloseModal={onCloseModal}
       />
-      <button onClick={isOpenModal}>show Modal Window</button>
+      <Button type="button" height={32} handleClick={isOpenModal}>
+        show Modal Window
+      </Button>
     </Container>
   );
 };

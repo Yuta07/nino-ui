@@ -81,33 +81,33 @@ const Text = css<{ color: Props['color']; theme: Theme }>`
 
 const H1 = styled.h1`
   ${Text};
-  font-size: 1.625rem;
+  font-size: 1.5rem;
 
   @media screen and (max-width: 768px) {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 22px;
+    font-size: 18px;
   }
 `;
 
 const H2 = styled.h2`
   ${Text};
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 
   @media screen and (max-width: 768px) {
     font-size: 18px;
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `;
 
 const H3 = styled.h3`
   ${Text};
-  font-size: 1.375rem;
+  font-size: 1.125rem;
 
   @media screen and (max-width: 768px) {
     font-size: 16px;
@@ -120,7 +120,7 @@ const H3 = styled.h3`
 
 const H4 = styled.h4`
   ${Text};
-  font-size: 1.25rem;
+  font-size: 1rem;
 
   @media screen and (max-width: 768px) {
     font-size: 14px;
@@ -133,7 +133,7 @@ const H4 = styled.h4`
 
 const H5 = styled.h5`
   ${Text};
-  font-size: 1.125rem;
+  font-size: 1rem;
 
   @media screen and (max-width: 768px) {
     font-size: 14px;
