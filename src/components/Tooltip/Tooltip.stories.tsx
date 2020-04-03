@@ -16,6 +16,26 @@ storiesOf('Tooltip', module).add('all', () => (
     >
       <Text>TIP</Text>
     </Tooltip>
+    <Tooltip
+      content={
+        <>
+          <p>
+            この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。この文章はダミーテキストです。文字の大きさ・字間・行間などを確認するために入れています。
+          </p>
+        </>
+      }
+    >
+      <Text>Dammy Long Text</Text>
+    </Tooltip>
+    <Tooltip
+      content={
+        <>
+          <a href="https://pigmon.io">Pigmon.io</a>
+        </>
+      }
+    >
+      <Text>Yutazon's blog</Text>
+    </Tooltip>
   </Wrapper>
 ));
 
@@ -26,4 +46,6 @@ const Wrapper = styled.div`
   height: 1000px;
 `;
 
-const Text = styled.h1``;
+const Text = styled.h2`
+  margin: 0 30px;
+`;

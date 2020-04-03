@@ -12,7 +12,7 @@ type Props = {
 export const Tooltip = ({ children, content }: Props) => {
   const [state, setstate] = React.useState(false);
   const [currentPosition, setCurrentposition] = React.useState(0);
-  const [wrapperOffsetHeight, setWrapperOffsetHeight] = React.useState(0);
+  const [wrapperHeight, setWrapperHeight] = React.useState(0);
   const wrapperRef = React.useRef(null);
   const tooltipRef = React.useRef(null);
   const themes = useTheme();
@@ -33,7 +33,7 @@ export const Tooltip = ({ children, content }: Props) => {
 
   React.useEffect(() => {
     if (wrapperRef.current && tooltipRef.current) {
-      setWrapperOffsetHeight(wrapperRef.current.offsetHeight);
+      setWrapperHeight(wrapperRef.current.offsetHeight);
     }
   }, []);
 
@@ -56,7 +56,7 @@ export const Tooltip = ({ children, content }: Props) => {
   return (
     <Wrapper ref={wrapperRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {children}
-      <Container ref={tooltipRef} state={state} position={position} height={wrapperOffsetHeight} themes={themes}>
+      <Container ref={tooltipRef} state={state} position={position} height={wrapperHeight} themes={themes}>
         {content}
       </Container>
     </Wrapper>
@@ -80,13 +80,13 @@ const Container = styled.div<{
 
     return css`
       position: absolute;
-      left: -50%;
+      left: 20%;
       z-index: 1000;
       font-size: ${fontSize.SMALL}px;
       color: ${palette.SECONDARY};
       background: rgba(40, 44, 53, 0.85);
       border-radius: 8px;
-      width: 120px;
+      max-width: 160px;
       padding: 10px;
       overflow-wrap: break-word;
       visibility: ${state ? `visible` : `hidden`};
@@ -94,7 +94,7 @@ const Container = styled.div<{
       -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease;
 
-      ${position === 'top' ? `top: ${-height - 50}px` : `bottom: ${-height - 50}px;`}
+      ${position === 'top' ? `bottom: ${height + 10}px` : `top: ${height + 10}px;`}
 
       &:before {
         content: '';
@@ -110,7 +110,6 @@ const Container = styled.div<{
       }
 
       @media screen and ${device.MOBILE} {
-        top: -70px;
         font-size: 10px;
         width: 100px;
       }
