@@ -6,6 +6,7 @@ import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
 import { Heading } from '../Heading';
+import { Tooltip } from '../Tooltip';
 
 storiesOf('Table', module).add('all', () => (
   <>
@@ -69,7 +70,17 @@ storiesOf('Table', module).add('all', () => (
           <TableBody width={25}>
             <a href="https://yutazon.me">yutazon.me@gmail.com</a>
           </TableBody>
-          <TableBody width={25}>東京都千代田区永田町１丁目７−１</TableBody>
+          <TableBody width={25}>
+            <Tooltip
+              content={
+                <TooltipItem>
+                  <Text>東京都千代田区永田町１丁目７−１</Text>
+                </TooltipItem>
+              }
+            >
+              東京都千代田区永田町１丁目７−１
+            </Tooltip>
+          </TableBody>
           <TableBody width={25}>000-0000-0000</TableBody>
         </TableRow>
       </Table>
@@ -80,3 +91,9 @@ storiesOf('Table', module).add('all', () => (
 const Container = styled.div`
   margin: 2rem 0;
 `;
+
+const TooltipItem = styled.div`
+  padding: 10px;
+`;
+
+const Text = styled.span``;

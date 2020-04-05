@@ -20,7 +20,7 @@ const TableWrapper = styled.div<{ themes: Theme }>`
       color: ${palette.PRIMARY};
       background: ${palette.SECONDARY};
       border: 1px solid ${palette.BORDER};
-      font-size: ${fontSize.LARGE}px;
+      font-size: ${fontSize.MEDIUM}px;
       overflow-x: scroll;
 
       @media screen and ${device.TABLET} {
