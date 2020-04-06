@@ -96,7 +96,7 @@ const Container = styled.div<{ themes: Theme }>`
       padding: 1rem;
       background: ${palette.SECONDARY};
       box-shadow: rgba(150, 150, 150, 0.2) 0px 1px 2px 0px;
-      border: 2px solid ${palette.BORDER};
+      border: 1px solid ${palette.BORDER};
       border-radius: 8px;
 
       @media screen and ${device.TABLET} {

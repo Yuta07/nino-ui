@@ -77,13 +77,13 @@ const InputForm = styled.textarea<{
       font-size: 16px;
       line-height: 1.4;
       padding: 8px 12px;
-      border: 2px solid ${borderColor};
+      border: 1px solid ${borderColor};
       border-radius: 6px;
       box-shadow: none;
 
       &:focus {
         outline: none;
-        border: 2px solid ${palette[color]};
+        border: 1px solid ${palette[color]};
       }
 
       ::placeholder,

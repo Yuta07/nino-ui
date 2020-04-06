@@ -38,7 +38,7 @@ const SelectBoxTriggerRef = styled.a<{ color: string; themes: Theme }>`
       cursor: pointer;
 
       ${color === 'SECONDARY'
-        ? `color: ${palette.PRIMARY}; border: 2px solid ${palette.GRAY}`
+        ? `color: ${palette.PRIMARY}; border: 1px solid ${palette.GRAY}`
         : `color:${palette.SECONDARY}; border:none`};
 
       @media screen and ${device.TABLET} {

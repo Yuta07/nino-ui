@@ -49,7 +49,7 @@ const SelectBoxContainer = styled.div<{
       transition: all 0.3s ease;
       transform: ${isOpen ? `translate3d(0px, 10px, 0px)` : null};
       min-width: ${width ? `${width}px` : `auto`};
-      font-size: 16px;
+      font-size: 14px;
       position: absolute;
       z-index: 9999;
       color: ${palette.PRIMARY}

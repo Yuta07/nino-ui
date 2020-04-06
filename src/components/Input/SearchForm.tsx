@@ -85,14 +85,14 @@ const Form = styled.div<{
 }>`
   ${({ color, border, detect, width, height, themes }) => {
     const { palette } = themes;
-    const borderColor = border ? `2px solid ${palette.GRAY}` : 'none';
+    const borderColor = border ? `1px solid ${palette.GRAY}` : 'none';
 
     return css`
       position: relative;
       display: inline-flex;
       width: ${width}px;
       height: ${height}px;
-      border: ${detect ? `2px solid ${palette[color]}` : borderColor};
+      border: ${detect ? `1px solid ${palette[color]}` : borderColor};
       border-radius: 6px;
       box-shadow: none;
     `;
@@ -125,20 +125,38 @@ const Search = styled.input<{
       ::placeholder,
       ::-webkit-input-placeholder {
         color: ${palette.PLACE_HOLDER};
-        font-size: 16px;
+        font-size: 14px;
       }
 
       :-ms-input-placeholder {
         color: ${palette.PLACE_HOLDER};
-        font-size: 16px;
+        font-size: 14px;
       }
 
       @media screen and ${device.TABLET} {
         font-size: ${fontSize.MEDIUM}px;
+
+        ::placeholder,
+        ::-webkit-input-placeholder {
+          font-size: ${fontSize.MEDIUM}px;
+        }
+
+        :-ms-input-placeholder {
+          font-size: ${fontSize.MEDIUM}px;
+        }
       }
 
       @media screen and ${device.MOBILE} {
-        font-size: ${fontSize.MEDIUM}px;
+        font-size: ${fontSize.SMALL}px;
+
+        ::placeholder,
+        ::-webkit-input-placeholder {
+          font-size: ${fontSize.SMALL}px;
+        }
+
+        :-ms-input-placeholder {
+          font-size: ${fontSize.SMALL}px;
+        }
       }
     `;
   }}
