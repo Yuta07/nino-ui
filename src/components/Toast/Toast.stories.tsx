@@ -40,13 +40,6 @@ const Wrapper = () => {
   const [warningState, setWarningState] = React.useState(initialWarningState);
   const [dangerState, setDangerState] = React.useState(initialDangerState);
 
-  const onCloseToast = () => {
-    setSuccessState({ ...successState, visible: false });
-    setInfoState({ ...infoState, visible: false });
-    setWarningState({ ...warningState, visible: false });
-    setDangerState({ ...dangerState, visible: false });
-  };
-
   const onChangeToastMessage = (event: { currentTarget: { name: string; value: string } }) => {
     const name = event.currentTarget.name;
     const value = event.currentTarget.value;
@@ -98,7 +91,7 @@ const Wrapper = () => {
           value={successState.text}
           handleInputChange={onChangeToastMessage}
         />
-        <Toast {...successState} onCloseToast={onCloseToast} />
+        {successState.visible ? <Toast text={successState.text} type={successState.type} /> : null}
         <ButtonMargin>
           <Button type="button" height={28} color="SUCCESS" handleClick={() => onVisibleToast('SUCCESS')}>
             Success PUSH!!
@@ -114,7 +107,7 @@ const Wrapper = () => {
           value={infoState.text}
           handleInputChange={onChangeToastMessage}
         />
-        <Toast {...infoState} onCloseToast={onCloseToast} />
+        {infoState.visible ? <Toast text={infoState.text} type={infoState.type} /> : null}
         <ButtonMargin>
           <Button type="button" height={28} color="INFO" handleClick={() => onVisibleToast('INFO')}>
             Info PUSH!!
@@ -130,7 +123,7 @@ const Wrapper = () => {
           value={warningState.text}
           handleInputChange={onChangeToastMessage}
         />
-        <Toast {...warningState} onCloseToast={onCloseToast} />
+        {warningState.visible ? <Toast text={warningState.text} type={warningState.type} /> : null}
         <ButtonMargin>
           <Button type="button" height={28} color="WARNING" handleClick={() => onVisibleToast('WARNING')}>
             Warning PUSH!!
@@ -146,7 +139,7 @@ const Wrapper = () => {
           value={dangerState.text}
           handleInputChange={onChangeToastMessage}
         />
-        <Toast {...dangerState} onCloseToast={onCloseToast} />
+        {dangerState.visible ? <Toast text={dangerState.text} type={dangerState.type} /> : null}
         <ButtonMargin>
           <Button type="button" height={28} color="DANGER" handleClick={() => onVisibleToast('DANGER')}>
             Danger PUSH!!
