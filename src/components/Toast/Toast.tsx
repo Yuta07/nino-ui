@@ -8,27 +8,30 @@ type Props = {
   text: string;
   time?: number;
   type: 'SUCCESS' | 'INFO' | 'WARNING' | 'DANGER';
-  visible?: boolean;
-  onCloseToast: () => void;
 };
 
 const VISIBLE_TIME = 7000;
-let timerHandle: any;
+let timerHandle: number;
 
-export const Toast = ({ text, time = VISIBLE_TIME, type, visible, onCloseToast }: Props) => {
+export const Toast = ({ text, time = VISIBLE_TIME, type }: Props) => {
+  const [hidden, setHidden] = React.useState(false);
   const theme = useTheme();
 
   React.useEffect(() => {
-    if (!visible) clearTimeout(timerHandle);
+    if (!hidden) clearTimeout(timerHandle);
 
-    timerHandle = setTimeout(() => onCloseToast(), VISIBLE_TIME);
+    timerHandle = window.setTimeout(() => onCloseToast(), time);
 
     return () => {
       clearTimeout(timerHandle);
     };
-  }, [onCloseToast, visible]);
+  }, [time, hidden]);
 
-  if (!visible) return null;
+  const onCloseToast = () => {
+    setHidden(true);
+  };
+
+  if (hidden) return null;
 
   let iconName = '';
 
@@ -50,10 +53,10 @@ export const Toast = ({ text, time = VISIBLE_TIME, type, visible, onCloseToast }
   }
 
   return (
-    <Container type={type} time={time} themes={theme}>
+    <Container type={type} time={time} themes={theme} onClick={onCloseToast}>
       <FeatherIcon name={iconName} size={16} color={theme.palette.SECONDARY} />
       <MessageText themes={theme}>{text}</MessageText>
-      <CloseButton onClick={onCloseToast}>
+      <CloseButton>
         <FeatherIcon size={20} name="Fi-XCircle" color={theme.palette.SECONDARY} />
       </CloseButton>
     </Container>
@@ -93,6 +96,7 @@ const Container = styled.div<{ type: Props['type']; time: Props['time']; themes:
       border-radius: 4px;
       box-shadow: 1px 1px 2px 0px rgba(171, 166, 166, 0.9);
       background-color: ${palette[type]};
+      cursor: pointer;
       -webkit-animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,
         ${ToastFadeOut} 0.5s linear ${time - 500}ms 1 normal forwards running;
       animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,

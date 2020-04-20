@@ -43,8 +43,6 @@ export const Switch = ({
 }: Props) => {
   const theme = useTheme();
 
-  console.log(deviceWidth);
-
   let adaptIconSize: number;
   if (deviceWidth <= 480) {
     adaptIconSize = iconLeft.iconSize * 0.75;
@@ -248,7 +246,7 @@ const ToggleBall = styled.div<{
   themes: Theme;
 }>`
   ${({ status, color, translateMove, themes }) => {
-    const { palette } = themes;
+    const { device, palette } = themes;
     return css`
       position: absolute;
       top: 1px;
@@ -260,7 +258,7 @@ const ToggleBall = styled.div<{
       transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1) 0ms;
       transform: ${status ? `translateX(${translateMove}px)` : 'translateX(0)'};
 
-      @media screen and (max-width: 768px) {
+      @media screen and ${device.TABLET} {
         top: 1px;
         left: 1px;
         width: 26.25px;
@@ -268,7 +266,7 @@ const ToggleBall = styled.div<{
         transform: ${status ? `translateX(${translateMove * 0.87}px)` : 'translateX(0)'};
       }
 
-      @media screen and (max-width: 480px) {
+      @media screen and ${device.MOBILE} {
         top: 1px;
         left: 1px;
         width: 22.5px;

@@ -3,6 +3,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true,
     node: true,
   },
   parser: '@typescript-eslint/parser',
@@ -13,16 +14,7 @@ module.exports = {
       jsx: true,
       modules: true,
     },
-  },
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    project: './tsconfig.json',
-    ecmaFeatures: {
-      jsx: true,
-      modules: true,
-      experimentalObjectRestSpread: true,
-    },
+    project: "./tsconfig.json"
   },
   extends: [
     'react-app',

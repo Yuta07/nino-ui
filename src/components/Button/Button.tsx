@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-// import { FeatherIcon } from '../Icon/FeatherIcon';
 
 export type Props = {
   type: 'button' | 'submit' | 'reset';

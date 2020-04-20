@@ -103,14 +103,14 @@ const InputForm = styled.input<{
       line-height: 1.4;
       letter-spacing: 1px;
       padding: 8px 12px;
-      border: ${border ? `2px solid ${borderColor}` : `none`};
+      border: ${border ? `1px solid ${borderColor}` : `none`};
       border-radius: 6px;
       box-shadow: none;
 
       &:focus {
         padding: ${border ? `8px 12px` : `6px 10px`};
         outline: none;
-        border: 2px solid ${palette[color]};
+        border: 1px solid ${palette[color]};
       }
 
       ::placeholder,

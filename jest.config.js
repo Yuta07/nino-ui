@@ -1,10 +1,11 @@
-// ref: [https://storybook.js.org/docs/configurations/typescript-config/]
-
 module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src'],
   transform: {
-    ".(ts|tsx)": "ts-jest"
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  testPathIgnorePatterns: ["/node_modules/", "/lib/"],
-  testRegex: "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-  moduleFileExtensions: ["ts", "tsx", "js", "json"]
+  testPathIgnorePatterns: ['/node_modules/', '/lib/'],
+  testRegex: '(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
 };
