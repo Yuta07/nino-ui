@@ -1,17 +1,49 @@
 version: 2.1
+
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@2.0.3
+
 jobs:
   build-and-test:
     executor:
       name: node/default
     steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn install
-            - run: yarn test
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
+      - run:
+        name: Install Dependencies
+        command: yarn install
+      - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+        name: Run Tests
+        command: yarn test
+  deploy:
+    executor:
+      name: node/default
+    steps:
+      - yarn build-storybook --quiet
+      - run:
+          name: Netlify Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl -X POST -d {} https://api.netlify.com/build_hooks/5ea1ab34446d21ec04ca6eec
+            fi
+
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  build-and-test-and-deploy:
+    jobs:
+      - build-and-test:
+        filters:
+          branches:
+            ignore:
+              - master
+      - deploy:
+        filters:
+          branches:
+            only:
+              - master
