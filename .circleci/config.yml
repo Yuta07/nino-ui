@@ -20,6 +20,9 @@ jobs:
           - node_modules
         key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
+        name: Run style lint
+        command: yarn lint:style
+      - run:
         name: Run Tests
         command: yarn test
   deploy:

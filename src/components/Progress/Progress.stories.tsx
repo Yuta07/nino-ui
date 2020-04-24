@@ -57,11 +57,11 @@ const CircleContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 100%
+  width: 100%;
   margin: 10px 0;
 `;
 
 const Circle = styled.div`
-  width: 50%
+  width: 50%;
   padding: 0 5%;
 `;
