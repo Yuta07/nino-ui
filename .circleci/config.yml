@@ -64,19 +64,19 @@ workflows:
   build_and_deploy:
     jobs:
       - build:
-        filters:
-          branches:
-            ignore:
-              - master
+          filters:
+            branches:
+              ignore:
+                - master
       - test:
-        requires:
-          - build
-        filters:
-          branches:
-            ignore:
-              - master
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
       - deploy:
-        filters:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only:
+                - master
