@@ -9,10 +9,10 @@ commands:
   yarn_install:
     steps:
       - restore_cache:
-        name: Restore Dependencies
-        keys:
-          - v1-dependencies-{{ checksum "yarn.lock" }}
-          - v1-dependencies
+          name: Restore Dependencies
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies
       - run:
           name: Install Dependencies
           command: yarn install
