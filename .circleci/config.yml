@@ -8,6 +8,7 @@ jobs:
     executor:
       name: node/default
     steps:
+      - checkout
       - restore_cache:
         keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
@@ -29,6 +30,7 @@ jobs:
     executor:
       name: node/default
     steps:
+      - checkout
       - yarn build-storybook --quiet
       - run:
           name: Netlify Deploy
