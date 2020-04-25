@@ -27,6 +27,7 @@ jobs:
     steps:
       - checkout
       - yarn_install
+
   test:
     executor:
       name: node/default
@@ -39,6 +40,7 @@ jobs:
       - run:
         name: Run Tests
         command: yarn test
+
   deploy:
     executor:
       name: node/default
@@ -63,12 +65,9 @@ workflows:
       - test:
         requires:
           - build
-        filters:
-          branches:
-            ignore:
-              - master
       - deploy:
+        requires:
+          - test
         filters:
           branches:
-            only:
-              - master
+            only: master
