@@ -5,7 +5,7 @@ executors:
     docker:
       - image: circleci/node:12.16.2
 
-command:
+commands:
   yarn_install:
     steps:
       - restore_cache:
