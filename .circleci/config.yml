@@ -1,5 +1,10 @@
 version: 2.1
 
+executors:
+  executor:
+    docker:
+      - image: circleci/node:12.13-stretch-browsers
+
 command:
   yarn_install:
     steps:
@@ -19,15 +24,13 @@ command:
 
 jobs:
   build:
-    executor:
-      name: node/default
+    executor: executor
     steps:
       - checkout
       - yarn_install
 
   test:
-    executor:
-      name: node/default
+    executor: executor
     steps:
       - checkout
       - yarn_install
@@ -39,8 +42,7 @@ jobs:
         command: yarn test
 
   deploy:
-    executor:
-      name: node/default
+    executor: executor
     steps:
       - checkout
       - yarn_install
@@ -58,13 +60,22 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build
+      - build:
+        filters:
+          branches:
+            ignore:
+              - master
       - test:
         requires:
           - build
-      - deploy:
-        requires:
-          - test
         filters:
           branches:
-            only: master
+            ignore:
+              - master
+      - deploy:
+        requires:
+          - build
+        filters:
+          branches:
+            only:
+              - master
