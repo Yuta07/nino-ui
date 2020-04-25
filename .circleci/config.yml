@@ -30,7 +30,7 @@ jobs:
       - checkout
       - yarn_install
 
-  test:
+  lint:
     executor:
       name: default
     steps:
@@ -39,6 +39,13 @@ jobs:
       - run:
           name: Run style lint
           command: yarn lint:style
+
+  test:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - yarn_install
       - run:
           name: Run Tests
           command: yarn test
@@ -68,9 +75,16 @@ workflows:
             branches:
               ignore:
                 - master
-      - test:
+      - build:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - master
+      - test:
+          requires:
+            - lint
           filters:
             branches:
               ignore:
