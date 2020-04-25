@@ -33,12 +33,12 @@ jobs:
     steps:
       - checkout
       - yarn_install
-    - run:
-      name: Run style lint
-      command: yarn lint:style
-    - run:
-      name: Run Tests
-      command: yarn test
+      - run:
+        name: Run style lint
+        command: yarn lint:style
+      - run:
+        name: Run Tests
+        command: yarn test
   deploy:
     executor:
       name: node/default
