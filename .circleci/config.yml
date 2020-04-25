@@ -1,10 +1,5 @@
 version: 2.1
 
-executors:
-  executor:
-    docker:
-      - image: circleci/node:12.13-stretch-browsers
-
 command:
   yarn_install:
     steps:
@@ -13,9 +8,7 @@ command:
         keys:
           - v1-dependencies-{{ checksum "yarn.lock" }}
           - v1-dependencies-
-      - run:
-        name: Install Dependencies
-        command: yarn install
+      - run: yarn install
       - save_cache:
         name: Save Dependencies
         key: v1-dependencies-{{ checksum "yarn.lock" }}
@@ -24,37 +17,32 @@ command:
 
 jobs:
   build:
-    executor: executor
+    executor:
+      name: node/default
     steps:
       - checkout
       - yarn_install
 
   test:
-    executor: executor
+    executor:
+      name: node/default
     steps:
       - checkout
       - yarn_install
-      - run:
-        name: Run style lint
-        command: yarn lint:style
-      - run:
-        name: Run Tests
-        command: yarn test
+      - run: yarn lint:style
+      - run: yarn test
 
   deploy:
-    executor: executor
+    executor:
+      name: node/default
     steps:
       - checkout
       - yarn_install
-      - run:
-        name: Build storybook
-        command: yarn build-storybook --quiet
-      - run:
-          name: Netlify Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              curl -X POST -d {} https://api.netlify.com/build_hooks/5ea1ab34446d21ec04ca6eec
-            fi
+      - run: yarn build-storybook --quiet
+      - run: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            curl -X POST -d {} https://api.netlify.com/build_hooks/5ea1ab34446d21ec04ca6eec
+          fi
 
 workflows:
   version: 2
@@ -73,8 +61,6 @@ workflows:
             ignore:
               - master
       - deploy:
-        requires:
-          - build
         filters:
           branches:
             only:
