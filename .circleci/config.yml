@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  my-executor:
+  default:
     docker:
       - image: circleci/node:12.16.2
 
@@ -24,13 +24,15 @@ commands:
 
 jobs:
   build:
-    executor: my-executor
+    executor:
+      name: default
     steps:
       - checkout
       - yarn_install
 
   test:
-    executor: my-executor
+    executor:
+      name: default
     steps:
       - checkout
       - yarn_install
@@ -42,7 +44,8 @@ jobs:
         command: yarn test
 
   deploy:
-    executor: my-executor
+    executor:
+      name: default
     steps:
       - checkout
       - yarn_install
