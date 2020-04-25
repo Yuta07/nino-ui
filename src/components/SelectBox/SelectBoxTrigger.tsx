@@ -56,7 +56,6 @@ const SelectBoxTriggerRef = styled.a<{ color: string; themes: Theme }>`
 `;
 
 const TriangleArrow = styled.span<{ color: string; themes: Theme }>`
-  border-top-color: white;
   display: inline-block;
   border-width: 8px 6px;
   border-color: ${props => (props.color === 'SECONDARY' ? props.themes.palette.GRAY : props.themes.palette.SECONDARY)}
@@ -66,6 +65,5 @@ const TriangleArrow = styled.span<{ color: string; themes: Theme }>`
   position: absolute;
   right: 16px;
   top: 42%;
-  -webkit-transform: scale(1.001);
   transform: scale(1.001);
 `;

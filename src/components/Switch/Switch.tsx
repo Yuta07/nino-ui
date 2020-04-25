@@ -29,8 +29,6 @@ type Props = {
   switchButtonClick: () => void;
 };
 
-const deviceWidth = window.screen.width;
-
 export const Switch = ({
   iconLeft,
   iconRight,
@@ -42,6 +40,7 @@ export const Switch = ({
   switchButtonClick,
 }: Props) => {
   const theme = useTheme();
+  const deviceWidth = window.screen.width;
 
   let adaptIconSize: number;
   if (deviceWidth <= 480) {
@@ -83,7 +82,14 @@ export const Switch = ({
   }
 
   return (
-    <Button backgroundColor={backgroundColor} status={status} themes={theme} onClick={switchButtonClick}>
+    <Button
+      type="button"
+      name="switch"
+      backgroundColor={backgroundColor}
+      status={status}
+      themes={theme}
+      onClick={switchButtonClick}
+    >
       {toggleOnText && toggleOffText ? (
         <>
           <LeftSideText color={status ? ballStyle.color : theme.palette.SECONDARY} status={status}>
@@ -104,7 +110,7 @@ export const Switch = ({
   );
 };
 
-const Button = styled.div<{
+const Button = styled.button<{
   backgroundColor: string;
   status: Props['status'];
   themes: Theme;

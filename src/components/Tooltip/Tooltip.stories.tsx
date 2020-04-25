@@ -71,7 +71,7 @@ const UnorderedList = styled.ul`
 `;
 
 const List = styled.li`
-  &:before {
+  &::before {
     content: '• ';
     color: #fefefe;
   }

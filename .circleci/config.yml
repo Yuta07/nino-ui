@@ -1,17 +1,96 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
+
+executors:
+  default:
+    docker:
+      - image: circleci/node:12.16.2
+
+commands:
+  yarn_install:
+    steps:
+      - restore_cache:
+          name: Restore Dependencies
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - save_cache:
+          name: Save Dependencies
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
 jobs:
-  build-and-test:
+  build:
     executor:
-      name: node/default
+      name: default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn install
-            - run: yarn test
+      - yarn_install
+
+  lint:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - yarn_install
+      - run:
+          name: Run style lint
+          command: yarn lint:style
+
+  test:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - yarn_install
+      - run:
+          name: Run Tests
+          command: yarn test
+
+  deploy:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - yarn_install
+      - run:
+          name: Build storybook
+          command: yarn build-storybook --quiet
+      - run:
+          name: Netlify Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl -X POST -d {} https://api.netlify.com/build_hooks/5ea1ab34446d21ec04ca6eec
+            fi
+
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
+      - lint:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
+      - test:
+          requires:
+            - lint
+          filters:
+            branches:
+              ignore:
+                - master
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
