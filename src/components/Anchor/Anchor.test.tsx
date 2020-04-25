@@ -10,13 +10,7 @@ describe('Anchor test', function() {
         nino-ui
       </Anchor>
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
-    // manually trigger the callback
-    tree.props.onClick();
-    // re-rendering
-    tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

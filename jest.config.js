@@ -1,11 +1,13 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
   roots: ['<rootDir>/src'],
+  verbose: true,
+  preset: 'ts-jest',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  // snapshotSerializers: ['enzyme-to-json/serializer'],
+  testPathIgnorePatterns: ['/node_modules/', '/lib/'],
+  testMatch: ['**/?(*.)+(spec|test).+(ts|tsx|js)'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/lib/'],
-  testRegex: '(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  setupFilesAfterEnv: ['<rootDir>/src/setupEnzyme.ts'],
 };
