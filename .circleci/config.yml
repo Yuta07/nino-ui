@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@2.0.3
-
 command:
   yarn_install:
     steps:
