@@ -24,40 +24,37 @@ command:
 
 jobs:
   build:
-    executor:
-      name: my-executor
-      steps:
-        - checkout
-        - yarn_install
+    executor: my-executor
+    steps:
+      - checkout
+      - yarn_install
 
   test:
-    executor:
-      name: my-executor
-      steps:
-        - checkout
-        - yarn_install
-        - run:
-          name: Run style lint
-          command: yarn lint:style
-        - run:
-          name: Run Tests
-          command: yarn test
+    executor: my-executor
+    steps:
+      - checkout
+      - yarn_install
+      - run:
+        name: Run style lint
+        command: yarn lint:style
+      - run:
+        name: Run Tests
+        command: yarn test
 
   deploy:
-    executor:
-      name: my-executor
-      steps:
-        - checkout
-        - yarn_install
-        - run:
-          name: Build storybook
-          command: yarn build-storybook --quiet
-        - run:
-          name: Netlify Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              curl -X POST -d {} https://api.netlify.com/build_hooks/5ea1ab34446d21ec04ca6eec
-            fi
+    executor: my-executor
+    steps:
+      - checkout
+      - yarn_install
+      - run:
+        name: Build storybook
+        command: yarn build-storybook --quiet
+      - run:
+        name: Netlify Deploy
+        command: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            curl -X POST -d {} https://api.netlify.com/build_hooks/5ea1ab34446d21ec04ca6eec
+          fi
 
 workflows:
   version: 2
