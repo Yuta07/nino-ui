@@ -1,23 +1,23 @@
 export interface FontSize {
-  SMALL: number
-  MEDIUM: number
-  LARGE: number
+  SMALL: number;
+  MEDIUM: number;
+  LARGE: number;
 }
 
 export interface MediaQuery {
-  MOBILE_S: number
-  MOBILE: number
-  TABLET: number
-  TABLET_PRO: number
-  LAPTOP: number
+  MOBILE_S: number;
+  MOBILE: number;
+  TABLET: number;
+  TABLET_PRO: number;
+  LAPTOP: number;
 }
 
 export interface Device {
-  MOBILE_S: string
-  MOBILE: string
-  TABLET: string
-  TABLET_PRO: string
-  LAPTOP: string
+  MOBILE_S: string;
+  MOBILE: string;
+  TABLET: string;
+  TABLET_PRO: string;
+  LAPTOP: string;
 }
 
 export const FONT_SIZE: FontSize = { SMALL: 12, MEDIUM: 14, LARGE: 16 };
@@ -28,4 +28,4 @@ export const DEVICE: Device = {
   TABLET: `(max-width: ${MEDIA_QUERY.TABLET}px)`,
   TABLET_PRO: `(max-width: ${MEDIA_QUERY.TABLET_PRO}px)`,
   LAPTOP: `(min-width: ${MEDIA_QUERY.LAPTOP}px)`,
-}
+};

@@ -5,30 +5,30 @@ import { Button } from './Button';
 import { WithIconButton } from './WithIconButton';
 import { TransmissionButton } from './TransmissionButton';
 import { IconOnlyButton } from './IconOnlyButton';
-import { Heading } from '../Heading';
+// import { Heading } from '../Heading';
 
 const Wrapper = () => {
   return (
     <>
-      <Heading heading="Original Button" size={4} />
+      {/* <Heading heading="Original Button" size={4} /> */}
       <Container>
         <Button type="button" name="base" width="120px" height={32} color="MAIN">
           original
         </Button>
       </Container>
-      <Heading heading="Disabled Button" size={4} />
+      {/* <Heading heading="Disabled Button" size={4} /> */}
       <Container>
         <Button type="button" name="base" width="120px" height={32} disabled={true}>
           disabled
         </Button>
       </Container>
-      <Heading heading="Transmission Button" size={4} />
+      {/* <Heading heading="Transmission Button" size={4} /> */}
       <Container>
         <TransmissionButton type="button" name="base" width="120px" height={28} color="INFO">
           Transmission
         </TransmissionButton>
       </Container>
-      <Heading heading="WithIcon Button" size={4} />
+      {/* <Heading heading="WithIcon Button" size={4} /> */}
       <Container>
         <WithIconButton
           iconName="Fi-Heart"
@@ -58,7 +58,7 @@ const Wrapper = () => {
           Share
         </WithIconButton>
       </Container>
-      <Heading heading="IconOnly Button" size={4} />
+      {/* <Heading heading="IconOnly Button" size={4} /> */}
       <IconOnlyContainer>
         <IconOnlyButton
           iconName="Go-Zap"

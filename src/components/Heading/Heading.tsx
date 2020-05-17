@@ -4,142 +4,247 @@ import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
+  children: string;
   color?: string;
-  heading: string;
-  size: number;
+  heading: number;
+  line?: string;
+  visualLevel?: number;
 };
 
-export const Heading = ({ color = 'MAIN', heading, size }: Props) => {
-  const theme = useTheme();
+const HeadingPresenter = ({ color = 'MAIN', heading, line, visualLevel, ...props }: Props) => {
+  const themes = useTheme();
 
-  let text: React.ReactNode;
-  switch (size) {
+  const level = Math.max(1, Math.min(6, heading));
+  visualLevel = typeof visualLevel !== 'undefined' ? visualLevel : level;
+
+  let headingNode: React.ReactNode;
+  switch (heading) {
     case 1:
-      text = (
-        <H1 color={color} theme={theme}>
-          {heading}
-        </H1>
+      headingNode = (
+        <Heading1 color={color} line={line} visualLevel={visualLevel} theme={themes}>
+          {props.children}
+        </Heading1>
       );
       break;
     case 2:
-      text = (
-        <H2 color={color} theme={theme}>
-          {heading}
-        </H2>
+      headingNode = (
+        <Heading2 color={color} line={line} visualLevel={visualLevel} theme={themes}>
+          {props.children}
+        </Heading2>
       );
       break;
     case 3:
-      text = (
-        <H3 color={color} theme={theme}>
-          {heading}
-        </H3>
+      headingNode = (
+        <Heading3 color={color} line={line} visualLevel={visualLevel} theme={themes}>
+          {props.children}
+        </Heading3>
       );
       break;
     case 4:
-      text = (
-        <H4 color={color} theme={theme}>
-          {heading}
-        </H4>
+      headingNode = (
+        <Heading4 color={color} line={line} visualLevel={visualLevel} theme={themes}>
+          {props.children}
+        </Heading4>
       );
       break;
     case 5:
-      text = (
-        <H5 color={color} theme={theme}>
-          {heading}
-        </H5>
+      headingNode = (
+        <Heading5 color={color} line={line} visualLevel={visualLevel} theme={themes}>
+          {props.children}
+        </Heading5>
       );
       break;
     default:
       break;
   }
 
-  return <>{text}</>;
+  return <>{headingNode}</>;
 };
 
-const Text = css<{ color: Props['color']; theme: Theme }>`
-  ${({ color, theme }) => {
+export const Heading = ({ ...props }: Props) => (
+  <>
+    <HeadingPresenter {...props} />
+  </>
+);
+
+const BaseHeading = css`
+  font-weight: 600;
+  line-height: 1.5;
+`;
+
+const HeadingSize1 = css`
+  font-size: 2rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const HeadingSize2 = css`
+  font-size: 1.75rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.3rem;
+  }
+`;
+
+const HeadingSize3 = css`
+  font-size: 1.3rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.2rem;
+  }
+`;
+
+const HeadingSize4 = css`
+  font-size: 1.25rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const HeadingSize5 = css`
+  font-size: 1.1rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const convertHeading = (level: number): any => {
+  let headingLevel: any;
+  switch (level) {
+    case 1:
+      headingLevel = HeadingSize1;
+      break;
+    case 2:
+      headingLevel = HeadingSize2;
+      break;
+    case 3:
+      headingLevel = HeadingSize3;
+      break;
+    case 4:
+      headingLevel = HeadingSize4;
+      break;
+    case 5:
+      headingLevel = HeadingSize5;
+      break;
+    default:
+      break;
+  }
+  return headingLevel;
+};
+
+const HeadingSideLined = css`
+  position: relative;
+  padding: 0 0 0 0.75rem;
+
+  &:before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 100%;
+    border-radius: 6px;
+  }
+`;
+
+const Heading1 = styled.h1<{ color: Props['color']; line: string; visualLevel: number; theme: Theme }>`
+  ${({ color, line, visualLevel, theme }) => {
     const { palette } = theme;
+    const visual = convertHeading(visualLevel);
 
     return css`
-      padding: 0 0 0 1rem;
-      position: relative;
-
-      &:before {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        content: '';
-        display: inline-block;
-        width: 4px;
-        height: 100%;
-        border-radius: 6px;
-        background: ${palette[color]};
-      }
+      ${BaseHeading};
+      ${visual};
+      ${line === 'under'
+        ? `padding: 0 0 0.25rem 0; border-bottom: 2px solid ${palette[color]};`
+        : line === 'side'
+        ? `${HeadingSideLined}; &:before { background: ${palette[color]}; }`
+        : null};
     `;
   }}
 `;
 
-const H1 = styled.h1`
-  ${Text};
-  font-size: 1.5rem;
+const Heading2 = styled.h2<{ color: Props['color']; line: string; visualLevel: number; theme: Theme }>`
+  ${({ color, line, visualLevel, theme }) => {
+    const { palette } = theme;
+    const visual = convertHeading(visualLevel);
 
-  @media screen and (max-width: 768px) {
-    font-size: 20px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 18px;
-  }
+    return css`
+      ${BaseHeading};
+      ${visual};
+      ${line === 'under'
+        ? `padding: 0 0 0.25rem 0; border-bottom: 2px solid ${palette[color]};`
+        : line === 'side'
+        ? `${HeadingSideLined}; &:before { background: ${palette[color]}; }`
+        : null};
+    `;
+  }}
 `;
 
-const H2 = styled.h2`
-  ${Text};
-  font-size: 1.25rem;
+const Heading3 = styled.h3<{ color: Props['color']; line: string; visualLevel: number; theme: Theme }>`
+  ${({ color, line, visualLevel, theme }) => {
+    const { palette } = theme;
+    const visual = convertHeading(visualLevel);
 
-  @media screen and (max-width: 768px) {
-    font-size: 18px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 16px;
-  }
+    return css`
+      ${BaseHeading};
+      ${visual};
+      ${line === 'under'
+        ? `padding: 0 0 0.25rem 0; border-bottom: 2px solid ${palette[color]};`
+        : line === 'side'
+        ? `${HeadingSideLined}; &:before { background: ${palette[color]}; }`
+        : null};
+    `;
+  }}
 `;
 
-const H3 = styled.h3`
-  ${Text};
-  font-size: 1.125rem;
+const Heading4 = styled.h4<{ color: Props['color']; line: string; visualLevel: number; theme: Theme }>`
+  ${({ color, line, visualLevel, theme }) => {
+    const { palette } = theme;
+    const visual = convertHeading(visualLevel);
 
-  @media screen and (max-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 16px;
-  }
+    return css`
+      ${BaseHeading};
+      ${visual};
+      ${line === 'under'
+        ? `padding: 0 0 0.25rem 0; border-bottom: 2px solid ${palette[color]};`
+        : line === 'side'
+        ? `${HeadingSideLined}; &:before { background: ${palette[color]}; }`
+        : null};
+    `;
+  }}
 `;
 
-const H4 = styled.h4`
-  ${Text};
-  font-size: 1rem;
+const Heading5 = styled.h5<{ color: Props['color']; line: string; visualLevel: number; theme: Theme }>`
+  ${({ color, line, visualLevel, theme }) => {
+    const { palette } = theme;
+    const visual = convertHeading(visualLevel);
 
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 14px;
-  }
-`;
-
-const H5 = styled.h5`
-  ${Text};
-  font-size: 1rem;
-
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 14px;
-  }
+    return css`
+      ${BaseHeading};
+      ${visual};
+      ${line === 'under'
+        ? `padding: 0 0 0.25rem 0; border-bottom: 2px solid ${palette[color]};`
+        : line === 'side'
+        ? `${HeadingSideLined}; &:before { background: ${palette[color]}; }`
+        : null};
+    `;
+  }}
 `;

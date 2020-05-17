@@ -4,18 +4,18 @@ import styled from 'styled-components';
 import { Anchor } from './Anchor';
 import { IconOnlyAnchor } from './IconOnlyAnchor';
 import { WithIconAnchor } from './WithIconAnchor';
-import { Heading } from '../Heading';
+// import { Heading } from '../Heading';
 
 const Wrapper = () => {
   return (
     <>
-      <Heading heading="Original Anchor" size={4} />
+      {/* <Heading heading="Original Anchor" size={4} /> */}
       <Container>
         <Anchor link="#" width="120px" height={32} size={1} color="MAIN">
           original
         </Anchor>
       </Container>
-      <Heading heading="WithIcon Anchor" size={4} />
+      {/* <Heading heading="WithIcon Anchor" size={4} /> */}
       <Container>
         <WithIconAnchor
           link="#"
@@ -45,7 +45,7 @@ const Wrapper = () => {
           Share
         </WithIconAnchor>
       </Container>
-      <Heading heading="IconOnly Anchor" size={4} />
+      {/* <Heading heading="IconOnly Anchor" size={4} /> */}
       <IconOnlyContainer>
         <IconOnlyAnchor
           iconName="Go-Zap"

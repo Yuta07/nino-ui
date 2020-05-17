@@ -5,12 +5,12 @@ import { Table } from './Table';
 import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
-import { Heading } from '../Heading';
+// import { Heading } from '../Heading';
 import { Tooltip } from '../Tooltip';
 
 storiesOf('Table', module).add('all', () => (
   <>
-    <Heading heading="scroll" size={4} />
+    {/* <Heading heading="scroll" size={4} /> */}
     <Container>
       <Table>
         <TableRow type="header" width={150}>
@@ -35,7 +35,7 @@ storiesOf('Table', module).add('all', () => (
         </TableRow>
       </Table>
     </Container>
-    <Heading heading="table" size={4} />
+    {/* <Heading heading="table" size={4} /> */}
     <Container>
       <Table>
         <TableRow type="header">
@@ -56,7 +56,7 @@ storiesOf('Table', module).add('all', () => (
         </TableRow>
       </Table>
     </Container>
-    <Heading heading="truncate" size={4} />
+    {/* <Heading heading="truncate" size={4} /> */}
     <Container>
       <Table>
         <TableRow type="header">
