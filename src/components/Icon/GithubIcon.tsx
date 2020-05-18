@@ -379,6 +379,7 @@ export interface GithubIconProps {
   color?: string;
   size?: number;
   className?: string;
+  onClick?: () => void;
 }
 
 export const GithubIcon = ({ name, color = '#363636', size = 16, className = '' }: GithubIconProps) => {

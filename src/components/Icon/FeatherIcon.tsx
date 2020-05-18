@@ -569,6 +569,7 @@ export interface FeatherIconProps {
   color?: string;
   size?: number;
   className?: string;
+  onClick?: () => void;
 }
 
 export const FeatherIcon = ({ name, color = '#363636', size = 16, className = '' }: FeatherIconProps) => {
