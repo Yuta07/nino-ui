@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { TypIcon } from '../Icon/TypIcon';
+import { TypeIcon } from '../atoms/Icon/TypeIcon';
 
 type Props = {
   isBackFirst?: boolean;
@@ -35,11 +35,11 @@ export const Pagination = ({
   let isBackFirstButton: JSX.Element, isGoLastButton: JSX.Element;
 
   if (isBackFirst) {
-    isBackFirstButton = <TypIcon name="Ti-MediaRewind" size={16} color={theme.palette.SECONDARY} />;
+    isBackFirstButton = <TypeIcon name="Ti-MediaRewind" size={16} color={theme.palette.SECONDARY} />;
   }
 
   if (isGoLast) {
-    isGoLastButton = <TypIcon name="Ti-MediaFastForward" size={16} color={theme.palette.SECONDARY} />;
+    isGoLastButton = <TypeIcon name="Ti-MediaFastForward" size={16} color={theme.palette.SECONDARY} />;
   }
 
   const minDisplayPageNum = currentPage - range > 0 ? currentPage - range : 1;
@@ -109,7 +109,7 @@ export const Pagination = ({
             position="first"
             onClick={e => onClickPageNum(e, currentPage - 1, 'isPrev')}
           >
-            <TypIcon name="Ti-MediaPlayReverse" size={16} color={theme.palette.SECONDARY} />
+            <TypeIcon name="Ti-MediaPlayReverse" size={16} color={theme.palette.SECONDARY} />
           </Button>
         </PageList>
         {renderPaginationItems(maxDisplayPageNum)}
@@ -124,7 +124,7 @@ export const Pagination = ({
             position="last"
             onClick={e => onClickPageNum(e, currentPage + 1, 'isNext')}
           >
-            <TypIcon name="Ti-MediaPlay" size={16} color={theme.palette.SECONDARY} />
+            <TypeIcon name="Ti-MediaPlay" size={16} color={theme.palette.SECONDARY} />
           </Button>
         </PageList>
         {isGoLast ? (

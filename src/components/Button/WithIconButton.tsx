@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { IconProps, Props } from './Button';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../Icon/FeatherIcon';
+import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
 
 export type Position = {
   position: string;

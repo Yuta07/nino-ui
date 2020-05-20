@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../Icon/FeatherIcon';
-import { GithubIcon } from '../Icon/GithubIcon';
-import { TypIcon } from '../Icon/TypIcon';
+import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
+import { GithubIcon } from '../atoms/Icon/GithubIcon';
+import { TypeIcon } from '../atoms/Icon/TypeIcon';
 
 type SwitchIcon = {
   iconName?: string;
@@ -60,7 +60,7 @@ export const Switch = ({
       iconLeftSide = <GithubIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
       break;
     case 'Ti':
-      iconLeftSide = <TypIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
+      iconLeftSide = <TypeIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
       break;
     default:
       break;
@@ -75,7 +75,7 @@ export const Switch = ({
       iconRightSide = <GithubIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
       break;
     case 'Ti':
-      iconRightSide = <TypIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
+      iconRightSide = <TypeIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
       break;
     default:
       break;

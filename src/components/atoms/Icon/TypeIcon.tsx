@@ -1,5 +1,7 @@
 import * as React from 'react';
+import './styles.css';
 import { IconContext } from 'react-icons';
+
 import {
   TiAdjustBrightness,
   TiAdjustContrast,
@@ -339,7 +341,7 @@ import {
   TiZoom,
 } from 'react-icons/ti';
 
-export const TypIconType: { [key: string]: React.ElementType } = {
+export const TypeIconType: { [key: string]: React.ElementType } = {
   'Ti-AdjustBrightness': TiAdjustBrightness,
   'Ti-AdjustContrast': TiAdjustContrast,
   'Ti-AnchorOutline': TiAnchorOutline,
@@ -678,19 +680,24 @@ export const TypIconType: { [key: string]: React.ElementType } = {
   'Ti-Zoom': TiZoom,
 };
 
-export interface TypIconProps {
-  name: keyof typeof TypIconType;
+export interface TypeIconProps {
+  name: keyof typeof TypeIconType;
   color?: string;
   size?: number;
   className?: string;
   onClick?: () => void;
 }
 
-export const TypIcon = ({ name, color = '#363636', size = 16, className = '' }: TypIconProps) => {
-  const NinoIcon = TypIconType[name];
+export const TypeIcon = ({ name, color = '#363636', size = 16, className = '', onClick }: TypeIconProps) => {
+  const NinoIcon = TypeIconType[name];
+
+  if (onClick) {
+    className += 'clickable';
+  }
+
   return (
     <IconContext.Provider value={{ color: color, size: `${size}px`, className: className }}>
-      <NinoIcon />
+      <NinoIcon onClick={onClick} />
     </IconContext.Provider>
   );
 };

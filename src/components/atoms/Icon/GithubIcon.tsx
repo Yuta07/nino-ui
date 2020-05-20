@@ -1,4 +1,6 @@
 import * as React from 'react';
+import './styles.css';
+
 import { IconContext } from 'react-icons';
 import {
   GoAlert,
@@ -382,11 +384,16 @@ export interface GithubIconProps {
   onClick?: () => void;
 }
 
-export const GithubIcon = ({ name, color = '#363636', size = 16, className = '' }: GithubIconProps) => {
+export const GithubIcon = ({ name, color = '#363636', size = 16, className = '', onClick }: GithubIconProps) => {
   const NinoIcon = GithubIconType[name];
+
+  if (onClick) {
+    className += 'clickable';
+  }
+
   return (
     <IconContext.Provider value={{ color: color, size: `${size}px`, className: className }}>
-      <NinoIcon />
+      <NinoIcon onClick={onClick} />
     </IconContext.Provider>
   );
 };

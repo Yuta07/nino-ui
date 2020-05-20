@@ -34,7 +34,7 @@ const BalloonCard = styled.span<{ posi?: Props['position']; themes: Theme }>`
       background-color: ${palette.DARK};
       border-radius: 4px;
       display: inline-block;
-      font-size: ${fontSize.SMALL};
+      font-size: ${fontSize.SMALL}px;
       padding: 0.3rem 0.5rem;
       position: relative;
 

@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 import { AnchorProps } from './Anchor';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../Icon/FeatherIcon';
-import { GithubIcon } from '../Icon/GithubIcon';
-import { TypIcon } from '../Icon/TypIcon';
+import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
+import { GithubIcon } from '../atoms/Icon/GithubIcon';
+import { TypeIcon } from '../atoms/Icon/TypeIcon';
 
 export type IconAnchorProps = {
   link: string;
@@ -44,7 +44,7 @@ export const IconOnlyAnchor = ({
       iconButton = <GithubIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />;
       break;
     case 'Ti':
-      iconButton = <TypIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />;
+      iconButton = <TypeIcon name={iconName} size={iconSize} color={theme.palette[iconColor]} />;
       break;
     default:
       break;

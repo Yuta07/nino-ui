@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../Icon/FeatherIcon';
+import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
 
 type Position = {
   top: number;

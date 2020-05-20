@@ -20,7 +20,7 @@ export const DEFAULT_PALETTE: Palette = {
   SECONDARY: '#fefefe',
   SUB_SECONDARY: '#f5f5f5',
   GRAY: '#ced4da',
-  DARK: 'rgb(40, 44, 53)',
+  DARK: 'rgb(43, 46, 53)',
   PLACE_HOLDER: 'rgba(69, 69, 69, 0.5)',
   BORDER: '#c2c2c2',
   MAIN: '#f39c12',

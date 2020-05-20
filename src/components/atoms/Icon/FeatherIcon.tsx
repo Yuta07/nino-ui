@@ -1,4 +1,6 @@
 import * as React from 'react';
+import './styles.css';
+
 import { IconContext } from 'react-icons';
 import {
   FiActivity,
@@ -572,11 +574,16 @@ export interface FeatherIconProps {
   onClick?: () => void;
 }
 
-export const FeatherIcon = ({ name, color = '#363636', size = 16, className = '' }: FeatherIconProps) => {
+export const FeatherIcon = ({ name, color = '#363636', size = 16, className = '', onClick }: FeatherIconProps) => {
   const NinoIcon = FeatherIconType[name];
+
+  if (onClick) {
+    className += 'clickable';
+  }
+
   return (
     <IconContext.Provider value={{ color: color, size: `${size}px`, className: className }}>
-      <NinoIcon />
+      <NinoIcon onClick={onClick} />
     </IconContext.Provider>
   );
 };

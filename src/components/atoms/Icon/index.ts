@@ -1,3 +1,3 @@
 export * from './FeatherIcon';
 export * from './GithubIcon';
-export * from './TypIcon';
+export * from './TypeIcon';
