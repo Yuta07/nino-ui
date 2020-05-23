@@ -1,4 +1,5 @@
 export interface FontSize {
+  X_SMALL: number;
   SMALL: number;
   MEDIUM: number;
   LARGE: number;
@@ -20,7 +21,7 @@ export interface Device {
   LAPTOP: string;
 }
 
-export const FONT_SIZE: FontSize = { SMALL: 14, MEDIUM: 16, LARGE: 18 };
+export const FONT_SIZE: FontSize = { X_SMALL: 12, SMALL: 14, MEDIUM: 16, LARGE: 18 };
 export const MEDIA_QUERY: MediaQuery = { MOBILE_S: 320, MOBILE: 480, TABLET: 768, TABLET_PRO: 1024, LAPTOP: 1025 };
 export const DEVICE: Device = {
   MOBILE_S: `(max-width: ${MEDIA_QUERY.MOBILE_S}px)`,

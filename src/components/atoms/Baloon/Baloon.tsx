@@ -2,9 +2,11 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { useTheme } from '../../../hooks/useTheme';
 import { Theme } from '../../../themes/Theme';
+import { HoverInteraction, Tip, Marker } from '../HoverInteraction/HoverInteraction';
 
 type Props = {
   children: string | React.ReactNode;
+  label?: string;
   position?: {
     position?: string;
     top?: string;
@@ -14,13 +16,30 @@ type Props = {
   };
 };
 
-export const Balloon = ({ children, position, ...props }: Props) => {
+export const Balloon = ({ children, position }: Props) => {
   const themes = useTheme();
 
   return (
-    <BalloonCard posi={position} themes={themes} {...props}>
+    <BalloonCard posi={position} themes={themes}>
       {children}
     </BalloonCard>
+  );
+};
+
+export const BalloonTip = ({ children, label, position }: Props) => {
+  const themes = useTheme();
+
+  return (
+    <HoverInteraction>
+      <Marker>
+        <Span>{children}</Span>
+      </Marker>
+      <Tip>
+        <BalloonCard posi={position} themes={themes}>
+          {label}
+        </BalloonCard>
+      </Tip>
+    </HoverInteraction>
   );
 };
 
@@ -34,7 +53,7 @@ const BalloonCard = styled.span<{ posi?: Props['position']; themes: Theme }>`
       background-color: ${palette.DARK};
       border-radius: 4px;
       display: inline-block;
-      font-size: ${fontSize.SMALL}px;
+      font-size: ${fontSize.X_SMALL}px;
       padding: 0.3rem 0.5rem;
       position: relative;
 
@@ -75,3 +94,5 @@ const BalloonCard = styled.span<{ posi?: Props['position']; themes: Theme }>`
     `;
   }}
 `;
+
+const Span = styled.span``;
