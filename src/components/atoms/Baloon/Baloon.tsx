@@ -86,7 +86,8 @@ const BalloonCard = styled.span<{ posi?: Props['position']; themes: Theme }>`
       padding: 0.3rem 0.5rem;
       position: relative;
 
-      ${((position && top) || left || right || bottom) &&
+      ${position &&
+        (top || left || right || bottom) &&
         css`
           position: ${position};
         `}

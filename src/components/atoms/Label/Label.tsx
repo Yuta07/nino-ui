@@ -5,39 +5,37 @@ import { useTheme } from '../../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
 
 type Position = {
-  top: number;
-  left: number;
+  position?: string;
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
 };
 
 type Props = {
   label: string;
   icon?: string;
-  required?: boolean;
   requiredText?: string;
   position?: Position;
 };
 
-export const Label = ({
-  label,
-  icon = 'Fi-AlertCircle',
-  required,
-  requiredText = '必須',
-  position = { top: 20, left: 0 },
-}: Props) => {
+export const Label = ({ label }: Props) => {
+  const theme = useTheme();
+
+  return <Text themes={theme}>{label}</Text>;
+};
+
+export const LabelWithRequired = ({ label, icon = 'Fi-AlertCircle', requiredText = '必須項目', position }: Props) => {
   const theme = useTheme();
 
   return (
-    <Text themes={theme}>
-      {label}
-      {required ? (
-        <RequiredContainer position={position}>
-          <FeatherIcon name={icon} color={theme.palette.DANGER} size={12} />
-          <RequiredText color={theme.palette.DANGER} size={12}>
-            {requiredText}
-          </RequiredText>
-        </RequiredContainer>
-      ) : null}
-    </Text>
+    <Wrapper>
+      <Text themes={theme}>{label}</Text>
+      <RequiredContainer posi={position}>
+        <FeatherIcon name={icon} color={theme.palette.DANGER} size={12} />
+        <RequiredText color={theme.palette.DANGER}>{requiredText}</RequiredText>
+      </RequiredContainer>
+    </Wrapper>
   );
 };
 
@@ -47,38 +45,65 @@ const Text = styled.label<{ themes: Theme }>`
 
     return css`
       color: ${palette.PRIMARY};
-      font-size: 14px;
+      font-size: ${fontSize.MEDIUM}px;
       position: relative;
 
       @media screen and ${device.TABLET} {
-        font-size: ${fontSize.MEDIUM}px;
+        font-size: ${fontSize.SMALL}px;
       }
 
       @media screen and ${device.MOBILE_S} {
-        font-size: ${fontSize.SMALL}px;
+        font-size: ${fontSize.X_SMALL}px;
       }
     `;
   }}
 `;
 
-const RequiredText = styled.span<{ color: string; size: number }>`
-  color: ${props => props.color};
-  font-size: ${props => props.size}px;
-  padding-top: 2px;
-  margin-left: 4px;
+const Wrapper = styled.div`
+  display: inline-block;
+  position: relative;
 `;
 
-const RequiredContainer = styled.div<{ position: Position }>`
-  ${({ position }) => {
-    const { top, left } = position;
+const RequiredText = styled.span<{ color: string }>`
+  ${({ color }) => {
+    return css`
+      color: ${color};
+      font-size: 12px;
+      padding-left: 4px;
+    `;
+  }}
+`;
+
+const RequiredContainer = styled.div<{ posi: Position }>`
+  ${({ posi }) => {
+    const { position, top, bottom, right, left } = posi !== undefined && posi;
 
     return css`
-      position: absolute;
-      top: ${top}px;
-      left: 0 ${left}x;
-      width: 100%;
       display: flex;
       align-items: center;
+      white-space: nowrap;
+
+      ${position &&
+        (top || left || right || bottom) &&
+        css`
+          position: ${position};
+        `}
+      ${top &&
+        css`
+          top: ${top};
+        `}
+      ${bottom &&
+        css`
+          bottom: ${bottom};
+        `}
+      ${right &&
+        css`
+          right: ${right};
+        `}
+      ${left &&
+        css`
+          left: ${left};
+        `}
     `;
   }}
 `;

@@ -61,11 +61,7 @@ const HeadingPresenter = ({ children, color = 'MAIN', heading, line, visualLevel
   return <>{headingNode}</>;
 };
 
-export const Heading = ({ ...props }: Props) => (
-  <>
-    <HeadingPresenter {...props} />
-  </>
-);
+export const Heading = ({ ...props }: Props) => <HeadingPresenter {...props} />;
 
 const BaseHeading = css`
   font-weight: 600;
