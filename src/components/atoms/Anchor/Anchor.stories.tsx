@@ -1,31 +1,49 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Anchor } from './Anchor';
+import { Anchor, UnderlineAnchor, InteractionAnchor } from './Anchor';
+import { CustomAnchor } from './CustomAnchor';
 import { IconOnlyAnchor } from './IconOnlyAnchor';
 import { WithIconAnchor } from './WithIconAnchor';
-// import { Heading } from '../Heading';
 
 const Wrapper = () => {
   return (
     <>
-      {/* <Heading heading="Original Anchor" size={4} /> */}
       <Container>
-        <Anchor link="#" width="120px" height={32} size={1} color="MAIN">
-          original
+        <Anchor link="#" width="auto" height="32px">
+          Anchor - Original
         </Anchor>
       </Container>
-      {/* <Heading heading="WithIcon Anchor" size={4} /> */}
+      <Container>
+        <UnderlineAnchor link="#" width="auto" height="32px">
+          Anchor - Underline
+        </UnderlineAnchor>
+      </Container>
+      <Container>
+        <InteractionAnchor border="MAIN" link="#" width="auto" height="32px">
+          Anchor - Interaction
+        </InteractionAnchor>
+      </Container>
+      <Container>
+        <CustomAnchor link="#" width="auto" height="32px">
+          Custom - Normal
+        </CustomAnchor>
+      </Container>
+      <Container>
+        <CustomAnchor link="#" width="auto" height="32px" color="SECONDARY" background="MAIN">
+          Custom - background: MAIN, color: SECONDARY
+        </CustomAnchor>
+      </Container>
       <Container>
         <WithIconAnchor
           link="#"
           iconName="Fi-Heart"
           iconSize={16}
           iconColor="SECONDARY"
-          width="100%"
-          height={32}
-          size={1}
-          color="DANGER"
+          width="auto%"
+          height="32px"
+          color="SECONDARY"
+          background="DANGER"
           position="left"
         >
           Favorite
@@ -36,16 +54,15 @@ const Wrapper = () => {
           link="#"
           iconName="Fi-Share2"
           iconColor="SECONDARY"
-          width="100%"
-          height={32}
-          size={1}
-          color="INFO"
+          width="auto%"
+          height="32px"
+          color="SECONDARY"
+          background="INFO"
           position="Right"
         >
           Share
         </WithIconAnchor>
       </Container>
-      {/* <Heading heading="IconOnly Anchor" size={4} /> */}
       <IconOnlyContainer>
         <IconOnlyAnchor
           iconName="Go-Zap"
@@ -53,9 +70,8 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           link=""
           width="32px"
-          height={32}
-          size={1}
-          color="WARNING"
+          height="32px"
+          background="WARNING"
           pattern="Go"
           shape="circle"
         />
@@ -65,9 +81,8 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           link=""
           width="32px"
-          height={32}
-          size={1}
-          color="INFO"
+          height="32px"
+          background="INFO"
           pattern="Go"
           shape="circle"
         />
@@ -77,9 +92,8 @@ const Wrapper = () => {
           iconColor="PRIMARY"
           link=""
           width="32px"
-          height={32}
-          size={1}
-          color="GRAY"
+          height="32px"
+          background="GRAY"
           pattern="Ti"
           shape="square"
         />
@@ -89,9 +103,8 @@ const Wrapper = () => {
           iconColor="SECONDARY"
           link=""
           width="32px"
-          height={32}
-          size={1}
-          color="SUCCESS"
+          height="32px"
+          background="SUCCESS"
           pattern="Ti"
           shape="circle"
         />

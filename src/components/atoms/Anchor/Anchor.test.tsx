@@ -6,7 +6,7 @@ import { Anchor } from './Anchor';
 describe('Anchor test', function() {
   test('Nothing changes when clicked', () => {
     const component = renderer.create(
-      <Anchor link="#" width="120px" height={32} size={1} color="MAIN">
+      <Anchor link="#" width="120px" height="32px">
         nino-ui
       </Anchor>
     );

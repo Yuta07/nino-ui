@@ -28,11 +28,19 @@ export const DangerText = ({ children, color = 'DANGER', size = 'MEDIUM' }: Prop
 
 const Txt = styled.p<{ color: string; size: Props['size']; themes: Theme }>`
   ${({ color, size, themes }) => {
-    const { palette, fontSize } = themes;
+    const { device, palette, fontSize } = themes;
 
     return css`
       color: ${palette[color]};
       font-size: ${fontSize[size]}px;
+
+      @media screen and ${device.TABLET} {
+        font-size: calc(${fontSize[size]} - 2) px;
+      }
+
+      @media screen and ${device.MOBILE_S} {
+        font-size: calc(${fontSize[size]} - 4) px;
+      }
     `;
   }}
 `;
