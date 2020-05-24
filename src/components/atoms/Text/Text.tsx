@@ -5,10 +5,11 @@ import { Theme } from '../../../themes/Theme';
 
 type Props = {
   children: string | React.ReactNode;
+  color?: string;
   size?: 'SMALL' | 'MEDIUM' | 'LARGE';
 };
 
-const TxtFactory = (children: Props['children'], color: string, size: Props['size']) => {
+const TxtFactory = ({ children, color, size }: Props) => {
   const themes = useTheme();
 
   return (
@@ -18,10 +19,12 @@ const TxtFactory = (children: Props['children'], color: string, size: Props['siz
   );
 };
 
-export const Text = ({ children, size = 'MEDIUM' }: Props) => TxtFactory(children, 'PRIMARY', size);
-export const InfoText = ({ children, size = 'MEDIUM' }: Props) => TxtFactory(children, 'INFO', size);
-export const WarningText = ({ children, size = 'MEDIUM' }: Props) => TxtFactory(children, 'WARNING', size);
-export const DangerText = ({ children, size = 'MEDIUM' }: Props) => TxtFactory(children, 'DANGER', size);
+export const Text = ({ children, color = 'PRIMARY', size = 'MEDIUM' }: Props) => TxtFactory({ children, color, size });
+export const InfoText = ({ children, color = 'INFO', size = 'MEDIUM' }: Props) => TxtFactory({ children, color, size });
+export const WarningText = ({ children, color = 'WARNING', size = 'MEDIUM' }: Props) =>
+  TxtFactory({ children, color, size });
+export const DangerText = ({ children, color = 'DANGER', size = 'MEDIUM' }: Props) =>
+  TxtFactory({ children, color, size });
 
 const Txt = styled.p<{ color: string; size: Props['size']; themes: Theme }>`
   ${({ color, size, themes }) => {

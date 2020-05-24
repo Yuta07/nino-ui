@@ -10,12 +10,12 @@ type Props = {
   onClick?: () => void;
 };
 
-export const DeleteButton = ({ text, color = 'PRIMARY', onClick }: Props) => {
+export const EditButton = ({ text, color = 'PRIMARY', onClick }: Props) => {
   const themes = useTheme();
 
   return (
     <HoverInteraction>
-      <FeatherIcon name="Fi-Trash2" color={themes.palette[color]} onClick={onClick} />
+      <FeatherIcon name="Fi-Edit" color={themes.palette[color]} onClick={onClick} />
       {text ? <Balloon>{text}</Balloon> : null}
     </HoverInteraction>
   );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
   children: string;
@@ -11,7 +11,7 @@ type Props = {
   visualLevel?: number;
 };
 
-const HeadingPresenter = ({ color = 'MAIN', heading, line, visualLevel, ...props }: Props) => {
+const HeadingPresenter = ({ children, color = 'MAIN', heading, line, visualLevel }: Props) => {
   const themes = useTheme();
 
   const level = Math.max(1, Math.min(6, heading));
@@ -22,35 +22,35 @@ const HeadingPresenter = ({ color = 'MAIN', heading, line, visualLevel, ...props
     case 1:
       headingNode = (
         <Heading1 color={color} line={line} visualLevel={visualLevel} theme={themes}>
-          {props.children}
+          {children}
         </Heading1>
       );
       break;
     case 2:
       headingNode = (
         <Heading2 color={color} line={line} visualLevel={visualLevel} theme={themes}>
-          {props.children}
+          {children}
         </Heading2>
       );
       break;
     case 3:
       headingNode = (
         <Heading3 color={color} line={line} visualLevel={visualLevel} theme={themes}>
-          {props.children}
+          {children}
         </Heading3>
       );
       break;
     case 4:
       headingNode = (
         <Heading4 color={color} line={line} visualLevel={visualLevel} theme={themes}>
-          {props.children}
+          {children}
         </Heading4>
       );
       break;
     case 5:
       headingNode = (
         <Heading5 color={color} line={line} visualLevel={visualLevel} theme={themes}>
-          {props.children}
+          {children}
         </Heading5>
       );
       break;

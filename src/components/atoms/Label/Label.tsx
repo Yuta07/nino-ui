@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
+import { FeatherIcon } from '../Icon/FeatherIcon';
 
 type Position = {
   top: number;
@@ -27,19 +27,17 @@ export const Label = ({
   const theme = useTheme();
 
   return (
-    <>
-      <Text themes={theme}>
-        {label}
-        {required ? (
-          <RequiredContainer position={position}>
-            <FeatherIcon name={icon} color={theme.palette.DANGER} size={12} />
-            <RequiredText color={theme.palette.DANGER} size={12}>
-              {requiredText}
-            </RequiredText>
-          </RequiredContainer>
-        ) : null}
-      </Text>
-    </>
+    <Text themes={theme}>
+      {label}
+      {required ? (
+        <RequiredContainer position={position}>
+          <FeatherIcon name={icon} color={theme.palette.DANGER} size={12} />
+          <RequiredText color={theme.palette.DANGER} size={12}>
+            {requiredText}
+          </RequiredText>
+        </RequiredContainer>
+      ) : null}
+    </Text>
   );
 };
 
