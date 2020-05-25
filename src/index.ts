@@ -15,5 +15,4 @@ export { SelectBox } from './components/SelectBox';
 export { Spinner, SpinnerWithMessage } from './components/atoms/Spinner';
 export { Switch } from './components/Switch';
 export { Table } from './components/Table';
-export { Textarea } from './components/Textarea';
 export { Toast } from './components/Toast';

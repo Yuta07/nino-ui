@@ -13,17 +13,17 @@ type Custom = {
 type CustomProps = Props & Custom;
 
 export const SearchForm = ({ detect = false, color = 'MAIN', height, handleClick, ...props }: CustomProps) => {
-  const themes = useTheme();
+  const theme = useTheme();
 
   return (
     <Form>
       <InputContainer>
         <Input color={color} height={height} {...props} />
       </InputContainer>
-      <SearchButton color={color} height={height} themes={themes}>
+      <SearchButton color={color} height={height} themes={theme}>
         <GithubIcon
           name="Go-Search"
-          color={detect ? themes.palette[color] : themes.palette.GRAY}
+          color={detect ? theme.palette[color] : theme.palette.GRAY}
           size={16}
           onClick={handleClick}
         />
@@ -46,7 +46,7 @@ const SearchButton = styled.div<{
 }>`
   ${({ color, height, themes }) => {
     const { palette } = themes;
-    
+
     return css`
       position: absolute;
       top: 50%;
