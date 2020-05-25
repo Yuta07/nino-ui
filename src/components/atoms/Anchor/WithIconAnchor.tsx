@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 import { Theme } from '../../../themes/Theme';
 import { useTheme } from '../../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
-import { Base, Props } from './Anchor';
-import { Custom } from './CustomAnchor';
+import { Props } from './Anchor';
+import { Custom, CustomAnchorStyle } from './CustomAnchor';
 
 type CustomProps = {
   iconName: string;
@@ -20,8 +20,8 @@ export const WithIconAnchor = ({
   iconSize,
   iconColor,
   position,
-  color = 'PRIMARY',
-  background = 'SECONDARY',
+  color,
+  background,
   children,
   ...props
 }: WithIconAnchorProps) => {
@@ -29,7 +29,7 @@ export const WithIconAnchor = ({
 
   return (
     <>
-      <AnchorContainer color={color} background={background} themes={theme} {...props}>
+      <WithIconAnchorStyle color={color} background={background} themes={theme} {...props}>
         {position === 'left' ? (
           <>
             <IconContainer>
@@ -45,31 +45,18 @@ export const WithIconAnchor = ({
             </IconContainer>
           </>
         )}
-      </AnchorContainer>
+      </WithIconAnchorStyle>
     </>
   );
 };
 
-const Border = css`
-  border: none;
-  border-radius: 8px;
-`;
-
-const AnchorContainer = styled(Base)<{
-  color: WithIconAnchorProps['color'];
-  background: WithIconAnchorProps['background'];
+const WithIconAnchorStyle = styled(CustomAnchorStyle)<{
   themes: Theme;
 }>`
-  ${({ color, background, themes }) => {
-    const { device, fontSize, palette } = themes;
+  ${({ themes }) => {
+    const { device, fontSize } = themes;
 
     return css`
-      font-size: ${fontSize.MEDIUM}px;
-      color: ${palette[color]};
-      background: ${palette[background]};
-      padding: 0.5rem 1rem;
-      ${Border};
-
       &:hover {
         opacity: 0.8;
         transition: 0.4s;

@@ -58,7 +58,6 @@ export const Base = styled.button<{
     return css`
       width: ${width ? width : 'auto'};
       height: ${height ? height : 'auto'};
-
       font-size: ${fontSize.MEDIUM}px;
       color: ${palette[color]};
       background: ${palette[background]};

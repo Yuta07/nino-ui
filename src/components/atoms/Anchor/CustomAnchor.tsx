@@ -20,7 +20,11 @@ const Border = css`
   border-radius: 8px;
 `;
 
-const CustomAnchorStyle = styled(Base)<{ color: Custom['color']; background: Custom['background']; themes: Theme }>`
+export const CustomAnchorStyle = styled(Base)<{
+  color: Custom['color'];
+  background: Custom['background'];
+  themes: Theme;
+}>`
   ${({ color, background, themes }) => {
     const { palette } = themes;
 

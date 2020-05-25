@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
 
-type Props = {
+export type Props = {
   type:
     | 'hidden'
     | 'text'
@@ -23,16 +23,15 @@ type Props = {
   value: string;
   placeholder?: string;
   autoComplete?: 'on' | 'off';
-  disabled?: boolean;
-  readonly?: boolean;
   error?: boolean;
   touch?: boolean;
   border?: boolean;
   color?: string;
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
   handleInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleInputBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearchFocus?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Input = ({
@@ -41,8 +40,6 @@ export const Input = ({
   value,
   placeholder = '',
   autoComplete = 'off',
-  disabled,
-  readonly,
   error = false,
   touch = false,
   border = true,
@@ -51,6 +48,7 @@ export const Input = ({
   color = 'MAIN',
   handleInputChange,
   handleInputBlur,
+  handleSearchFocus,
 }: Props) => {
   const theme = useTheme();
 
@@ -60,55 +58,49 @@ export const Input = ({
   }
 
   return (
-    <>
-      <InputForm
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        disabled={disabled}
-        readOnly={readonly}
-        color={color}
-        borderColor={borderColor}
-        border={border}
-        width={width}
-        height={height}
-        themes={theme}
-        onChange={handleInputChange}
-        onBlur={handleInputBlur}
-      />
-    </>
+    <InputForm
+      type={type}
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      autoComplete={autoComplete}
+      color={color}
+      borderColor={borderColor}
+      border={border}
+      width={width}
+      height={height}
+      themes={theme}
+      onChange={handleInputChange}
+      onBlur={handleInputBlur}
+      onFocus={handleSearchFocus}
+    />
   );
 };
 
-const InputForm = styled.input<{
-  readOnly: Props['readonly'];
-  color: string;
+export const InputForm = styled.input<{
+  color: Props['color'];
   borderColor: string;
   border: Props['border'];
   width: Props['width'];
   height: Props['height'];
   themes: Theme;
 }>`
-  ${({ readOnly, color, borderColor, border, width, height, themes }) => {
+  ${({ color, borderColor, border, width, height, themes }) => {
     const { device, fontSize, palette } = themes;
 
     return css`
-      width: ${width ? `${width}px` : `auto`};
-      height: ${height}px;
-      color: ${readOnly ? palette.PLACE_HOLDER : palette.PRIMARY};
+      width: ${width ? width : 'auto'};
+      height: ${height ? height : 'auto'};
+      font-size: ${fontSize.SMALL}px;
+      color: ${palette.PRIMARY};
       background: ${palette.SECONDARY};
-      font-size: 14px;
-      line-height: 1.4;
-      letter-spacing: 1px;
-      padding: 8px 12px;
+      padding: 0.5rem 0.75rem;
       border: ${border ? `1px solid ${borderColor}` : `none`};
-      border-radius: 6px;
+      border-radius: 8px;
       box-shadow: none;
 
       &:focus {
-        padding: ${border ? `8px 12px` : `6px 10px`};
+        padding: ${border ? '0.5rem 0.75rem' : '7px 11px'};
         outline: none;
         border: 1px solid ${palette[color]};
       }
@@ -116,29 +108,14 @@ const InputForm = styled.input<{
       ::placeholder,
       ::-webkit-input-placeholder {
         color: ${palette.PLACE_HOLDER};
-        font-size: 14px;
       }
 
       :-ms-input-placeholder {
         color: ${palette.PLACE_HOLDER};
-        font-size: 14px;
       }
 
-      &:disabled {
-        color: ${palette.PLACE_HOLDER};
-        background-color: #f4f6f6;
-        font-size: 14px;
-        border-color: ${palette.PLACE_HOLDER};
-        pointer-events: none;
-        cursor: default;
-      }
-
-      @media screen and ${device.TABLET} {
-        font-size: ${fontSize.MEDIUM}px;
-      }
-
-      @media screen and ${device.MOBILE_S} {
-        font-size: ${fontSize.SMALL}px;
+      @media screen and ${device.MOBILE} {
+        font-size: ${fontSize.X_SMALL}px;
       }
     `;
   }}

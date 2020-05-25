@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Toast } from './Toast';
-import { Input } from '../Input';
+import { Input } from '../atoms/Input';
 import { Button } from '../atoms/Button';
 
 type Toast = 'SUCCESS' | 'INFO' | 'WARNING' | 'DANGER';
@@ -86,8 +86,7 @@ const Wrapper = () => {
         <Input
           type="text"
           name="SUCCESS"
-          width={320}
-          height={28}
+          width="320px"
           value={successState.text}
           handleInputChange={onChangeToastMessage}
         />
@@ -99,14 +98,7 @@ const Wrapper = () => {
         </ButtonMargin>
       </ToastBox>
       <ToastBox>
-        <Input
-          type="text"
-          name="INFO"
-          width={320}
-          height={28}
-          value={infoState.text}
-          handleInputChange={onChangeToastMessage}
-        />
+        <Input type="text" name="INFO" width="320px" value={infoState.text} handleInputChange={onChangeToastMessage} />
         {infoState.visible ? <Toast text={infoState.text} type={infoState.type} /> : null}
         <ButtonMargin>
           <Button type="button" height="28px" color="INFO" handleClick={() => onVisibleToast('INFO')}>
@@ -118,8 +110,7 @@ const Wrapper = () => {
         <Input
           type="text"
           name="WARNING"
-          width={320}
-          height={28}
+          width="320px"
           value={warningState.text}
           handleInputChange={onChangeToastMessage}
         />
@@ -134,8 +125,7 @@ const Wrapper = () => {
         <Input
           type="text"
           name="DANGER"
-          width={320}
-          height={28}
+          width="320px"
           value={dangerState.text}
           handleInputChange={onChangeToastMessage}
         />

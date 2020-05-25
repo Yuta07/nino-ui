@@ -91,7 +91,7 @@ const Wrapper = () => {
           link=""
           width="32px"
           height="32px"
-          background="GRAY"
+          border={true}
           pattern="Ti"
           shape="square"
         />

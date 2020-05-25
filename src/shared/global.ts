@@ -10,6 +10,7 @@ export const bodyStyles = css`
   padding: 2%;
   font-size: ${FONT_SIZE.LARGE}px;
   font-family: ${FONT_FAMILY};
+  line-height: 1.6;
   letter-spacing: 0.1em;
 
   @media ${DEVICE.TABLET_PRO} {

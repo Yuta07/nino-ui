@@ -12,6 +12,7 @@ type CustomProps = {
   iconName: string;
   iconSize?: number;
   iconColor?: string;
+  border?: boolean;
   pattern: string;
   shape: 'square' | 'circle';
 };
@@ -24,6 +25,7 @@ export const IconOnlyAnchor = ({
   iconColor,
   pattern,
   shape,
+  border = false,
   color = 'PRIMARY',
   background = 'SECONDARY',
   ...props
@@ -46,7 +48,7 @@ export const IconOnlyAnchor = ({
   }
 
   return (
-    <AnchorContainer color={color} background={background} shape={shape} themes={theme} {...props}>
+    <AnchorContainer color={color} background={background} border={border} shape={shape} themes={theme} {...props}>
       <IconButton>{iconButton}</IconButton>
     </AnchorContainer>
   );
@@ -55,17 +57,18 @@ export const IconOnlyAnchor = ({
 const AnchorContainer = styled(Base)<{
   color: IconAnchorProps['color'];
   background: IconAnchorProps['background'];
+  border: IconAnchorProps['border'];
   shape: IconAnchorProps['shape'];
   themes: Theme;
 }>`
-  ${({ color, background, shape, themes }) => {
+  ${({ color, background, border, shape, themes }) => {
     const { palette } = themes;
 
     return css`
       color: ${palette[color]};
       background: ${palette[background]};
-      border: none;
-      border-radius: ${shape === 'circle' ? '50%' : '6px'};
+      border: ${border ? `1px solid ${palette.DARK}` : 'none'};
+      border-radius: ${shape === 'circle' ? '50%' : '8px'};
     `;
   }}
 `;

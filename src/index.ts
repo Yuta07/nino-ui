@@ -5,7 +5,7 @@ export { Dialog } from './components/Dialog';
 export { Dropdown } from './components/Dropdown';
 export { FeatherIcon, GithubIcon, TypeIcon } from './components/atoms/Icon';
 export { Heading } from './components/atoms/Heading';
-export { Input } from './components/Input';
+export { Input } from './components/atoms/Input';
 export { Label, LabelWithRequired } from './components/atoms/Label';
 export { Modal } from './components/Modal';
 export { Pagination } from './components/Pagenation';

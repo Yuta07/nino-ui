@@ -49,7 +49,6 @@ export const Base = styled.a<{
     return css`
       width: ${width ? width : 'auto'};
       height: ${height ? height : 'auto'};
-
       font-size: ${fontSize.MEDIUM}px;
       color: ${palette.PRIMARY};
       display: inline-flex;
@@ -57,6 +56,7 @@ export const Base = styled.a<{
       justify-content: center;
       text-decoration: none;
       white-space: nowrap;
+      cursor: pointer;
 
       &:hover {
         opacity: 0.8;
@@ -76,7 +76,7 @@ export const Base = styled.a<{
 
 const AnchorWithUnderline = styled(Base)`
   &:hover {
-    border-bottom: 1px solid rgb(43, 46, 53);
+    text-decoration: underline;
   }
 `;
 
