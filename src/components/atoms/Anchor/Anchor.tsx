@@ -56,7 +56,6 @@ export const Base = styled.a<{
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      cursor: pointer;
       white-space: nowrap;
 
       &:hover {

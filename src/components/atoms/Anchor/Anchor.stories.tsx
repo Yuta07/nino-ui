@@ -10,27 +10,27 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <Anchor link="#" width="auto" height="32px">
+        <Anchor link="#" height="32px">
           Anchor - Original
         </Anchor>
       </Container>
       <Container>
-        <UnderlineAnchor link="#" width="auto" height="32px">
+        <UnderlineAnchor link="#" height="32px">
           Anchor - Underline
         </UnderlineAnchor>
       </Container>
       <Container>
-        <InteractionAnchor border="MAIN" link="#" width="auto" height="32px">
+        <InteractionAnchor border="MAIN" link="#" height="32px">
           Anchor - Interaction
         </InteractionAnchor>
       </Container>
       <Container>
-        <CustomAnchor link="#" width="auto" height="32px">
+        <CustomAnchor link="#" height="32px">
           Custom - Normal
         </CustomAnchor>
       </Container>
       <Container>
-        <CustomAnchor link="#" width="auto" height="32px" color="SECONDARY" background="MAIN">
+        <CustomAnchor link="#" height="32px" color="SECONDARY" background="MAIN">
           Custom - background: MAIN, color: SECONDARY
         </CustomAnchor>
       </Container>
@@ -40,8 +40,7 @@ const Wrapper = () => {
           iconName="Fi-Heart"
           iconSize={16}
           iconColor="SECONDARY"
-          width="auto%"
-          height="32px"
+          width="100%"
           color="SECONDARY"
           background="DANGER"
           position="left"
@@ -54,8 +53,7 @@ const Wrapper = () => {
           link="#"
           iconName="Fi-Share2"
           iconColor="SECONDARY"
-          width="auto%"
-          height="32px"
+          width="100%"
           color="SECONDARY"
           background="INFO"
           position="Right"

@@ -4,16 +4,16 @@ import * as React from 'react';
 import { Dropdown } from './Dropdown';
 import { DropdownButton } from './DropdownButton';
 import { DropdownContent } from './DropdownContent';
-import { Button, TransmissionButton } from '../Button';
+import { Button, SkeltonButton } from '../atoms/Button';
 
 const Wrapper = () => {
   return (
     <>
       <Dropdown controllable={false} color="DARK">
         <DropdownButton>
-          <TransmissionButton height={28} type="button">
+          <SkeltonButton height="28px" type="button">
             dropdown button
-          </TransmissionButton>
+          </SkeltonButton>
         </DropdownButton>
         <DropdownContent>
           <List>
@@ -26,7 +26,7 @@ const Wrapper = () => {
       </Dropdown>
       <Dropdown controllable={false} color="GRAY">
         <DropdownButton>
-          <Button height={28} type="button" color="GRAY">
+          <Button height="28px" type="button" color="GRAY">
             dropdown button
           </Button>
         </DropdownButton>

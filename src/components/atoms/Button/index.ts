@@ -1,4 +1,4 @@
 export * from './Button';
 export * from './IconOnlyButton';
-export * from './TransmissionButton';
+export * from './SkeltonButton';
 export * from './WithIconButton';

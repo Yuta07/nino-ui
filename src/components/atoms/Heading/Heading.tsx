@@ -66,6 +66,7 @@ export const Heading = ({ ...props }: Props) => <HeadingPresenter {...props} />;
 const BaseHeading = css`
   font-weight: 600;
   line-height: 1.5;
+  display: inline-block;
 `;
 
 const HeadingSize1 = css`

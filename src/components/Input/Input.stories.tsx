@@ -110,7 +110,7 @@ const Wrapper = () => {
           placeholder="Please input..."
           detect={detect}
           width={200}
-          height={32}
+          height="32"
           iconSize={16}
           handleSearchFocus={handleSearchFocus}
           handleSearchBlur={handleSearchBlur}

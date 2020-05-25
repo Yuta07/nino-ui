@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Dialog } from './Dialog';
-import { Button } from '../Button';
+import { Button } from '../atoms/Button';
 
 const Wrapper = () => {
   const [isAlertDialogOpen, setIsAlertDialogOpen] = React.useState(false);
@@ -47,7 +47,7 @@ const Wrapper = () => {
         onCloseDialog={onCloseAlertDialog}
       />
       <ButtonMargin>
-        <Button type="button" width="200px" height={32} handleClick={() => isOpenDialog('alert')}>
+        <Button type="button" width="200px" height="32px" handleClick={() => isOpenDialog('alert')}>
           Open Alert Dialog
         </Button>
       </ButtonMargin>
@@ -70,7 +70,7 @@ const Wrapper = () => {
         onActionDialog={onCloseConfirmDialog}
       />
       <ButtonMargin>
-        <Button type="button" width="200px" height={32} handleClick={() => isOpenDialog('confirm')}>
+        <Button type="button" width="200px" height="32px" handleClick={() => isOpenDialog('confirm')}>
           show Confirm Dialog
         </Button>
       </ButtonMargin>

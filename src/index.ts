@@ -1,5 +1,5 @@
 export { Anchor } from './components/atoms/Anchor';
-export { Button, IconOnlyButtonProps, TransmissionButton, WithIconButton } from './components/Button';
+export { Button } from './components/atoms/Button';
 export { CheckBox } from './components/CheckBox';
 export { Dialog } from './components/Dialog';
 export { Dropdown } from './components/Dropdown';

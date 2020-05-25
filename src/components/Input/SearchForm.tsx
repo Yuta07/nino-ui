@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
-import { IconOnlyButton } from '../Button/IconOnlyButton';
+import { IconOnlyButton } from '../atoms/Button/IconOnlyButton';
 
 type Props = {
   children?: React.ReactNode;
@@ -14,7 +14,7 @@ type Props = {
   color?: string;
   border?: boolean;
   width: number;
-  height: number;
+  height: string;
   iconSize: number;
   handleSearchChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSearchFocus?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -50,7 +50,7 @@ export const SearchForm = ({
         placeholder={placeholder}
         autoComplete={autoComplete}
         readOnly={false}
-        width={width - height}
+        width={width - Number(height)}
         height={height}
         themes={theme}
         onChange={handleSearchChange}
@@ -109,7 +109,7 @@ const Search = styled.input<{
 
     return css`
       width: ${width}px;
-      height: ${height - 8}px;
+      height: ${Number(height) - 8}px;
       color: ${palette.PRIMARY};
       font-size: 14px;
       line-height: 1.4;
@@ -170,7 +170,7 @@ const SearchButton = styled.div<{
       position: absolute;
       right: 0;
       z-index: 3000;
-      height: ${height - 2}px;
+      height: ${height};
     `;
   }}
 `;

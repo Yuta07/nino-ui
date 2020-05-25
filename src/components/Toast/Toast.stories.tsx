@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Toast } from './Toast';
 import { Input } from '../Input';
-import { Button } from '../Button';
+import { Button } from '../atoms/Button';
 
 type Toast = 'SUCCESS' | 'INFO' | 'WARNING' | 'DANGER';
 
@@ -93,7 +93,7 @@ const Wrapper = () => {
         />
         {successState.visible ? <Toast text={successState.text} type={successState.type} /> : null}
         <ButtonMargin>
-          <Button type="button" height={28} color="SUCCESS" handleClick={() => onVisibleToast('SUCCESS')}>
+          <Button type="button" height="28px" color="SUCCESS" handleClick={() => onVisibleToast('SUCCESS')}>
             Success PUSH!!
           </Button>
         </ButtonMargin>
@@ -109,7 +109,7 @@ const Wrapper = () => {
         />
         {infoState.visible ? <Toast text={infoState.text} type={infoState.type} /> : null}
         <ButtonMargin>
-          <Button type="button" height={28} color="INFO" handleClick={() => onVisibleToast('INFO')}>
+          <Button type="button" height="28px" color="INFO" handleClick={() => onVisibleToast('INFO')}>
             Info PUSH!!
           </Button>
         </ButtonMargin>
@@ -125,7 +125,7 @@ const Wrapper = () => {
         />
         {warningState.visible ? <Toast text={warningState.text} type={warningState.type} /> : null}
         <ButtonMargin>
-          <Button type="button" height={28} color="WARNING" handleClick={() => onVisibleToast('WARNING')}>
+          <Button type="button" height="28px" color="WARNING" handleClick={() => onVisibleToast('WARNING')}>
             Warning PUSH!!
           </Button>
         </ButtonMargin>
@@ -141,7 +141,7 @@ const Wrapper = () => {
         />
         {dangerState.visible ? <Toast text={dangerState.text} type={dangerState.type} /> : null}
         <ButtonMargin>
-          <Button type="button" height={28} color="DANGER" handleClick={() => onVisibleToast('DANGER')}>
+          <Button type="button" height="28px" color="DANGER" handleClick={() => onVisibleToast('DANGER')}>
             Danger PUSH!!
           </Button>
         </ButtonMargin>

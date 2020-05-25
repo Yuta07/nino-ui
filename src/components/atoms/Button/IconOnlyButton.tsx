@@ -5,29 +5,28 @@ import { useTheme } from '../../../hooks/useTheme';
 import { FeatherIcon } from '../Icon/FeatherIcon';
 import { GithubIcon } from '../Icon/GithubIcon';
 import { TypeIcon } from '../Icon/TypeIcon';
-import { Base, Props } from './Anchor';
-import { Custom } from './CustomAnchor';
+import { Base, Props } from './Button';
 
 type CustomProps = {
   iconName: string;
   iconSize?: number;
   iconColor?: string;
+  border?: boolean;
   pattern: string;
   shape: 'square' | 'circle';
 };
 
-export type IconAnchorProps = Props & CustomProps & Custom;
+export type IconOnlyButtonProps = Props & CustomProps;
 
-export const IconOnlyAnchor = ({
+export const IconOnlyButton = ({
   iconName,
   iconSize,
   iconColor,
+  border,
   pattern,
   shape,
-  color = 'PRIMARY',
-  background = 'SECONDARY',
   ...props
-}: IconAnchorProps) => {
+}: IconOnlyButtonProps) => {
   const theme = useTheme();
 
   let iconButton: JSX.Element;
@@ -46,26 +45,23 @@ export const IconOnlyAnchor = ({
   }
 
   return (
-    <AnchorContainer color={color} background={background} shape={shape} themes={theme} {...props}>
+    <Button border={border} shape={shape} themes={theme} {...props}>
       <IconButton>{iconButton}</IconButton>
-    </AnchorContainer>
+    </Button>
   );
 };
 
-const AnchorContainer = styled(Base)<{
-  color: IconAnchorProps['color'];
-  background: IconAnchorProps['background'];
-  shape: IconAnchorProps['shape'];
+const Button = styled(Base)<{
+  border: IconOnlyButtonProps['border'];
+  shape: IconOnlyButtonProps['shape'];
   themes: Theme;
 }>`
-  ${({ color, background, shape, themes }) => {
+  ${({ border, shape, themes }) => {
     const { palette } = themes;
 
     return css`
-      color: ${palette[color]};
-      background: ${palette[background]};
-      border: none;
-      border-radius: ${shape === 'circle' ? '50%' : '6px'};
+      border: ${border ? `1px solid ${palette.DARK}` : 'none'};
+      border-radius: ${shape === 'circle' ? '50%' : '8px'};
     `;
   }}
 `;
