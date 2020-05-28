@@ -24,7 +24,7 @@ export const DEFAULT_PALETTE: Palette = {
   PLACE_HOLDER: 'rgba(69, 69, 69, 0.5)',
   BORDER: '#c2c2c2',
   MAIN: '#f39c12',
-  DANGER: '#c0392b',
+  DANGER: '#e74c3c',
   WARNING: '#f1c40f',
   INFO: '#16a085',
   SUCCESS: '#3498db',

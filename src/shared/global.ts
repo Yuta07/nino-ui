@@ -5,9 +5,8 @@ import { FONT_SIZE, DEVICE } from '../themes/Size';
 export const fontUrl = 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900';
 
 export const bodyStyles = css`
-  width: 96%;
+  width: 100%;
   height: 100vh;
-  padding: 2%;
   font-size: ${FONT_SIZE.LARGE}px;
   font-family: ${FONT_FAMILY};
   line-height: 1.6;
