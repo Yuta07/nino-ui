@@ -35,7 +35,7 @@ export const UnderlineAnchor = ({ ...props }: Props) => {
 export const InteractionAnchor = ({ border = 'DARK', ...props }: Interaction) => {
   const theme = useTheme();
 
-  return <AnchorWithINteraction border={border} themes={theme} {...props} />;
+  return <AnchorWithInteraction border={border} themes={theme} {...props} />;
 };
 
 export const Base = styled.a<{
@@ -60,7 +60,7 @@ export const Base = styled.a<{
 
       &:hover {
         opacity: 0.8;
-        transition: 0.3s;
+        transition: 0.2s;
       }
 
       @media screen and ${device.TABLET} {
@@ -80,7 +80,7 @@ const AnchorWithUnderline = styled(Base)`
   }
 `;
 
-const AnchorWithINteraction = styled(Base)<{ border: Interaction['border']; themes: Theme }>`
+const AnchorWithInteraction = styled(Base)<{ border: Interaction['border']; themes: Theme }>`
   ${({ border, themes }) => {
     const { palette } = themes;
 
@@ -88,8 +88,6 @@ const AnchorWithINteraction = styled(Base)<{ border: Interaction['border']; them
       position: relative;
 
       &:hover {
-        transition: 0.3s;
-
         &:before {
           transform: scale3d(1, 1, 1);
           transform-origin: 0% 50%;

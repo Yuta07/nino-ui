@@ -72,7 +72,7 @@ export const Base = styled.button<{
 
       &:hover {
         opacity: 0.8;
-        transition: 0.3s;
+        transition: 0.2s;
       }
 
       &:focus {

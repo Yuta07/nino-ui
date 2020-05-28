@@ -64,7 +64,7 @@ const HoverInteraction = styled.span`
 
       > *:first-child:hover + * {
         display: inline-block;
-        animation: ${FadeIn} 0.3s linear;
+        animation: ${FadeIn} 0.2s linear;
       }
     `;
   }}

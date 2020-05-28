@@ -114,6 +114,10 @@ export const InputForm = styled.input<{
         color: ${palette.PLACE_HOLDER};
       }
 
+      @media screen and ${device.TABLET} {
+        font-size: ${fontSize.SMALL}px;
+      }
+
       @media screen and ${device.MOBILE} {
         font-size: ${fontSize.X_SMALL}px;
       }

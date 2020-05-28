@@ -40,9 +40,6 @@ const Wrapper = () => {
             color="SUCCESS"
           />
         </RadioContent>
-        <RadioContent>
-          <Radio name="gender" value="disabled" checked={true} disabled={true} />
-        </RadioContent>
       </Container>
     </>
   );

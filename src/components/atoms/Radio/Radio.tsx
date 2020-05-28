@@ -9,25 +9,17 @@ type Props = {
   name: string;
   value: string;
   checked: boolean;
-  disabled?: boolean;
-  readonly?: boolean;
   color?: string;
   handleRadioChange?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>, value: string) => void;
 };
 
-export const Radio = ({ value, checked, disabled = false, color = 'MAIN', handleRadioChange }: Props) => {
+export const Radio = ({ value, checked, color = 'MAIN', handleRadioChange }: Props) => {
   const theme = useTheme();
 
   return (
     <>
       <RadioButton type="radio" />
-      <RadioLabel
-        themes={theme}
-        color={color}
-        checked={checked}
-        disabled={disabled}
-        onClick={disabled ? null : event => handleRadioChange(event, value)}
-      >
+      <RadioLabel themes={theme} color={color} checked={checked} onClick={event => handleRadioChange(event, value)}>
         {value}
       </RadioLabel>
     </>
@@ -42,11 +34,9 @@ const RadioLabel = styled.label<{
   themes: Theme;
   color: Props['color'];
   checked: Props['checked'];
-  disabled: Props['disabled'];
 }>`
-  ${({ themes, color, checked, disabled }) => {
+  ${({ themes, color, checked }) => {
     const { device, fontSize, palette } = themes;
-    const radioColor = disabled ? palette.GRAY : palette[color];
 
     return css`
       position: relative;
@@ -71,7 +61,7 @@ const RadioLabel = styled.label<{
         width: 6px;
         height: 6px;
         margin-top: -3px;
-        background: ${checked ? radioColor : palette.GRAY};
+        background: ${checked ? palette[color] : palette.GRAY};
         border-radius: 50%;
         display: block;
         content: '';
@@ -86,7 +76,7 @@ const RadioLabel = styled.label<{
         width: 14px;
         height: 14px;
         margin-top: -10px;
-        border: 3px solid ${checked ? radioColor : palette.GRAY};
+        border: 3px solid ${checked ? palette[color] : palette.GRAY};
         border-radius: 50%;
         display: block;
         content: '';
@@ -94,7 +84,7 @@ const RadioLabel = styled.label<{
       }
 
       @media screen and ${device.TABLET} {
-        font-size: ${fontSize.MEDIUM}px;
+        font-size: ${fontSize.SMALL}px;
 
         &:before {
           width: 6px;
@@ -102,13 +92,13 @@ const RadioLabel = styled.label<{
         }
 
         &:after {
-          width: ${fontSize.MEDIUM}px;
-          height: ${fontSize.MEDIUM}px;
+          width: ${fontSize.SMALL}px;
+          height: ${fontSize.SMALL}px;
         }
       }
 
-      @media screen and ${device.MOBILE_S} {
-        font-size: ${fontSize.SMALL}px;
+      @media screen and ${device.MOBILE} {
+        font-size: ${fontSize.X_SMALL}px;
 
         &:before {
           width: 6px;
@@ -118,8 +108,8 @@ const RadioLabel = styled.label<{
         }
 
         &:after {
-          width: ${fontSize.SMALL}px;
-          height: ${fontSize.SMALL}px;
+          width: ${fontSize.X_SMALL}px;
+          height: ${fontSize.X_SMALL}px;
         }
       }
     `;
