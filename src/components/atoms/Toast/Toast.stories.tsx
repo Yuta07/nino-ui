@@ -2,8 +2,8 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Toast } from './Toast';
-import { Input } from '../atoms/Input';
-import { Button } from '../atoms/Button';
+import { Input } from '../Input';
+import { Button } from '../Button';
 
 type Toast = 'SUCCESS' | 'INFO' | 'WARNING' | 'DANGER';
 

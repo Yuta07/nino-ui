@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
+import { FeatherIcon } from '../Icon/FeatherIcon';
 
 type Props = {
   text: string;

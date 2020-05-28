@@ -45,9 +45,6 @@ const Wrapper = () => {
             color="SUCCESS"
           />
         </CheckContent>
-        <CheckContent>
-          <CheckBox name="gender" value="disabled" checked={true} disabled={true} />
-        </CheckContent>
       </Container>
     </>
   );

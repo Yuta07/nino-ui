@@ -149,10 +149,10 @@ const HeadingSideLined = css`
   position: relative;
   padding: 0 0 0 0.75rem;
 
-  &:before {
+  &::before {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     content: '';
     display: inline-block;
     width: 4px;
