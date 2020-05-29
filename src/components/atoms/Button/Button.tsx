@@ -58,12 +58,12 @@ export const Base = styled.button<{
     return css`
       width: ${width ? width : 'auto'};
       height: ${height ? height : 'auto'};
-      font-size: ${fontSize.MEDIUM}px;
+      font-size: ${fontSize.SMALL}px;
       color: ${palette[color]};
       background: ${palette[background]};
       border: none;
       border-radius: 8px;
-      padding: 0.5rem 1rem;
+      padding: 6px 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -77,10 +77,6 @@ export const Base = styled.button<{
 
       &:focus {
         outline: none;
-      }
-
-      @media screen and ${device.TABLET} {
-        font-size: ${fontSize.SMALL}px;
       }
 
       @media screen and ${device.MOBILE_S} {

@@ -207,7 +207,6 @@ const Container = styled.div`
 `;
 
 const ToastBox = styled.div`
-  height: 32px;
   margin: 1rem;
 `;
 

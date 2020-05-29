@@ -94,13 +94,13 @@ export const InputForm = styled.input<{
       font-size: ${fontSize.SMALL}px;
       color: ${palette.PRIMARY};
       background: ${palette.SECONDARY};
-      padding: 0.5rem 0.75rem;
+      padding: 6px 10px;
       border: ${border ? `1px solid ${borderColor}` : `none`};
       border-radius: 8px;
       box-shadow: none;
 
       &:focus {
-        padding: ${border ? '0.5rem 0.75rem' : '7px 11px'};
+        padding: ${border ? '6px 10px' : '5px 10px'};
         outline: none;
         border: 1px solid ${palette[color]};
       }
@@ -112,10 +112,6 @@ export const InputForm = styled.input<{
 
       :-ms-input-placeholder {
         color: ${palette.PLACE_HOLDER};
-      }
-
-      @media screen and ${device.TABLET} {
-        font-size: ${fontSize.SMALL}px;
       }
 
       @media screen and ${device.MOBILE} {

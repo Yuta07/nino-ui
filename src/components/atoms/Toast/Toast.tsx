@@ -20,12 +20,30 @@ type Props = {
   handleClose: () => void;
 };
 
+interface PresenterProps extends Props {
+  iconName: string;
+}
+
 const VISIBLE_TIME = 10000;
 let timerHandle: number = 0;
 
-export const Toast = ({ text, time = VISIBLE_TIME, type, visible, width, position, handleClose }: Props) => {
+const ToastPresenter = ({ ...props }: PresenterProps) => {
   const theme = useTheme();
 
+  return (
+    <Container type={props.type} time={props.time} width={props.width} posi={props.position} themes={theme}>
+      <Message>
+        <FeatherIcon name={props.iconName} size={20} color={theme.palette.SECONDARY} />
+        <Text themes={theme}>{props.text}</Text>
+        <CloseButton>
+          <FeatherIcon size={18} name="Fi-X" color={theme.palette.SECONDARY} onClick={props.handleClose} />
+        </CloseButton>
+      </Message>
+    </Container>
+  );
+};
+
+const ToastContainer = ({ presenter, type, time = VISIBLE_TIME, visible, handleClose, ...props }) => {
   React.useEffect(() => {
     if (!visible) clearTimeout(timerHandle);
 
@@ -57,16 +75,21 @@ export const Toast = ({ text, time = VISIBLE_TIME, type, visible, width, positio
       break;
   }
 
+  return presenter({ type, time, visible, handleClose, iconName, ...props });
+};
+
+export const Toast = ({ text, time = VISIBLE_TIME, type, visible, width, position, handleClose }: Props) => {
   return (
-    <Container type={type} time={time} width={width} posi={position} themes={theme}>
-      <Message>
-        <FeatherIcon name={iconName} size={20} color={theme.palette.SECONDARY} />
-        <Text themes={theme}>{text}</Text>
-        <CloseButton>
-          <FeatherIcon size={18} name="Fi-X" color={theme.palette.SECONDARY} onClick={handleClose} />
-        </CloseButton>
-      </Message>
-    </Container>
+    <ToastContainer
+      presenter={(presenterProps: PresenterProps) => <ToastPresenter {...presenterProps} />}
+      text={text}
+      time={time}
+      type={type}
+      visible={visible}
+      width={width}
+      position={position}
+      handleClose={handleClose}
+    />
   );
 };
 
@@ -104,10 +127,20 @@ const Container = styled.div<{
       border-radius: ${width === '100%' ? '0' : '8px'};
       box-shadow: 1px 1px 2px 0px rgba(171, 166, 166, 0.9);
       background-color: ${palette[type]};
-      -webkit-animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,
-        ${ToastFadeOut} 0.5s linear ${time - 500}ms 1 normal forwards running;
-      animation: ${ToastFadeIn} 0.5s ease-in 0s 1 normal none running,
-        ${ToastFadeOut} 0.5s linear ${time - 500}ms 1 normal forwards running;
+
+      ${
+        type === 'DANGER'
+          ? css`
+              -webkit-animation: ${ToastFadeIn} 0.3s ease-in 0s 1 normal none running;
+              animation: ${ToastFadeIn} 0.3s ease-in 0s 1 normal none running;
+            `
+          : css`
+              -webkit-animation: ${ToastFadeIn} 0.3s ease-in 0s 1 normal none running,
+                ${ToastFadeOut} 0.3s linear ${time - 300}ms 1 normal forwards running;
+              animation: ${ToastFadeIn} 0.3s ease-in 0s 1 normal none running,
+                ${ToastFadeOut} 0.3s linear ${time - 300}ms 1 normal forwards running;
+            `
+      }
 
       ${position &&
         (top || left || right || bottom) &&
