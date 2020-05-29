@@ -12,7 +12,9 @@ export interface Custom extends Props {
 export const CustomAnchor = ({ color = 'PRIMARY', background = 'SECONDARY', ...props }: Custom) => {
   const theme = useTheme();
 
-  return <CustomAnchorStyle color={color} background={background} themes={theme} {...props} />;
+  return (
+    <CustomAnchorStyle color={color} background={background} themes={theme} onClick={props.handleClick} {...props} />
+  );
 };
 
 const Border = css`

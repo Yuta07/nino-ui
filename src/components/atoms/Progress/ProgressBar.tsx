@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
   width: string;
@@ -42,7 +42,7 @@ const Bar = styled.div<{ width: Props['width']; height: Props['height']; progres
   }}
 `;
 
-const Progress = styled.div<{ color: Props['color']; progress: Props['progress']; themes: Theme; }>`
+const Progress = styled.div<{ color: Props['color']; progress: Props['progress']; themes: Theme }>`
   ${({ color, progress, themes }) => {
     const { palette } = themes;
 

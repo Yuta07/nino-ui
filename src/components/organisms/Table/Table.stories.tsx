@@ -6,7 +6,7 @@ import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
 // import { Heading } from '../Heading';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from '../../atoms/Tooltip';
 
 storiesOf('Table', module).add('all', () => (
   <>

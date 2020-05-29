@@ -5,8 +5,8 @@ import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
   color?: string;
-  message?: string;
   position?: {
+    position?: string;
     top?: string;
     bottom?: string;
     left?: string;
@@ -14,29 +14,68 @@ type Props = {
   };
 };
 
-export const Spinner = ({ color = 'MAIN' }: Props) => {
-  const themes = useTheme();
-
-  return <Loader color={color} themes={themes} />;
+type MessageProps = {
+  message: string;
 };
 
-export const SpinnerWithMessage = ({ color = 'MAIN', message, position }: Props) => {
+type WithMessageProps = Props & MessageProps;
+
+export const Spinner = ({ color = 'MAIN', position }: Props) => {
+  const themes = useTheme();
+
+  return <Loader color={color} posi={position} themes={themes} />;
+};
+
+export const SpinnerWithMessage = ({ color = 'MAIN', message, position }: WithMessageProps) => {
   const themes = useTheme();
 
   return (
-    <Container>
+    <Container posi={position}>
       <Loader color={color} themes={themes} />
-      <Message themes={themes} posi={position}>
-        {message}
-      </Message>
+      <Message themes={themes}>{message}</Message>
     </Container>
   );
 };
 
 // ref: [https://projects.lukehaas.me/css-loaders/]
 
-const Container = styled.div`
-  position: relative;
+const Container = styled.div<{ posi: Props['position'] }>`
+  ${({ posi }) => {
+    const { position, top, bottom, left, right } = posi !== undefined && posi;
+
+    return css`
+      ${
+        position && (top || left || right || bottom)
+          ? css`
+              position: ${position};
+              z-index: 200;
+            `
+          : css`
+              position: relative;
+            `
+      }
+      ${position &&
+        top &&
+        css`
+          top: ${top};
+        `}
+      ${position &&
+        bottom &&
+        css`
+          bottom: ${bottom};
+        `}
+      ${position &&
+        right &&
+        css`
+          right: ${right};
+        `}
+      ${position &&
+        left &&
+        css`
+          left: ${left};
+        `}
+    `;
+  }}
 `;
 
 const LoaderSpin = keyframes`
@@ -48,9 +87,10 @@ const LoaderSpin = keyframes`
   }
 `;
 
-const Loader = styled.div<{ color: Props['color']; themes: Theme }>`
-  ${({ color, themes }) => {
+const Loader = styled.div<{ color: Props['color']; posi?: Props['position']; themes: Theme }>`
+  ${({ color, posi, themes }) => {
     const { device, palette } = themes;
+    const { position, top, bottom, left, right } = posi !== undefined && posi;
 
     return css`
       width: 2.5rem;
@@ -66,6 +106,37 @@ const Loader = styled.div<{ color: Props['color']; themes: Theme }>`
       transform: translateZ(0);
       -webkit-animation: ${LoaderSpin} 1.2s infinite linear;
       animation: ${LoaderSpin} 1.2s infinite linear;
+
+      ${
+        position && (top || left || right || bottom)
+          ? css`
+              position: ${position};
+              z-index: 200;
+            `
+          : css`
+              position: relative;
+            `
+      }
+      ${position &&
+        top &&
+        css`
+          top: ${top};
+        `}
+      ${position &&
+        bottom &&
+        css`
+          bottom: ${bottom};
+        `}
+      ${position &&
+        right &&
+        css`
+          right: ${right};
+        `}
+      ${position &&
+        left &&
+        css`
+          left: ${left};
+        `}
 
       @media screen and ${device.TABLET} {
         width: 2rem;
@@ -88,35 +159,19 @@ const Loader = styled.div<{ color: Props['color']; themes: Theme }>`
   }}
 `;
 
-const Message = styled.span<{ themes: Theme; posi: Props['position'] }>`
-  ${({ themes, posi }) => {
-    const { device } = themes;
-    const { top, bottom, left, right } = posi;
+const Message = styled.span<{ themes: Theme }>`
+  ${({ themes }) => {
+    const { device, fontSize } = themes;
 
     return css`
       position: absolute;
-      font-size: 14px;
+      top: 50px;
+      left: -50%;
+      font-size: ${fontSize.SMALL}px;
       white-space: nowrap;
 
-      ${top &&
-        css`
-          top: ${top};
-        `}
-      ${bottom &&
-        css`
-          bottom: ${bottom};
-        `}
-      ${right &&
-        css`
-          right: ${right};
-        `}
-      ${left &&
-        css`
-          left: ${left};
-        `}
-
       @media screen and ${device.MOBILE} {
-        font-size: 12px;
+        font-size: ${fontSize.X_SMALL}px;
       }
     `;
   }}

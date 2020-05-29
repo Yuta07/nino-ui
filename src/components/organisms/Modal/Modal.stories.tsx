@@ -1,13 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import styled from 'styled-components';
 import { Modal } from './Modal';
-import { Button } from '../atoms/Button';
+import { Button } from '../../atoms/Button';
 
 const Wrapper = () => {
   const [isOpen, setIsCOpen] = React.useState(false);
 
-  const isOpenModal = (): void => {
+  const isOpenModal = () => {
     setIsCOpen(true);
   };
 
@@ -16,7 +15,7 @@ const Wrapper = () => {
   };
 
   return (
-    <Container>
+    <>
       <Modal
         isOpen={isOpen}
         title="Modal Window"
@@ -38,7 +37,7 @@ const Wrapper = () => {
       <Button type="button" height="32px" handleClick={isOpenModal}>
         show Modal Window
       </Button>
-    </Container>
+    </>
   );
 };
 
@@ -47,5 +46,3 @@ storiesOf('Modal', module).add('all', () =>
     return <Wrapper />;
   })
 );
-
-const Container = styled.div``;

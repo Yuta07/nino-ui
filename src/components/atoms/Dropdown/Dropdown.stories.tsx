@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Dropdown } from './Dropdown';
 import { DropdownButton } from './DropdownButton';
 import { DropdownContent } from './DropdownContent';
-import { Button, SkeltonButton } from '../atoms/Button';
+import { Button, SkeltonButton } from '../Button';
 
 const Wrapper = () => {
   return (

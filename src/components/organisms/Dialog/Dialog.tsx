@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
-import { usePortal } from '../../hooks/usePortal';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
+import { usePortal } from '../../../hooks/usePortal';
 import { DialogContent } from './DialogContent';
 
 type Props = {
@@ -58,13 +58,13 @@ const Overlay = styled.div<{ isOpen: Props['isOpen']; theme: Theme }>`
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 8000;
+      z-index: 150;
       width: 100%;
       height: 100%;
       background: ${palette.OVERLAY};
       visibility: ${isOpen ? `visible` : `hidden`};
       opacity: ${isOpen ? `1` : `0`};
-      -webkit-transition: all 0.3s ease-in;
+      -webkit-transition: all 0.2s ease-in;
       transition: all 0.2s ease-in;
     `;
   }}

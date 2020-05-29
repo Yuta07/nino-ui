@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Button } from './Button';
@@ -10,15 +11,28 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <Button type="button" name="base" width="120px" color="SECONDARY" background="MAIN">
+        <Button
+          type="button"
+          name="base"
+          width="120px"
+          color="SECONDARY"
+          background="MAIN"
+          handleClick={action('ボタンがクリックされました')}
+        >
           original
         </Button>
       </Container>
       <Container>
-        <SkeltonButton type="button" name="base" width="120px" height="32px">
+        <SkeltonButton
+          type="button"
+          name="base"
+          width="120px"
+          height="32px"
+          handleClick={action('ボタンがクリックされました')}
+        >
           Skelton
         </SkeltonButton>
-        <SkeltonButton type="button" name="base" border={true}>
+        <SkeltonButton type="button" name="base" border={true} handleClick={action('ボタンがクリックされました')}>
           Skelton with border
         </SkeltonButton>
       </Container>
@@ -33,6 +47,7 @@ const Wrapper = () => {
           color="SECONDARY"
           background="DANGER"
           position="left"
+          handleClick={action('ボタンがクリックされました')}
         >
           Favorite
         </WithIconButton>
@@ -47,6 +62,7 @@ const Wrapper = () => {
           color="SECONDARY"
           background="INFO"
           position="Right"
+          handleClick={action('ボタンがクリックされました')}
         >
           Share
         </WithIconButton>
@@ -62,6 +78,7 @@ const Wrapper = () => {
           background="WARNING"
           pattern="Go"
           shape="circle"
+          handleClick={action('ボタンがクリックされました')}
         />
         <IconOnlyButton
           iconName="Go-Bell"
@@ -73,6 +90,7 @@ const Wrapper = () => {
           background="INFO"
           pattern="Go"
           shape="circle"
+          handleClick={action('ボタンがクリックされました')}
         />
         <IconOnlyButton
           iconName="Ti-Cog"
@@ -85,6 +103,7 @@ const Wrapper = () => {
           border={true}
           pattern="Ti"
           shape="square"
+          handleClick={action('ボタンがクリックされました')}
         />
         <IconOnlyButton
           iconName="Ti-WeatherStormy"
@@ -96,6 +115,7 @@ const Wrapper = () => {
           background="SUCCESS"
           pattern="Ti"
           shape="circle"
+          handleClick={action('ボタンがクリックされました')}
         />
       </IconOnlyContainer>
     </>

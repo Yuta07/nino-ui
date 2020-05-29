@@ -61,7 +61,6 @@ const Wrapper = () => {
   };
 
   const onVisibleToast = (name: string) => {
-    console.log(name);
     switch (name) {
       case 'success':
         setSuccessState({ ...successState, visible: true });
@@ -156,7 +155,7 @@ const Wrapper = () => {
             text={warningState.text}
             type={warningState.type}
             visible={warningState.visible}
-            width="300px"
+            width="100%"
             position={{ position: 'fixed', bottom: '0', left: '0' }}
             handleClose={() => handleClose('warning')}
           />
@@ -180,7 +179,7 @@ const Wrapper = () => {
             text={dangerState.text}
             type={dangerState.type}
             visible={dangerState.visible}
-            width="300px"
+            width="100%"
             position={{ position: 'fixed', bottom: '0', left: '0' }}
             handleClose={() => handleClose('danger')}
           />

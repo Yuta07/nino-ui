@@ -25,7 +25,7 @@ export const WithIconButton = ({
 
   return (
     <>
-      <Base themes={theme} {...props}>
+      <Base themes={theme} onClick={props.handleClick} {...props}>
         {position === 'left' ? (
           <>
             <IconContainer>

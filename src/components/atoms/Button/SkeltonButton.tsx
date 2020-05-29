@@ -11,7 +11,7 @@ export interface Skelton extends Props {
 export const SkeltonButton = ({ border = false, ...props }: Skelton) => {
   const theme = useTheme();
 
-  return <SkeltonButtonStyle border={border} themes={theme} {...props} />;
+  return <SkeltonButtonStyle border={border} themes={theme} onClick={props.handleClick} {...props} />;
 };
 
 const SkeltonButtonStyle = styled(Base)<{

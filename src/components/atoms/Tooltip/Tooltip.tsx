@@ -2,8 +2,8 @@ import * as React from 'react';
 import { createPortal } from 'react-dom';
 import styled, { css } from 'styled-components';
 import { throttle } from 'lodash';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
   children: React.ReactNode;

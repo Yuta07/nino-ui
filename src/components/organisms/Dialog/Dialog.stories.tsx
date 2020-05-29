@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Dialog } from './Dialog';
-import { Button } from '../atoms/Button';
+import { Button } from '../../atoms/Button';
 
 const Wrapper = () => {
   const [isAlertDialogOpen, setIsAlertDialogOpen] = React.useState(false);
@@ -29,7 +29,7 @@ const Wrapper = () => {
   };
 
   return (
-    <Container>
+    <>
       <Dialog
         isOpen={isAlertDialogOpen}
         title="AlertDialog"
@@ -47,8 +47,8 @@ const Wrapper = () => {
         onCloseDialog={onCloseAlertDialog}
       />
       <ButtonMargin>
-        <Button type="button" width="200px" height="32px" handleClick={() => isOpenDialog('alert')}>
-          Open Alert Dialog
+        <Button type="button" handleClick={() => isOpenDialog('alert')}>
+          open Alert Dialog
         </Button>
       </ButtonMargin>
       <Dialog
@@ -70,11 +70,11 @@ const Wrapper = () => {
         onActionDialog={onCloseConfirmDialog}
       />
       <ButtonMargin>
-        <Button type="button" width="200px" height="32px" handleClick={() => isOpenDialog('confirm')}>
+        <Button type="button" handleClick={() => isOpenDialog('confirm')}>
           show Confirm Dialog
         </Button>
       </ButtonMargin>
-    </Container>
+    </>
   );
 };
 
@@ -83,8 +83,6 @@ storiesOf('Dialog', module).add('all', () =>
     return <Wrapper />;
   })
 );
-
-const Container = styled.div``;
 
 const ButtonMargin = styled.div`
   margin: 1.5rem;

@@ -29,7 +29,7 @@ export const WithIconAnchor = ({
 
   return (
     <>
-      <WithIconAnchorStyle color={color} background={background} themes={theme} {...props}>
+      <WithIconAnchorStyle color={color} background={background} themes={theme} onClick={props.handleClick} {...props}>
         {position === 'left' ? (
           <>
             <IconContainer>

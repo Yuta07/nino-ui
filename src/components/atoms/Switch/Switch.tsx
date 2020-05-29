@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
-import { GithubIcon } from '../atoms/Icon/GithubIcon';
-import { TypeIcon } from '../atoms/Icon/TypeIcon';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
+import { FeatherIcon } from '../Icon/FeatherIcon';
+import { GithubIcon } from '../Icon/GithubIcon';
+import { TypeIcon } from '../Icon/TypeIcon';
 
 type SwitchIcon = {
   iconName?: string;

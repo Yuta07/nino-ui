@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
-import { FeatherIcon } from '../atoms/Icon/FeatherIcon';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
+import { FeatherIcon } from '../../atoms/Icon/FeatherIcon';
 
 type Props = {
   title?: string;
@@ -22,7 +22,7 @@ export const ModalContent = ({ title, content, onCloseModal }: Props) => {
     <Wrapper>
       <Container themes={theme}>
         <CloseIcon onClick={onCloseModal}>
-          <FeatherIcon name="Fi-XCircle" color="#9e9e9e" size={20} />
+          <FeatherIcon name="Fi-X" color="#9e9e9e" size={20} />
         </CloseIcon>
         {dialogTitle}
         <BodyContent theme={theme}>{content}</BodyContent>
@@ -51,7 +51,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
   animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
 `;
 
@@ -61,8 +60,8 @@ const Container = styled.div<{ themes: Theme }>`
 
     return css`
       position: absolute;
-      z-index: 9000;
-      max-width: 600px
+      z-index: 151;
+      max-width: 600px;
       display: flex;
       flex-direction: column;
       padding: 1rem;
@@ -118,7 +117,7 @@ const BodyContentText = css`
 
   h3,
   h4 {
-    font-sie: 16px;
+    font-size: 16px;
   }
 
   p,
@@ -142,7 +141,6 @@ const BodyContentText = css`
 
 const BodyContent = styled.div<{ theme: Theme }>`
   ${BodyContentText};
-
   margin-top: 0.5rem;
   padding-top: 1rem;
   border-top: 1px solid ${props => props.theme.palette.BORDER};

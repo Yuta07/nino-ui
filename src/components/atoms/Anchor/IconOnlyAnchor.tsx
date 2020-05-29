@@ -48,7 +48,15 @@ export const IconOnlyAnchor = ({
   }
 
   return (
-    <AnchorContainer color={color} background={background} border={border} shape={shape} themes={theme} {...props}>
+    <AnchorContainer
+      color={color}
+      background={background}
+      border={border}
+      shape={shape}
+      themes={theme}
+      onClick={props.handleClick}
+      {...props}
+    >
       <IconButton>{iconButton}</IconButton>
     </AnchorContainer>
   );

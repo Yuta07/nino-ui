@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
-import { TypeIcon } from '../atoms/Icon/TypeIcon';
+import { Theme } from '../../../themes/Theme';
+import { useTheme } from '../../../hooks/useTheme';
+import { TypeIcon } from '../../atoms/Icon/TypeIcon';
 
 type Props = {
   isBackFirst?: boolean;

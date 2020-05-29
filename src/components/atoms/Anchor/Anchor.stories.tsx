@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Anchor, UnderlineAnchor, InteractionAnchor } from './Anchor';
@@ -10,27 +11,33 @@ const Wrapper = () => {
   return (
     <>
       <Container>
-        <Anchor link="#" height="32px">
+        <Anchor link="#" height="32px" handleClick={action('リンクがクリックされました')}>
           Anchor - Original
         </Anchor>
       </Container>
       <Container>
-        <UnderlineAnchor link="#" height="32px">
+        <UnderlineAnchor link="#" height="32px" handleClick={action('リンクがクリックされました')}>
           Anchor - Underline
         </UnderlineAnchor>
       </Container>
       <Container>
-        <InteractionAnchor border="MAIN" link="#" height="32px">
+        <InteractionAnchor border="MAIN" link="#" height="32px" handleClick={action('リンクがクリックされました')}>
           Anchor - Interaction
         </InteractionAnchor>
       </Container>
       <Container>
-        <CustomAnchor link="#" height="32px">
+        <CustomAnchor link="#" height="32px" handleClick={action('リンクがクリックされました')}>
           Custom - Normal
         </CustomAnchor>
       </Container>
       <Container>
-        <CustomAnchor link="#" height="32px" color="SECONDARY" background="MAIN">
+        <CustomAnchor
+          link="#"
+          height="32px"
+          color="SECONDARY"
+          background="MAIN"
+          handleClick={action('リンクがクリックされました')}
+        >
           Custom - background: MAIN, color: SECONDARY
         </CustomAnchor>
       </Container>
@@ -44,6 +51,7 @@ const Wrapper = () => {
           color="SECONDARY"
           background="DANGER"
           position="left"
+          handleClick={action('リンクがクリックされました')}
         >
           Favorite
         </WithIconAnchor>
@@ -57,6 +65,7 @@ const Wrapper = () => {
           color="SECONDARY"
           background="INFO"
           position="Right"
+          handleClick={action('リンクがクリックされました')}
         >
           Share
         </WithIconAnchor>
@@ -72,6 +81,7 @@ const Wrapper = () => {
           background="WARNING"
           pattern="Go"
           shape="circle"
+          handleClick={action('リンクがクリックされました')}
         />
         <IconOnlyAnchor
           iconName="Go-Bell"
@@ -83,6 +93,7 @@ const Wrapper = () => {
           background="INFO"
           pattern="Go"
           shape="circle"
+          handleClick={action('リンクがクリックされました')}
         />
         <IconOnlyAnchor
           iconName="Ti-Cog"
@@ -94,6 +105,7 @@ const Wrapper = () => {
           border={true}
           pattern="Ti"
           shape="square"
+          handleClick={action('リンクがクリックされました')}
         />
         <IconOnlyAnchor
           iconName="Ti-WeatherStormy"
@@ -105,6 +117,7 @@ const Wrapper = () => {
           background="SUCCESS"
           pattern="Ti"
           shape="circle"
+          handleClick={action('リンクがクリックされました')}
         />
       </IconOnlyContainer>
     </>

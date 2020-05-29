@@ -45,7 +45,7 @@ export const IconOnlyButton = ({
   }
 
   return (
-    <Button border={border} shape={shape} themes={theme} {...props}>
+    <Button border={border} shape={shape} themes={theme} onClick={props.handleClick} {...props}>
       <IconButton>{iconButton}</IconButton>
     </Button>
   );

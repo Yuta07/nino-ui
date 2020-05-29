@@ -1,19 +1,18 @@
 import * as React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { Theme } from '../../themes/Theme';
-import { useTheme } from '../../hooks/useTheme';
+import { SkeltonButton } from '../../atoms/Button/SkeltonButton';
+import { useTheme } from '../../../hooks/useTheme';
+import { Theme } from '../../../themes/Theme';
 
 type Props = {
   title?: string;
-  type: 'success' | 'info' | 'warning' | 'danger';
+  type: 'success' | 'info' | 'warning' | 'danger' | '';
   content: React.ReactNode;
   activeText?: string;
   closeText: string;
   onCloseDialog: () => void;
   onActionDialog?: () => void;
 };
-
-let dialogTitle: React.ReactNode;
 
 export const DialogContent = ({
   title,
@@ -41,8 +40,11 @@ export const DialogContent = ({
       color = theme.palette.DANGER;
       break;
     default:
+      color = theme.palette.PRIMARY;
+      break;
   }
 
+  let dialogTitle: React.ReactNode;
   if (title !== '') dialogTitle = <DialogTitle color={color}>{title}</DialogTitle>;
 
   return (
@@ -51,8 +53,17 @@ export const DialogContent = ({
         {dialogTitle}
         <BodyContent themes={theme}>{content}</BodyContent>
         <DialogButtonContainer>
-          <NegativeButton onClick={onCloseDialog}>{closeText}</NegativeButton>
-          {activeText === undefined ? null : <ActiveButton onClick={onActionDialog}>{activeText}</ActiveButton>}
+          <SkeltonButton border={true} handleClick={onCloseDialog}>
+            {closeText}
+          </SkeltonButton>
+          {activeText !== undefined && (
+            <>
+              <Margin />
+              <SkeltonButton border={true} handleClick={onActionDialog}>
+                {activeText}
+              </SkeltonButton>
+            </>
+          )}
         </DialogButtonContainer>
       </Container>
     </Wrapper>
@@ -79,7 +90,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
   animation: ${ShowAnimation} 0.2s ease-in 0s 1 normal none running;
 `;
 
@@ -89,8 +99,8 @@ const Container = styled.div<{ themes: Theme }>`
 
     return css`
       position: absolute;
-      z-index: 9000;
-      max-width: 600px
+      z-index: 151;
+      max-width: 600px;
       display: flex;
       flex-direction: column;
       padding: 1rem;
@@ -138,7 +148,7 @@ const BodyContentText = css`
 
   h3,
   h4 {
-    font-sie: 16px;
+    font-size: 16px;
   }
 
   p,
@@ -177,29 +187,9 @@ const DialogButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  height: 36px;
   margin-top: 1rem;
 `;
 
-const DialogButton = styled.button`
-  min-width: 60px;
-  border: 1px solid #c2c2c2;
-  border-radius: 8px;
-  background: #fefefe;
-  padding: 4px 8px;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    border: 1px solid #f39c12;
-  }
-`;
-
-const NegativeButton = styled(DialogButton)``;
-
-const ActiveButton = styled(DialogButton)`
-  margin-left: 24px;
+const Margin = styled.div`
+  margin-left: 30px;
 `;

@@ -5,21 +5,19 @@ import { Spinner, SpinnerWithMessage } from './Spinner';
 
 storiesOf('Spinner', module).add('all', () => (
   <Wrapper>
-    <Container>
-      <Spinner color="MAIN" />
-    </Container>
-    <Container>
-      <Spinner color="DANGER" />
-    </Container>
-    <Container>
-      <Spinner color="SUCCESS" />
-    </Container>
-    <Container>
-      <SpinnerWithMessage color="WARNING" message="Now Loading..." position={{ top: '50px', left: '-100%' }} />
-    </Container>
-    <Container>
-      <SpinnerWithMessage color="INFO" message="読み込み中..." position={{ top: '50px', left: '-50%' }} />
-    </Container>
+    <Spinner color="MAIN" />
+    <Spinner color="DANGER" position={{ position: 'absolute', top: '25%', left: '50%' }} />
+    <Spinner color="SUCCESS" />
+    <SpinnerWithMessage
+      color="WARNING"
+      message="Now Loading..."
+      position={{ position: 'absolute', top: '50%', left: '25%' }}
+    />
+    <SpinnerWithMessage
+      color="INFO"
+      message="読み込み中..."
+      position={{ position: 'absolute', top: '50%', left: '75%' }}
+    />
   </Wrapper>
 ));
 
@@ -29,5 +27,3 @@ const Wrapper = styled.div`
   justify-content: space-around;
   padding: 1.5rem;
 `;
-
-const Container = styled.div``;
