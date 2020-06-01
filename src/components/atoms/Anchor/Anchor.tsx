@@ -29,13 +29,13 @@ export const Anchor = ({ link, children, width, height, target = '_self', handle
 export const UnderlineAnchor = ({ ...props }: Props) => {
   const theme = useTheme();
 
-  return <AnchorWithUnderline themes={theme} {...props} />;
+  return <AnchorWithUnderline themes={theme} onClick={props.handleClick} {...props} />;
 };
 
 export const InteractionAnchor = ({ border = 'DARK', ...props }: Interaction) => {
   const theme = useTheme();
 
-  return <AnchorWithInteraction border={border} themes={theme} {...props} />;
+  return <AnchorWithInteraction border={border} themes={theme} onClick={props.handleClick} {...props} />;
 };
 
 export const Base = styled.a<{

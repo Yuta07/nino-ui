@@ -4,7 +4,7 @@ import { Theme } from '../../../themes/Theme';
 import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
-  children: string;
+  children: React.ReactNode;
   color?: string;
   heading: number;
   line?: string;

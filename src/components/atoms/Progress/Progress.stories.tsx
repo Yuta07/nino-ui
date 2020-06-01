@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
-import { ProgressBar } from './ProgressBar';
+// import { ProgressBar } from './ProgressBar';
 import { ProgressCircle } from './ProgressCircle';
 
 const Wrapper = () => {
@@ -19,24 +19,20 @@ const Wrapper = () => {
 
   return (
     <>
-      <Container>
+      {/* <Container>
         <ProgressBar width="100%" height={10} color="MAIN" progress={percentage} />
-      </Container>
+      </Container> */}
       <CircleContainer>
-        <Circle>
-          <ProgressCircle size={60} color="DANGER" width={5} progress={percentage} />
-        </Circle>
-        <Circle>
-          <ProgressCircle size={80} color="WARNING" width={10} progress={percentage} />
-        </Circle>
+        <ProgressCircle size={120} fontLevel={3} color='DANGER' position={{ top: '35%', left: '0' }} percentage={percentage} />
       </CircleContainer>
       <CircleContainer>
-        <Circle>
-          <ProgressCircle size={100} color="INFO" width={10} progress={percentage} />
-        </Circle>
-        <Circle>
-          <ProgressCircle size={120} color="SUCCESS" width={15} progress={percentage} />
-        </Circle>
+        <ProgressCircle position={{ top: '35%', left: '0' }} percentage={percentage} />
+      </CircleContainer>
+      <CircleContainer>
+        <ProgressCircle size={90} fontLevel={5} color='SUCCESS' position={{ top: '35%', left: '0' }} percentage={percentage} />
+      </CircleContainer>
+      <CircleContainer>
+        <ProgressCircle size={80} fontLevel={5} color='DARK' position={{ top: '35%', left: '0' }} percentage={percentage} />
       </CircleContainer>
     </>
   );
@@ -48,9 +44,9 @@ storiesOf('Progress', module).add('all', () =>
   })
 );
 
-const Container = styled.div`
-  margin: 20px 0;
-`;
+// const Container = styled.div`
+//   margin: 20px 0;
+// `;
 
 const CircleContainer = styled.div`
   display: flex;
@@ -59,9 +55,4 @@ const CircleContainer = styled.div`
   justify-content: flex-start;
   width: 100%;
   margin: 10px 0;
-`;
-
-const Circle = styled.div`
-  width: 50%;
-  padding: 0 5%;
 `;

@@ -8,7 +8,7 @@ export { Heading } from './components/atoms/Heading';
 export { Input } from './components/atoms/Input';
 export { Label, LabelWithRequired } from './components/atoms/Label';
 export { Modal } from './components/organisms/Modal';
-export { Pagination } from './components/molecules/Pagenation';
+export { Pagination } from './components/molecules/Pagination';
 export { ProgressBar, ProgressCircle } from './components/atoms/Progress';
 export { Radio } from './components/atoms/Radio';
 export { SelectBox } from './components/atoms/SelectBox';
