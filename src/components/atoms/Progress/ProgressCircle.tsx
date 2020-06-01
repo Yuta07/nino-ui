@@ -20,63 +20,20 @@ type Props = {
 export const ProgressCircle = ({ size = 100, fontLevel = 4, color = 'MAIN', position, percentage }: Props) => {
   const [progress, setProgress] = React.useState<number>(0);
   const theme: Theme = useTheme();
-  const canvas = React.useRef(null);
-  const backCanvas = React.useRef(null);
 
-  React.useLayoutEffect(() => {
-    const background = backCanvas.current.getContext('2d');
-    background.beginPath();
-    background.arc(size / 2, size / 2, size / 2 - 10, 0, 100 * 2 * Math.PI, false);
-    background.lineWidth = 2;
-    background.strokeStyle = '#ced4da';
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (progress < percentage) {
+        setProgress(progress => progress + 1);
+      }
+    }, 5);
 
-    background.stroke();
-  });
-
-  React.useLayoutEffect(() => {
-    if (percentage > 100) return null;
-
-    const ctx = canvas.current.getContext('2d');
-    const result = 3.6 * percentage;
-
-    const updateAnimationState = () => {
-      let count = 0;
-
-      const acrInterval = setInterval(() => {
-        count += 1;
-        const percent = count / 3.6;
-
-        ctx.beginPath();
-        ctx.strokeStyle = theme.palette[color];
-        ctx.lineWidth = 2;
-        ctx.arc(
-          size / 2,
-          size / 2,
-          size / 2 - 10,
-          (Math.PI / 180) * 270,
-          (Math.PI / 180) * (270 + 3.6 * percent),
-          false
-        );
-        ctx.stroke();
-
-        if (count >= result) {
-          clearInterval(acrInterval);
-          setProgress(percentage);
-        }
-      }, 5);
-    };
-
-    updateAnimationState();
-
-    return (() => {
-      updateAnimationState();
-    })
-  }, [percentage, color, size, theme.palette]);
+    return () => clearTimeout(timer);
+  }, [progress, percentage]);
 
   return (
-    <Circle size={size}>
-      <Canvas ref={backCanvas} width={size} height={size} style={{ position: 'absolute', zIndex: 150 }} />
-      <Canvas ref={canvas} width={size} height={size} style={{ position: 'absolute', zIndex: 151 }} />
+    <Circle size={size} color={color} themes={theme} percentage={percentage}>
+      <Progress size={size} themes={theme} />
       <Percentage posi={position}>
         <Heading heading={2} visualLevel={fontLevel}>
           {progress}
@@ -87,16 +44,74 @@ export const ProgressCircle = ({ size = 100, fontLevel = 4, color = 'MAIN', posi
   );
 };
 
-const Canvas = styled.canvas``;
-
-const Circle = styled.div<{ size: Props['size'] }>`
-  ${({ size }) => {
+const Circle = styled.div<{
+  size: Props['size'];
+  color: Props['color'];
+  themes: Theme;
+  percentage: Props['percentage'];
+}>`
+  ${({ size, color, percentage, themes }) => {
+    const { palette } = themes;
     return css`
       position: relative;
       width: ${size ? `${size}px` : 'auto'};
       height: ${size ? `${size}px` : 'auto'};
-      display: inline-flex;
+      display: inline-block;
+      background: ${palette[color]};
+      border: none;
+      border-radius: 50%;
+      text-align: center;
       overflow: hidden;
+      z-index: 152;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -${size / 2}px;
+        width: ${size}px;
+        height: ${size}px;
+        transform-origin: right ${size / 2}px;
+        z-index: 150;
+        transform: ${percentage < 50.01 ? `rotate(0deg)` : `rotate(${percentage * 3.6 - 180}deg)`};
+        background: ${palette.GRAY};
+        transition: transform 0.5s ease-in;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: ${size / 2}px;
+        width: ${size}px;
+        height: ${size}px;
+        transform-origin: left ${size / 2}px;
+        z-index: 151;
+        transform: ${percentage < 50.01 ? `rotate(${percentage * 3.6}deg)` : `rotate(360deg)`};
+        background: ${percentage < 50.01 ? `${palette.GRAY}` : `${palette[color]}`};
+        transition: ${percentage < 50.01 ? `transform 0.5s ease-in` : `transform 0s ease-in`};
+      }
+    `;
+  }}
+`;
+
+const Progress = styled.div<{ size: Props['size']; themes: Theme }>`
+  ${({ size, themes }) => {
+    const { palette } = themes;
+    return css`
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: ${palette.SECONDARY};
+      width: ${size - 10}px;
+      height: ${size - 10}px;
+      border-radius: 50%;
+      z-index: 153;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     `;
   }}
 `;
@@ -108,6 +123,7 @@ const Percentage = styled.div<{ posi: Props['position'] }>`
     return css`
       width: 100%;
       position: absolute;
+      z-index: 154;
       text-align: center;
 
       ${top &&

@@ -4,17 +4,22 @@ import { Theme } from '../../../themes/Theme';
 import { useTheme } from '../../../hooks/useTheme';
 
 type Props = {
-  width: string;
-  height?: number;
+  width?: string;
   color: string;
+  position?: {
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
+  };
   progress: number;
 };
 
-export const ProgressBar = ({ width, height = 16, color = 'MAIN', progress }: Props) => {
+export const ProgressBar = ({ width = '100%', color = 'MAIN', position, progress }: Props) => {
   const theme = useTheme();
 
   return (
-    <Bar width={width} height={height} progress={progress}>
+    <Bar width={width} posi={position} progress={progress}>
       <Progress color={color} progress={progress} themes={theme} />
     </Bar>
   );
@@ -25,19 +30,39 @@ const BarAnimation = keyframes`
     opacity: 1;
   }
   to {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 `;
 
-const Bar = styled.div<{ width: Props['width']; height: Props['height']; progress: Props['progress'] }>`
-  ${({ width, height, progress }) => {
+const Bar = styled.div<{ width: Props['width']; posi: Props['position']; progress: Props['progress'] }>`
+  ${({ width, posi, progress }) => {
+    const { top, bottom, left, right } = posi !== undefined && posi;
+
     return css`
-      position: relative;
-      width: ${width};
-      height: ${height}px;
+      position: fixed;
+      z-index: 150;
+      width: ${width ? width : 'auto'};
+      height: 4px;
       border: none;
       border-radius: 32px;
-      animation: ${BarAnimation} 1s linear 0s infinite alternate none ${progress >= 100 ? 'paused' : 'running'};
+      animation: ${BarAnimation} 1s linear 0s infinite alternate none ${progress > 100 ? 'paused' : 'running'};
+
+      ${top &&
+        css`
+          top: ${top};
+        `}
+      ${bottom &&
+        css`
+          bottom: ${bottom};
+        `}
+      ${right &&
+        css`
+          right: ${right};
+        `}
+      ${left &&
+        css`
+          left: ${left};
+        `}
     `;
   }}
 `;
