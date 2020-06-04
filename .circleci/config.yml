@@ -40,15 +40,15 @@ jobs:
           name: Run style lint
           command: yarn lint:style
 
-  test:
-    executor:
-      name: default
-    steps:
-      - checkout
-      - yarn_install
-      - run:
-          name: Run Tests
-          command: yarn test
+  # test:
+  #   executor:
+  #     name: default
+  #   steps:
+  #     - checkout
+  #     - yarn_install
+  #     - run:
+  #         name: Run Tests
+  #         command: yarn test
 
   deploy:
     executor:
@@ -82,13 +82,13 @@ workflows:
             branches:
               ignore:
                 - master
-      - test:
-          requires:
-            - lint
-          filters:
-            branches:
-              ignore:
-                - master
+      # - test:
+      #     requires:
+      #       - lint
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - master
       - deploy:
           filters:
             branches:
