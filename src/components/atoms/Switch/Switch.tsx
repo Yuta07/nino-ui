@@ -7,7 +7,7 @@ import { GithubIcon } from '../Icon/GithubIcon';
 import { TypeIcon } from '../Icon/TypeIcon';
 
 type SwitchIcon = {
-  iconName?: string;
+  iconName: string;
   iconSize?: number;
   iconColor?: string;
   pattern?: string;
@@ -19,8 +19,8 @@ type BallStyle = {
 };
 
 type Props = {
-  iconLeft?: SwitchIcon | undefined;
-  iconRight?: SwitchIcon | undefined;
+  iconLeft?: SwitchIcon;
+  iconRight?: SwitchIcon;
   backgroundColor?: string;
   status: boolean;
   toggleOnText?: string;
@@ -42,43 +42,49 @@ export const Switch = ({
   const theme = useTheme();
   const deviceWidth = window.screen.width;
 
-  let adaptIconSize: number;
-  if (deviceWidth <= 480) {
-    adaptIconSize = iconLeft.iconSize * 0.75;
-  } else if (deviceWidth <= 768) {
-    adaptIconSize = iconLeft.iconSize * 0.875;
-  } else {
-    adaptIconSize = iconLeft.iconSize;
+  let adaptIconSize: number = 16;
+  if (iconLeft !== undefined) {
+    if (deviceWidth <= 480) {
+      adaptIconSize = iconLeft.iconSize * 0.75;
+    } else if (deviceWidth <= 768) {
+      adaptIconSize = iconLeft.iconSize * 0.875;
+    } else {
+      adaptIconSize = iconLeft.iconSize;
+    }
   }
 
   let iconLeftSide: JSX.Element;
-  switch (iconLeft.pattern) {
-    case 'Fi':
-      iconLeftSide = <FeatherIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
-      break;
-    case 'Go':
-      iconLeftSide = <GithubIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
-      break;
-    case 'Ti':
-      iconLeftSide = <TypeIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
-      break;
-    default:
-      break;
+  if (iconLeft !== undefined) {
+    switch (iconLeft.pattern) {
+      case 'Fi':
+        iconLeftSide = <FeatherIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
+        break;
+      case 'Go':
+        iconLeftSide = <GithubIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
+        break;
+      case 'Ti':
+        iconLeftSide = <TypeIcon name={iconLeft.iconName} size={adaptIconSize} color={iconLeft.iconColor} />;
+        break;
+      default:
+        break;
+    }
   }
 
   let iconRightSide: JSX.Element;
-  switch (iconRight.pattern) {
-    case 'Fi':
-      iconRightSide = <FeatherIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
-      break;
-    case 'Go':
-      iconRightSide = <GithubIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
-      break;
-    case 'Ti':
-      iconRightSide = <TypeIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
-      break;
-    default:
-      break;
+  if (iconRight !== undefined) {
+    switch (iconRight.pattern) {
+      case 'Fi':
+        iconRightSide = <FeatherIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
+        break;
+      case 'Go':
+        iconRightSide = <GithubIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
+        break;
+      case 'Ti':
+        iconRightSide = <TypeIcon name={iconRight.iconName} size={adaptIconSize} color={iconRight.iconColor} />;
+        break;
+      default:
+        break;
+    }
   }
 
   return (

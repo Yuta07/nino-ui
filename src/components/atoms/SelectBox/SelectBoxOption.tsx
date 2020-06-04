@@ -14,11 +14,9 @@ export const SelectBoxOption = () => {
   });
 
   return (
-    <>
-      <Select value={value} disabled={true}>
-        {renderOptions}
-      </Select>
-    </>
+    <Select value={value} disabled={true}>
+      {renderOptions}
+    </Select>
   );
 };
 

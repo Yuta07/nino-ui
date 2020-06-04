@@ -11,19 +11,19 @@ const Wrapper = () => {
   const handleClickPageNum = (pageNum: number) => {
     setTimeout(() => {
       setCurrentPage(pageNum);
-    }, 1000);
+    }, 500);
   };
 
   const handleClickPageNum2 = (pageNum: number) => {
     setTimeout(() => {
       setCurrentPage2(pageNum);
-    }, 1000);
+    }, 500);
   };
 
   const handleClickPageNum3 = (pageNum: number) => {
     setTimeout(() => {
       setCurrentPage3(pageNum);
-    }, 1000);
+    }, 500);
   };
 
   return (

@@ -28,8 +28,6 @@ const Wrapper = () => {
       </Container>
       <Container>
         <Switch
-          iconLeft={{}}
-          iconRight={{}}
           status={status2}
           toggleOnText="ON"
           toggleOffText="OFF"

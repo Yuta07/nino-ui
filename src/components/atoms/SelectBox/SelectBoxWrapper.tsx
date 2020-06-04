@@ -27,7 +27,7 @@ const Wrapper = styled.div<{ width: Props['width'] }>`
         width: ${width ? `${width * 0.875}px` : `auto`};
       }
 
-      @media screen and (max-width: 320px) {
+      @media screen and (max-width: 420px) {
         width: ${width ? `${width * 0.75}px` : `auto`};
       }
     `;

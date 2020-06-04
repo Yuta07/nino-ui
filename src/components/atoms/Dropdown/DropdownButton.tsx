@@ -8,13 +8,8 @@ type Props = {
 
 export const DropdownButton = ({ children }: Props) => {
   const { onClickDropdownButton } = React.useContext(DropdownContext);
-  const triggerRef = React.useRef(null);
 
-  return (
-    <Container ref={triggerRef} onClick={onClickDropdownButton}>
-      {children}
-    </Container>
-  );
+  return <Container onClick={onClickDropdownButton}>{children}</Container>;
 };
 
 const Container = styled.div``;

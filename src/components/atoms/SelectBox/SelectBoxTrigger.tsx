@@ -6,16 +6,13 @@ import { SelectBoxContext } from './SelectBoxProvider';
 
 export const SelectBoxTrigger = () => {
   const { value, color, onClickSelectBoxTrigger } = React.useContext(SelectBoxContext);
-  const hrefRef = React.useRef(null);
   const theme = useTheme();
 
   return (
-    <>
-      <SelectBoxTriggerRef ref={hrefRef} color={color} themes={theme} onClick={onClickSelectBoxTrigger}>
-        {value}
-        <TriangleArrow color={color} themes={theme} />
-      </SelectBoxTriggerRef>
-    </>
+    <SelectBoxTriggerRef color={color} themes={theme} onClick={onClickSelectBoxTrigger}>
+      {value}
+      <TriangleArrow color={color} themes={theme} />
+    </SelectBoxTriggerRef>
   );
 };
 

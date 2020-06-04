@@ -14,5 +14,4 @@ export { Radio } from './components/atoms/Radio';
 export { SelectBox } from './components/atoms/SelectBox';
 export { Spinner, SpinnerWithMessage } from './components/atoms/Spinner';
 export { Switch } from './components/atoms/Switch';
-export { Table } from './components/organisms/Table';
 export { Toast } from './components/atoms/Toast';

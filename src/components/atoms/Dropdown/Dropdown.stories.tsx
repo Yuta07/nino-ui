@@ -24,9 +24,9 @@ const Wrapper = () => {
           </List>
         </DropdownContent>
       </Dropdown>
-      <Dropdown controllable={false} color="GRAY">
+      <Dropdown controllable={true} color="GRAY">
         <DropdownButton>
-          <Button height="28px" type="button" color="GRAY">
+          <Button height="28px" type="button" color="SECONDARY">
             dropdown button
           </Button>
         </DropdownButton>
